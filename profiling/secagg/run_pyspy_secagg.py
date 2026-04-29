@@ -2,12 +2,15 @@
 import argparse
 import json
 import os
+import shutil
 import subprocess
 from datetime import datetime
 
 
 CONFIG = "configs/secagg/config_fedavg_torch_secagg.toml"
 RUNNER = "profiling/secagg/runner.py"
+DATA_ROOT = "examples/mnist_quickrun"
+DATA_DIR = os.path.join(DATA_ROOT, "data_iid")
 SPLIT_SEED = 42
 SPLIT_SCHEME = "iid"
 
@@ -19,10 +22,17 @@ for _var in ("OMP_NUM_THREADS", "MKL_NUM_THREADS", "OPENBLAS_NUM_THREADS"):
 
 
 def ensure_data(n_clients: int):
-    """Re-split MNIST for n_clients shards."""
+    """Re-split MNIST for n_clients shards.
+
+    Wipes the existing data_iid/ directory first so leftover client_*
+    subdirs from a previous (larger) N can't be picked up by
+    parse_data_folder, which would silently spawn extra client coroutines.
+    """
+    if os.path.isdir(DATA_DIR):
+        shutil.rmtree(DATA_DIR)
     subprocess.run([
         "declearn-split",
-        "--folder", "examples/mnist_quickrun",
+        "--folder", DATA_ROOT,
         "--n_shards", str(n_clients),
         "--scheme", SPLIT_SCHEME,
         "--seed", str(SPLIT_SEED),

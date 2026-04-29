@@ -11,6 +11,12 @@ RUNNER = "profiling/secagg/runner.py"
 SPLIT_SEED = 42
 SPLIT_SCHEME = "iid"
 
+# With N client coroutines each spawning BLAS threads, the default
+# (one-thread-per-core) leads to crippling oversubscription on high-core nodes.
+# Cap to 2 threads per coroutine; child subprocess inherits these.
+for _var in ("OMP_NUM_THREADS", "MKL_NUM_THREADS", "OPENBLAS_NUM_THREADS"):
+    os.environ.setdefault(_var, "2")
+
 
 def ensure_data(n_clients: int):
     """Re-split MNIST for n_clients shards."""

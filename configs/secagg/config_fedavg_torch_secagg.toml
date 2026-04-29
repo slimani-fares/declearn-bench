@@ -24,17 +24,23 @@
     lrate = 1.0
 
 [run]
-    rounds = 10
+    # 3 rounds is enough for profiling: round 1 is always anomalous (lazy imports,
+    # cohort mask derivation), rounds 2-3 give the steady-state sample we want.
+    rounds = 3
 
     [run.register]
     timeout = 60
 
     [run.training]
     batch_size = 48
+    # Cap SGD steps per round so training time doesn't dominate SecAgg time.
+    # The full epoch (~125 batches at N=10) is unnecessary for profiling.
+    n_steps = 10
 
     [run.evaluate]
     batch_size = 128
-    frequency = 10
+    # Skip mid-run eval (frequency=999 > rounds means eval only at the end).
+    frequency = 999
 
 [experiment]
     metrics = [

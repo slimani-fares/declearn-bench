@@ -1,0 +1,39 @@
+[network]
+    protocol = "websockets"
+    host = "127.0.0.1"
+    port = 8765
+
+[data]
+   data_folder = "examples/mnist_quickrun/data_iid_fair"
+
+[model]
+model_file = "examples/mnist_quickrun/model_torch_binary.py"
+
+[optim]
+    aggregator = "averaging"
+
+    [optim.client_opt]
+    lrate = 0.001
+    modules = ["adam"]
+
+    [optim.server_opt]
+    lrate = 1.0
+
+    [optim.fairness]
+    algorithm = "fairfed"
+    f_type = "accuracy_parity"
+
+[run]
+    rounds = 2
+
+    [run.register]
+    timeout = 5
+
+    [run.training]
+    batch_size = 48
+
+    [run.evaluate]
+    batch_size = 128
+
+[experiment]
+    metrics = [["multi-classif", {labels = [0, 1]}]]

@@ -1,0 +1,12 @@
+{
+    "version": 1,
+    "project": "declearn",
+    "repo": "declearn",
+    "branches": ["develop"],
+    "environment_type": "existing",
+    "pythons": ["3.11"],
+    "benchmark_dir": "benchmarks",
+    "env_dir": ".asv/env",
+    "results_dir": ".asv/results",
+    "html_dir": ".asv/html"
+}

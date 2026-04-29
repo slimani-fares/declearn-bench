@@ -1,0 +1,70 @@
+# ============================================================
+# Data files (any level)
+# ============================================================
+# MNIST quickrun pre-split shards (data_iid, data_iid_chw, data_iid_n5, ...).
+# Pattern is intentionally specific — `data_*` would also catch source dirs
+# like `data_info/` inside the declearn package.
+**/data_iid*/
+**/data_split*/
+
+# Common ML data formats anywhere in the tree.
+*.npy
+*.npz
+*.parquet
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+*.bin
+*.pt
+*.pth
+*.safetensors
+*.arrow
+*.feather
+
+# ============================================================
+# Result / checkpoint / profiling output directories (any level)
+# ============================================================
+# Declearn FL training checkpoints (server/client logs, weights).
+**/result_*/
+
+# py-spy profiling outputs (existing + secagg).
+profiling/results/
+profiling/secagg/results/
+
+# ASV benchmark results / envs.
+.asv/
+
+# ============================================================
+# Temp files written by the runners
+# ============================================================
+_tmp_n*.toml
+secagg_*.toml
+
+# ============================================================
+# Python build / cache artifacts
+# ============================================================
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.eggs/
+build/
+dist/
+*.so
+
+# ============================================================
+# Local venvs (the prescribed venv lives in ~/.venvs/, but be safe)
+# ============================================================
+.venv/
+venv/
+env/
+
+# ============================================================
+# Editor / OS
+# ============================================================
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo

@@ -1,0 +1,33 @@
+# This is a minimal TOML file for the MNIST example with sklearn backend.
+# Uses a flat (n, 784) version of MNIST because SklearnSGDModel is linear.
+# See _ensure_data_flat() in benchmarks/__init__.py for how the flat data
+# is produced from the existing data_iid/ split.
+
+
+[network] # Network configuration used by both client and server
+    protocol = "websockets" # Protocol used, to keep things simple use websocket
+    host = "127.0.0.1" # Address used, works as-is on most set ups
+    port = 8765 # Port used, works as-is on most set ups
+[data] # Where to find your data (flat version for sklearn linear model)
+   data_folder = "examples/mnist_quickrun/data_iid_flat"
+[model]
+model_file = "examples/mnist_quickrun/model_sklearn.py"
+[optim] # Optimization options for both client and server
+    aggregator = "averaging" # Server aggregation strategy
+    [optim.client_opt] # Client optimization strategy
+    lrate = 0.01 # Client learning rate (sklearn SGD is more sensitive than Adam)
+    [optim.server_opt] # Server optimization strategy
+    lrate = 1.0 # Server learning rate
+[run] # Training process option for both client and server
+    rounds = 1 # Number of overall training rounds
+    [run.register] # Client registration options
+    timeout = 5 # How long to wait for clients, in seconds
+    [run.training] # Client training options
+    batch_size = 48 # Training batch size
+    [run.evaluate] # Client evaluation options
+    batch_size = 128 # Evaluation batch size
+[experiment] # What to report during the experiment and where to report it
+    metrics = [
+        # Multi-label Accuracy, Precision, Recall and F-Score.
+        ["multi-classif", {labels = [0,1,2,3,4,5,6,7,8,9]}]
+    ]

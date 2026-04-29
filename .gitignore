@@ -68,3 +68,13 @@ env/
 .vscode/
 *.swp
 *.swo
+
+# ============================================================
+# Claude / agent state — never push these
+# ============================================================
+.claude/
+CLAUDE.md
+**/CLAUDE.md
+**/claude.md
+.claude-cache/
+*.claude.json

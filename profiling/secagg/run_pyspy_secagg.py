@@ -47,7 +47,12 @@ def profile_one(n_clients: int, results_root: str):
     ensure_data(n_clients)
 
     print(f"\n=== Profiling N={n_clients} ===")
-    subprocess.run([
+    # py-spy can exit non-zero with ECHILD ("No child process") on Python 3.13
+    # after successfully writing the speedscope file — asyncio's child-reaping
+    # races with py-spy's wait(). Don't pass check=True; instead, treat the
+    # presence of the speedscope file as the source of truth. If it's there,
+    # the profile is good and we still want metadata.json next to it.
+    proc = subprocess.run([
         "py-spy", "record",
         "--subprocesses",
         "--format", "speedscope",
@@ -55,7 +60,13 @@ def profile_one(n_clients: int, results_root: str):
         "--", "python", RUNNER,
         "--config", CONFIG,
         "--n_clients", str(n_clients),
-    ], check=True)
+    ])
+
+    if not os.path.exists(out_json):
+        raise RuntimeError(
+            f"py-spy failed for N={n_clients} (exit {proc.returncode}); "
+            f"no speedscope file at {out_json}"
+        )
 
     with open(os.path.join(out_dir, "metadata.json"), "w") as f:
         json.dump({
@@ -65,6 +76,8 @@ def profile_one(n_clients: int, results_root: str):
             "split_scheme": SPLIT_SCHEME,
         }, f, indent=2)
 
+    if proc.returncode != 0:
+        print(f"  (py-spy exited {proc.returncode}; speedscope written, continuing)")
     print(f"Saved: {out_json}")
 
 

@@ -28,9 +28,10 @@
 # Declearn FL training checkpoints (server/client logs, weights).
 **/result_*/
 
-# py-spy profiling outputs (existing + secagg).
+# py-spy profiling outputs (existing + secagg + batched-variant secagg).
 profiling/results/
 profiling/secagg/results/
+profiling/secagg/results-batched/
 
 # ASV benchmark results / envs.
 .asv/

@@ -1,0 +1,33 @@
+# Build files.
+build/
+dist/
+*.egg-info/
+# Cache files.
+__pycache__
+*.pyc
+*_cache/
+.tox/
+# Configuration files.
+.vscode
+.idea/
+# Coverage files
+.coverage
+.coverage*
+htmlcov
+coverage.xml
+# Virtual environment files
+.venv/
+.venv*/
+venv/
+venv*/
+# Data files generated under examples.
+examples/*/*.csv
+examples/*/*.pem
+examples/*/*/
+# Documentation rendered files.
+public/
+site/
+docs/api-reference/*/
+docs/api-reference/SUMMARY.md
+docs/api-reference/typing.md
+docs/api-reference/version.md

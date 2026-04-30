@@ -1,0 +1,29 @@
+This file maintains the list of present and past declearn authors.
+A secondary file listing punctual open-source contributors may complement it.
+
+Declearn 2.7 - 
+- Simon Decomble (simon.decomble@inria.fr)
+
+Declearn 2.4 - 2.6
+- Paul Andrey
+
+Declearn 2.1 - 2.3
+- Paul Andrey
+- Nathan Bigaud
+
+Declearn 2.0 (new implementation)
+- Paul Andrey (core developer)
+- Nathan Bigaud (core developer)
+- Nathalie Vauquier (supervision)
+
+Declearn 1.x (continuation of 1.0)
+- Nathalie Vauquier
+- Marc-André Sirgiel
+
+Declearn 1.0
+- Yannick Bouillard (core developer)
+- Paul Andrey (review and minor contributions)
+
+Supervision (all versions)
+- Marc Tommasi
+- Aurélien Bellet

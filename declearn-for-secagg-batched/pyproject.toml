@@ -1,0 +1,292 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = [
+    "pip >= 19",
+    "setuptools >= 62.0",
+    "setuptools-scm[toml] >= 6.2",
+]
+
+[project]
+name = "declearn"
+version = "2.8.0"
+description = "A modular and extensible framework for Federated Learning."
+readme = "README.md"
+requires-python = ">=3.11"
+license = {file = "LICENSE"}
+authors = [
+    {name = "Paul Andrey", email = "paul.andrey@inria.fr"},
+    {name = "Nathan Bigaud", email = "nathan.bigaud@inria.fr"},
+    {name = "Simon Decomble", email = "simon.decomble@inria.fr"},
+]
+maintainers = [
+    {name = "Paul Andrey", email = "paul.andrey@inria.fr"},
+    {name = "Simon Decomble", email = "simon.decomble@inria.fr"},
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: Unix",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Typing :: Typed",
+]
+dependencies = [
+    "cryptography >= 35.0",
+    "fire ~= 0.4",
+    "gmpy2 ~= 2.1",
+    "pandas >= 1.2, < 3.0",
+    "requests ~= 2.18",
+    "scikit-learn ~= 1.6",
+    "tqdm ~= 4.62",
+]
+
+[project.optional-dependencies]
+all = [  # all non-dev and non-example extra dependencies
+    "dm-haiku >= 0.0.15",
+    "flax ~= 0.12",
+    "grpcio >= 1.45",
+    "jax[cpu] ~= 0.8",
+    "opacus ~= 1.4",
+    "protobuf >= 3.19",
+    "tensorflow ~= 2.12",
+    "torch ~= 2.0",
+    "websockets >= 10.1, < 14.0",
+]
+# thematically grouped dependencies (part of "all")
+dp = [
+    "opacus ~= 1.4",
+]
+grpc = [
+    "grpcio >= 1.45",
+    "protobuf >= 3.19",
+]
+haiku = [
+    "dm-haiku >= 0.0.15",
+    # NOTE: GPU support for jax must be manually installed, e.g. as jax[cuda12]
+    "jax[cpu] ~= 0.8",
+    "flax ~= 0.12",
+]
+tensorflow = [
+    "tensorflow ~= 2.12",
+]
+torch = [
+    "torch ~= 2.0",
+]
+websockets = [
+    "websockets >= 10.1, < 14.0",
+]
+
+# examples-related dependencies
+
+nlp = [
+    "datasets ~= 4.0",
+    "transformers ~= 4.57",
+]
+
+g5k = [
+    "enoslib ~= 10.5",
+]
+
+
+# docs-building dependencies
+docs = [
+    "griffe ~= 1.0",
+    "mkdocstrings[python] ~= 0.8",
+    "mkdocs-autorefs ~= 0.4",
+    "mkdocs-literate-nav ~= 0.4",
+    "mkdocs-material ~= 9.1",
+]
+
+# test-specific dependencies
+tests = [
+    "mypy ~= 1.0",
+    "pytest ~= 8.4",
+    "pytest-asyncio ~= 1.2",
+    "pytest-cov ~= 7.0",
+    "ruff ~= 0.14",
+    "tox ~= 4.31",
+]
+
+# all dev dependencies : lint, test, doc, build
+dev = [
+    "build>=1.3.0",
+    "griffe ~= 1.0",
+    "ipython>=9.8.0",
+    "mkdocstrings[python] ~= 0.8",
+    "mkdocs-autorefs ~= 0.4",
+    "mkdocs-literate-nav ~= 0.4",
+    "mkdocs-material ~= 9.1",
+    "mypy ~= 1.0",
+    "pre-commit>=4.3",
+    "pytest ~= 8.4",
+    "pytest-asyncio ~= 1.2",
+    "pytest-cov ~= 7.0",
+    "ruff ~= 0.14",
+    "tox ~= 4.31",
+]
+
+[dependency-groups]
+# (note : dependency groups are usable with pip >= 25.1 and uv)
+
+# all dev dependencies : lint, test, doc, build
+dev = [
+    "build>=1.3.0",
+    "griffe ~= 1.0",
+    "ipython>=9.8.0",
+    "mkdocstrings[python] ~= 0.8",
+    "mkdocs-autorefs ~= 0.4",
+    "mkdocs-literate-nav ~= 0.4",
+    "mkdocs-material ~= 9.1",
+    "mypy ~= 1.0",
+    "pre-commit>=4.3",
+    "pytest ~= 8.4",
+    "pytest-asyncio ~= 1.2",
+    "pytest-cov ~= 7.0",
+    "ruff ~= 0.14",
+    "tox ~= 4.31",
+    # python stubs for mypy (when using uv, it is easier to install them explicitly, rather than via mypy)
+    "pandas-stubs",
+    "scipy-stubs",
+    "types-grpcio",
+    "types-protobuf",
+    "types-pytz",
+    "types-requests",
+    "types-tensorflow",
+    "types-tqdm",
+]
+
+[project.urls]
+homepage = "https://magnet.gitlabpages.inria.fr/declearn/docs"
+repository = "https://gitlab.inria.fr/magnet/declearn/declearn2.git"
+
+[project.scripts]
+declearn-quickrun = "declearn.quickrun._run:main"
+declearn-split = "declearn.dataset._split_data:main"
+
+# TOOLS
+[tool.coverage.run]
+# enable coverage collection within multiprocessing
+concurrency = ["multiprocessing"]
+parallel = true
+sigterm = true
+# define rules to select the code files that need covering
+source_pkgs = ["declearn"]
+omit = [
+    "**/grpc/protobufs/*.py",  # auto-generated protobuf code files
+    "**/test_utils/*.py",  # dev-only test-oriented utils
+]
+
+[tool.coverage.paths]
+source = ["declearn", ".tox/**/declearn"]
+
+[tool.mypy]
+exclude = [".*_pb2.*.py$"]
+follow_imports = "skip"  # otherwise excluded files are checked
+
+[tool.setuptools.packages.find]
+include = ["declearn", "declearn.*"]
+
+[tool.setuptools.package-data]
+declearn = ["py.typed"]
+
+[tool.pytest.ini_options]
+pythonpath = "."
+
+[tool.ruff]
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+    "*_pb2*py" # auto-generated protobuf code files
+]
+
+# Same as Black.
+line-length = 79
+indent-width = 4
+
+# Assume Python 3.11
+target-version = "py311"
+
+[tool.ruff.lint]
+# Rules to be taken into account
+select = [
+    "E4", "E7", "E9",  # pycodestyle
+    "E501", # line-too-long
+    "F",  # Pyflakes
+    "B",  # flake8-bugbear
+    "I",  # isort
+    "PL", # Pylint
+]
+ignore = [
+    "PLR2004", # magic-value-comparison
+    "PLW0603", # global-statement
+]
+
+[tool.ruff.lint.per-file-ignores]
+# Ignores unused imports in __init__.py (these imports are re-exports).
+"__init__.py" = ["F401"]
+
+[tool.ruff.lint.pycodestyle]
+max-doc-length = 79
+
+[tool.ruff.format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
+
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+
+# Like Black, respect magic trailing commas.
+skip-magic-trailing-comma = false
+
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
+
+docstring-code-format = false
+docstring-code-line-length = "dynamic"
+
+# Legacy tools configs
+[tool.black]
+line-length = 79
+extend-exclude = "(.*_pb2.*py$)"  # exclude auto-generated protobuf code files
+
+[tool.isort]
+profile = "black"
+line_length = 79
+
+[tool.pylint.main]
+extension-pkg-allow-list = ["gmpy2"]
+fail-under = 10
+ignore-patterns = ["(.*_pb2.*py$)"]
+
+[tool.pylint.format]
+max-line-length = 79

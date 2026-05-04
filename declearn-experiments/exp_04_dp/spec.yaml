@@ -1,0 +1,44 @@
+experience_id: exp_04_dp
+baseline_commit: 45565ea  # declearn-for-exp_04_dp main branch (canonical 2.8.0 snapshot)
+observation_profile: runs/exp_04_observation_dp/2026-04-30_21-30-28/pyspy_speedscope.json
+
+# CLAUDE.md Section 11.4 — DP touches privacy mechanisms.
+requires_human_crypto_review: true
+
+hypotheses:
+  - id: h1
+    statement: |
+      DPTrainingManager._prevent_budget_overspending() calls opacus's RDP
+      `get_epsilon()` once per training step. RDP epsilon computation walks
+      the accountant history, so total cost is O(N²) in step count. In the
+      observation profile this consumed 75% of wall-clock (138s of 186s).
+      Deferring the get_epsilon call to round boundaries (where it is
+      already called for logging) preserves accountant history correctness
+      and produces identical per-round epsilon trajectory whenever the
+      budget is not exhausted mid-round. Expected wall-clock improvement:
+      ~3-4x at the configured 2c/2r/budget=5.0/delta=1e-5 settings.
+    deal_breaking: true
+    proposed_change_summary: |
+      In declearn/training/dp/_manager.py, remove the per-step
+      `get_epsilon` call inside `_prevent_budget_overspending`. Keep the
+      `accountant.step()` call (cheap bookkeeping). Round-boundary check
+      in `_training_round` (existing logger.info via get_privacy_spent
+      at line ~263) catches over-budget at next round start.
+    smoke_test:
+      type: epsilon_trajectory_equivalence + accuracy_equivalence
+      tolerance:
+        epsilon_per_round: 0.0  # exact — same accountant history, same get_epsilon call at round end
+        final_accuracy: 0.05    # absolute, on 0–1 scale
+    a_b_design:
+      configs: [config_baseline.toml, config_variant.toml]  # both same TOML; arms are picked by which fork is installed
+      client_counts: [2]
+      seeds: [42, 43, 44, 45, 46]   # 5 seeds per Section 6.4 default for DP
+      rounds: 2
+      expected_wall_time_min_per_run:
+        baseline: 4    # observation took ~3.3 min
+        variant: 1     # if hypothesis holds, ~3-4x faster
+    deal_breaker_rules:
+      accuracy_floor: "variant final accuracy >= baseline final accuracy - 0.10"
+      smoke_test_floor: "epsilon-per-round delta = 0 (same accountant); final_accuracy delta < 0.05"
+      perf_direction: "variant must be >= 30% faster than baseline (anything less means the per-step call wasn't dominant after all)"
+    status: proposed

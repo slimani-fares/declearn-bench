@@ -1,0 +1,6 @@
+{
+  "n_clients": 5,
+  "config": "configs/secagg/config_fedavg_torch_secagg.toml",
+  "split_seed": 42,
+  "split_scheme": "iid"
+}

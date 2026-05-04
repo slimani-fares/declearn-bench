@@ -1,0 +1,82 @@
+py-spy> Sampling process 100 times a second. Press Control-C to exit.
+
+2026-04-30 22:04:04,915:declearn.server:INFO: Default client sampler selected, all clients will be involved in each round
+2026-04-30 22:04:04,916:declearn.server.network:INFO: Server is now starting...
+2026-04-30 22:04:05,150:declearn.server.network:INFO: server listening on 127.0.0.1:8765
+2026-04-30 22:04:05,151:declearn.server:INFO: Starting clients registration process.
+2026-04-30 22:04:06,155:declearn.server.network:INFO: connection open
+2026-04-30 22:04:06,156:declearn.server.network:INFO: New connection from ('127.0.0.1', 43552)
+2026-04-30 22:04:06,156:declearn.server.network:INFO: connection open
+2026-04-30 22:04:06,156:declearn.server.network:INFO: New connection from ('127.0.0.1', 43568)
+2026-04-30 22:04:06,156:declearn.server.network:INFO: connection open
+2026-04-30 22:04:06,156:declearn.server.network:INFO: New connection from ('127.0.0.1', 43584)
+2026-04-30 22:04:06,157:declearn.server.network:INFO: connection open
+2026-04-30 22:04:06,157:declearn.server.network:INFO: New connection from ('127.0.0.1', 43596)
+2026-04-30 22:04:06,157:declearn.server.network:INFO: connection open
+2026-04-30 22:04:06,157:declearn.server.network:INFO: New connection from ('127.0.0.1', 43602)
+2026-04-30 22:04:06,159:declearn.server.messages_handler:INFO: Registering client 'client_3' for training.
+2026-04-30 22:04:06,160:declearn.server.messages_handler:INFO: Registering client 'client_4' for training.
+2026-04-30 22:04:06,160:declearn.server.messages_handler:INFO: Registering client 'client_1' for training.
+2026-04-30 22:04:06,160:declearn.server.messages_handler:INFO: Registering client 'client_2' for training.
+2026-04-30 22:04:06,160:declearn.server.messages_handler:INFO: Registering client 'client_0' for training.
+2026-04-30 22:04:10,156:declearn.server:INFO: Clients' registration is now complete.
+2026-04-30 22:04:10,156:declearn.server:INFO: Sending initialization requests to clients.
+/home/fslimani/declearn-bench/declearn-for-exp_07_fairness/declearn/utils/_serialize.py:125: UserWarning: PyTorch JSON serialization relies on pickle, which may be unsafe.
+  config = obj.get_config()
+2026-04-30 22:04:11,188:declearn.server:INFO: Waiting for clients' responses.
+2026-04-30 22:04:13,194:declearn.server.network:INFO: Sending FairGrad weights to clients.
+/home/fslimani/declearn-bench/declearn-for-exp_07_fairness/declearn/utils/_serialize.py:125: UserWarning: PyTorch JSON serialization relies on pickle, which may be unsafe.
+  config = obj.get_config()
+/home/fslimani/declearn-bench/declearn-for-exp_07_fairness/declearn/fairness/api/_server.py:188: RuntimeWarning: Overriding Aggregator choice to a 'SumAggregator', due to the use of Fed-FairGrad.
+  return await self.finalize_fairness_setup(
+2026-04-30 22:04:14,196:declearn.server:INFO: Initialization was successful.
+2026-04-30 22:04:14,213:declearn.server:INFO: Initiating fairness-enforcing round 0
+2026-04-30 22:04:17,300:declearn.server.network:INFO: Sending FairGrad weights to clients.
+2026-04-30 22:04:18,304:declearn.server:INFO: Initiating training round 1
+2026-04-30 22:04:30,372:declearn.server:INFO: Awaiting clients' training results.
+2026-04-30 22:04:31,385:declearn.server:INFO: Conducting server-side optimization.
+2026-04-30 22:04:31,386:declearn.server:INFO: Initiating evaluation round 1
+2026-04-30 22:04:31,951:declearn.client-client_0.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.6743', 'loss': '0.6386'}
+2026-04-30 22:04:32,071:declearn.client-client_4.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.6842', 'loss': '0.6286'}
+2026-04-30 22:04:32,333:declearn.client-client_1.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.6795', 'loss': '0.6327'}
+2026-04-30 22:04:32,466:declearn.client-client_2.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.6850', 'loss': '0.6271'}
+2026-04-30 22:04:32,592:declearn.client-client_3.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.6813', 'loss': '0.6308'}
+2026-04-30 22:04:32,611:declearn.server:INFO: Awaiting clients' evaluation results.
+2026-04-30 22:04:32,612:declearn.server:INFO: Aggregating evaluation results.
+2026-04-30 22:04:32,612:declearn.server:INFO: Averaged loss is: 0.633096527059873
+2026-04-30 22:04:32,612:declearn.server:INFO: Other averaged scalar metrics are: {'accuracy': '0.6794', 'loss': '0.6331'}
+2026-04-30 22:04:32,624:declearn.server:INFO: Initiating fairness-enforcing round 1
+2026-04-30 22:04:34,753:declearn.server.network:INFO: Sending FairGrad weights to clients.
+2026-04-30 22:04:35,756:declearn.server:INFO: Initiating training round 2
+2026-04-30 22:04:49,040:declearn.server:INFO: Awaiting clients' training results.
+2026-04-30 22:04:49,050:declearn.server:INFO: Conducting server-side optimization.
+2026-04-30 22:04:49,052:declearn.server:INFO: Initiating evaluation round 2
+2026-04-30 22:04:49,518:declearn.client-client_0.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.5157', 'loss': '0.7975'}
+2026-04-30 22:04:49,634:declearn.client-client_4.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.5104', 'loss': '0.8027'}
+2026-04-30 22:04:49,828:declearn.client-client_1.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.5157', 'loss': '0.7975'}
+2026-04-30 22:04:49,917:declearn.client-client_2.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.4946', 'loss': '0.8187'}
+2026-04-30 22:04:50,038:declearn.client-client_3.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.4992', 'loss': '0.8140'}
+2026-04-30 22:04:50,074:declearn.server:INFO: Awaiting clients' evaluation results.
+2026-04-30 22:04:50,075:declearn.server:INFO: Aggregating evaluation results.
+2026-04-30 22:04:50,075:declearn.server:INFO: Averaged loss is: 0.8028637067476908
+2026-04-30 22:04:50,075:declearn.server:INFO: Other averaged scalar metrics are: {'accuracy': '0.5103', 'loss': '0.8029'}
+2026-04-30 22:04:50,091:declearn.server:INFO: Maximum number of training rounds reached.
+2026-04-30 22:04:50,091:declearn.server:INFO: Initiating fairness-enforcing round 2
+2026-04-30 22:04:53,542:declearn.server.network:INFO: Sending FairGrad weights to clients.
+2026-04-30 22:04:54,548:declearn.server:INFO: Stopping training.
+2026-04-30 22:04:54,548:declearn.server:INFO: Recovering weights that yielded the lowest loss.
+2026-04-30 22:04:54,548:declearn.server:INFO: Notifying clients that training is over.
+/home/fslimani/declearn-bench/declearn-for-exp_07_fairness/declearn/utils/_serialize.py:125: UserWarning: PyTorch JSON serialization relies on pickle, which may be unsafe.
+  config = obj.get_config()
+2026-04-30 22:04:54,942:declearn.server.network:INFO: connection closed
+2026-04-30 22:04:54,943:declearn.server.network:INFO: connection closed
+2026-04-30 22:04:54,943:declearn.server.network:INFO: connection closed
+2026-04-30 22:04:54,943:declearn.server.network:INFO: connection closed
+2026-04-30 22:04:54,943:declearn.server.network:INFO: connection closed
+2026-04-30 22:04:55,574:declearn.server:INFO: Checkpointing final weights under /home/fslimani/declearn-bench/declearn-experiments/exp_07_fairness_fairgrad/result_26-04-30_22-04/server/model_state_best.json.
+2026-04-30 22:04:55,594:declearn.server.network:INFO: server closing
+2026-04-30 22:04:55,594:declearn.server.network:INFO: server closed
+
+py-spy> Stopped sampling because process exited
+py-spy> Wrote speedscope file to 'declearn-experiments/exp_07_fairness_fairgrad/runs/exp_07_smoke_fairgrad/2026-04-30_22-04-01/pyspy_speedscope.json'. Samples: 4115 Errors: 0
+py-spy> Visit https://www.speedscope.app/ to view

@@ -14,9 +14,9 @@ Conduct 9 profiling experiences on declearn (PyTorch backend, FedAvg, CPU-only).
 2. Smoke-test any proposed code change for correctness
 3. Run A/B comparison (baseline vs variant) under controlled conditions
 4. Write `recap.md` with findings, paths, diffs
-5. **STOP** — wait for Fares to review before starting the next experience
+5. **Continue directly to the next experience** — no pause for review
 
-You do not auto-advance between experiences. After each recap, your job is done until Fares tells you to continue.
+You auto-advance through all 9 experiences in a single autonomous pass. After writing each `recap.md`, immediately start the next experience. You only stop at the end of experience 9, or if you hit a hard blocker per Section 12 (genuinely stuck), or a usage-limit reset window > 6h per Section 13.
 
 ---
 
@@ -322,13 +322,15 @@ Apply the **deal-breaker rules in Section 7** to determine if the hypothesis is 
 - <noise levels, unconfirmed assumptions, follow-ups>
 ```
 
-After writing recap.md, **STOP**. Do not start the next experience. Output to terminal:
+After writing recap.md, output to terminal:
 ```
 === EXPERIENCE NN COMPLETE ===
 Recap: ~/declearn-bench/declearn-experiments/exp_NN_<feature>/recap.md
 Status: <summary>
-Awaiting human review before proceeding to experience NN+1.
+Proceeding to experience NN+1.
 ```
+
+Then immediately start the next experience (Section 6.1 for experience NN+1). Do NOT wait for human confirmation. Only stop if NN was experience 9 (in which case output `=== ALL EXPERIENCES COMPLETE ===` and stop), or if Section 12 / Section 13 triggers.
 
 ---
 
@@ -474,7 +476,7 @@ memray notes for this environment:
 2. **Never declare a finding without smoke test + multi-seed confirmation.** A single-seed result is an observation, not a finding.
 3. **Never exceed budgets without logging.** If a run takes longer than expected, abort and either scale down or mark `aborted_runtime`. Don't let one run consume the whole experience's budget.
 4. **Never skip the smoke test for "obvious" optimizations.** Especially for crypto/statistical code paths. If a change touches encryption, decryption, key generation, gradient noise, or differential privacy mechanisms — the smoke test is mandatory and the recap must explicitly flag the change for human review (`requires_human_crypto_review: true` in spec.yaml).
-5. **Never auto-advance between experiences.** Stop after each recap.
+5. **Always auto-advance between experiences.** Do NOT pause after a recap — immediately start the next experience. Stop only at the end of experience 9, on a Section 12 hard blocker, or a Section 13 long-window reset.
 6. **Never run experiments on a non-quiet magnet4.** If `uptime` shows load > 4 before starting an A/B, wait or move to a different time window. Background load destroys A/B timing comparisons.
 7. **Never use cached/inherited data splits across experiences without verifying the split seed.** If in doubt, regenerate.
 8. **Do not propose changes that require external dependencies not already in the venv.** Stay within installed packages.
@@ -489,6 +491,22 @@ Do not invent workarounds that might silently change what you're measuring. Stop
 
 ---
 
-## 13. Start
+## 13. Usage limits / token exhaustion
+
+If you hit a usage limit or token quota mid-run, do NOT just stop and wait for human input. Instead:
+
+1. Check how long until the limit resets (the limit message usually states the reset time, e.g. "resets at 18:00 UTC" or "in 4h 30m"). If the message is ambiguous, parse whatever timing info is available; if none, assume a 5-hour rolling window from when usage started.
+2. Compute the wake-up delay in seconds (reset time − current time, plus a 60-second safety margin so the quota is definitely refreshed).
+3. Use `ScheduleWakeup` to schedule yourself to resume after the reset, passing back the same `/loop` prompt (or `<<autonomous-loop-dynamic>>` sentinel for autonomous loops). Set `reason` to something specific like "resuming exp_04 A/B after usage limit reset at 18:00 UTC".
+4. Before sleeping, write a one-line status note to the current experience's `recap.md` (or `setup_status.md` if still in setup): `PAUSED: usage limit hit at <timestamp>, resuming at <reset time>, mid-step: <which step of Section 6 you were on>`. This lets Fares see the pause if he checks before you wake.
+5. Then exit the turn cleanly. Do not retry the operation that hit the limit before sleeping.
+
+When you wake up, re-read the recap/setup status note to confirm where you were, then continue. Do not re-do completed work.
+
+If the reset window is longer than ~6 hours (e.g. monthly quota), do not schedule — write the situation to the recap, output `=== STUCK: usage limit, reset > 6h away, awaiting human ===`, and stop.
+
+---
+
+## 14. Start
 
 Begin with Section 4 (setup phase). Do not ask for confirmation. Do not summarize this file back. Just start.

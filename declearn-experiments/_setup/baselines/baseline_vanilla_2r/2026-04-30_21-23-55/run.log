@@ -1,0 +1,53 @@
+py-spy> Sampling process 100 times a second. Press Control-C to exit.
+
+2026-04-30 21:23:59,024:declearn.server:INFO: Default client sampler selected, all clients will be involved in each round
+2026-04-30 21:23:59,025:declearn.server.network:INFO: Server is now starting...
+2026-04-30 21:23:59,125:declearn.server.network:INFO: server listening on 127.0.0.1:8765
+2026-04-30 21:23:59,126:declearn.server:INFO: Starting clients registration process.
+2026-04-30 21:24:00,129:declearn.server.network:INFO: connection open
+2026-04-30 21:24:00,129:declearn.server.network:INFO: New connection from ('127.0.0.1', 60792)
+2026-04-30 21:24:00,129:declearn.server.network:INFO: connection open
+2026-04-30 21:24:00,129:declearn.server.network:INFO: New connection from ('127.0.0.1', 60808)
+2026-04-30 21:24:00,131:declearn.server.messages_handler:INFO: Registering client 'client_1' for training.
+2026-04-30 21:24:00,131:declearn.server.messages_handler:INFO: Registering client 'client_0' for training.
+2026-04-30 21:24:04,130:declearn.server:INFO: Clients' registration is now complete.
+2026-04-30 21:24:04,131:declearn.server:INFO: Sending initialization requests to clients.
+/home/fslimani/declearn-bench/declearn/declearn/utils/_serialize.py:125: UserWarning: PyTorch JSON serialization relies on pickle, which may be unsafe.
+  config = obj.get_config()
+2026-04-30 21:24:05,147:declearn.server:INFO: Waiting for clients' responses.
+2026-04-30 21:24:05,147:declearn.server:INFO: Initialization was successful.
+2026-04-30 21:24:05,156:declearn.server:INFO: Initiating training round 1
+2026-04-30 21:24:13,040:declearn.server:INFO: Awaiting clients' training results.
+2026-04-30 21:24:14,048:declearn.server:INFO: Conducting server-side optimization.
+2026-04-30 21:24:14,049:declearn.server:INFO: Initiating evaluation round 1
+2026-04-30 21:24:14,433:declearn.client-client_0.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.8767', 'loss': '1.6060'}
+2026-04-30 21:24:14,700:declearn.client-client_1.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.8733', 'loss': '1.6072'}
+2026-04-30 21:24:15,061:declearn.server:INFO: Awaiting clients' evaluation results.
+2026-04-30 21:24:15,061:declearn.server:INFO: Aggregating evaluation results.
+2026-04-30 21:24:15,062:declearn.server:INFO: Averaged loss is: 1.6066256764729818
+2026-04-30 21:24:15,062:declearn.server:INFO: Other averaged scalar metrics are: {'accuracy': '0.8750', 'loss': '1.6066'}
+2026-04-30 21:24:15,071:declearn.server:INFO: Initiating training round 2
+2026-04-30 21:24:23,513:declearn.server:INFO: Awaiting clients' training results.
+2026-04-30 21:24:24,530:declearn.server:INFO: Conducting server-side optimization.
+2026-04-30 21:24:24,531:declearn.server:INFO: Initiating evaluation round 2
+2026-04-30 21:24:24,862:declearn.client-client_0.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.9112', 'loss': '1.5547'}
+2026-04-30 21:24:25,090:declearn.client-client_1.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.9108', 'loss': '1.5564'}
+2026-04-30 21:24:25,542:declearn.server:INFO: Awaiting clients' evaluation results.
+2026-04-30 21:24:25,542:declearn.server:INFO: Aggregating evaluation results.
+2026-04-30 21:24:25,543:declearn.server:INFO: Averaged loss is: 1.555578416188558
+2026-04-30 21:24:25,543:declearn.server:INFO: Other averaged scalar metrics are: {'accuracy': '0.9110', 'loss': '1.5556'}
+2026-04-30 21:24:25,551:declearn.server:INFO: Maximum number of training rounds reached.
+2026-04-30 21:24:25,551:declearn.server:INFO: Stopping training.
+2026-04-30 21:24:25,551:declearn.server:INFO: Recovering weights that yielded the lowest loss.
+2026-04-30 21:24:25,551:declearn.server:INFO: Notifying clients that training is over.
+/home/fslimani/declearn-bench/declearn/declearn/utils/_serialize.py:125: UserWarning: PyTorch JSON serialization relies on pickle, which may be unsafe.
+  config = obj.get_config()
+2026-04-30 21:24:26,263:declearn.server.network:INFO: connection closed
+2026-04-30 21:24:26,263:declearn.server.network:INFO: connection closed
+2026-04-30 21:24:26,559:declearn.server:INFO: Checkpointing final weights under /home/fslimani/declearn-bench/declearn-experiments/_setup/result_26-04-30_21-23/server/model_state_best.json.
+2026-04-30 21:24:26,577:declearn.server.network:INFO: server closing
+2026-04-30 21:24:26,577:declearn.server.network:INFO: server closed
+
+py-spy> Stopped sampling because process exited
+py-spy> Wrote speedscope file to 'declearn-experiments/_setup/baselines/baseline_vanilla_2r/2026-04-30_21-23-55/pyspy_speedscope.json'. Samples: 2095 Errors: 0
+py-spy> Visit https://www.speedscope.app/ to view

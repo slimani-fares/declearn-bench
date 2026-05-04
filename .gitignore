@@ -33,6 +33,13 @@ profiling/results/
 profiling/secagg/results/
 profiling/secagg/results-batched/
 
+# ============================================================
+# Per-experiment declearn forks (created on-demand by the autonomous loop;
+# reproducible from canonical declearn + the .diff files saved under
+# declearn-experiments/exp_NN_*/patches/).
+# ============================================================
+declearn-for-exp_*/
+
 # memray profiling outputs (.bin, .html, .txt, metadata).
 profiling/secagg/results-memray/
 profiling/secagg/results-memray-batched/

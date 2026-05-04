@@ -1,0 +1,85 @@
+2026-04-30 21:38:29,104:declearn.server:INFO: Default client sampler selected, all clients will be involved in each round
+2026-04-30 21:38:29,105:declearn.server.network:INFO: Server is now starting...
+2026-04-30 21:38:29,197:declearn.server.network:INFO: server listening on 127.0.0.1:8765
+2026-04-30 21:38:29,198:declearn.server:INFO: Starting clients registration process.
+2026-04-30 21:38:30,201:declearn.server.network:INFO: connection open
+2026-04-30 21:38:30,201:declearn.server.network:INFO: New connection from ('127.0.0.1', 52386)
+2026-04-30 21:38:30,202:declearn.server.network:INFO: connection open
+2026-04-30 21:38:30,202:declearn.server.network:INFO: New connection from ('127.0.0.1', 52402)
+2026-04-30 21:38:30,203:declearn.server.messages_handler:INFO: Registering client 'client_1' for training.
+2026-04-30 21:38:30,203:declearn.server.messages_handler:INFO: Registering client 'client_0' for training.
+2026-04-30 21:38:34,205:declearn.server:INFO: Clients' registration is now complete.
+2026-04-30 21:38:34,205:declearn.server:INFO: Sending initialization requests to clients.
+/home/fslimani/declearn-bench/declearn-for-exp_04_dp/declearn/utils/_serialize.py:125: UserWarning: PyTorch JSON serialization relies on pickle, which may be unsafe.
+  config = obj.get_config()
+2026-04-30 21:38:35,283:declearn.server:INFO: Waiting for clients' responses.
+2026-04-30 21:38:36,285:declearn.server:INFO: Sending privacy requests to all clients.
+/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/opacus/accountants/analysis/rdp.py:332: UserWarning: Optimal order is the largest alpha. Please consider expanding the range of alphas to get a tighter privacy bound.
+  warnings.warn(
+04/30/2026 21:38:37:INFO:Notifying the server that DP-SGD setup went fine.
+04/30/2026 21:38:37:INFO:Received DP-SGD setup instructions.
+04/30/2026 21:38:37:INFO:Notifying the server that DP-SGD setup went fine.
+2026-04-30 21:38:37,994:declearn.server:INFO: Waiting for clients' responses.
+04/30/2026 21:38:37:INFO:Waiting for clients' responses.
+2026-04-30 21:38:37,995:declearn.server:INFO: Privacy requests were processed by clients.
+04/30/2026 21:38:37:INFO:Privacy requests were processed by clients.
+2026-04-30 21:38:37,995:declearn.server:INFO: Initialization was successful.
+04/30/2026 21:38:37:INFO:Initialization was successful.
+2026-04-30 21:38:38,012:declearn.server:INFO: Initiating training round 1
+04/30/2026 21:38:38:INFO:Initiating training round 1
+04/30/2026 21:38:38:INFO:Participating in training round 1
+04/30/2026 21:38:38:INFO:Applying server updates to local objects.
+04/30/2026 21:38:38:INFO:Training local model for 1 epochs | None steps | None seconds.
+04/30/2026 21:38:46:INFO:Packing local updates to be sent to the server.
+04/30/2026 21:38:46:INFO:Local DP budget spent at the end of the round: (4.99640485109163, 1e-05)
+04/30/2026 21:38:46:INFO:Participating in training round 1
+04/30/2026 21:38:46:INFO:Applying server updates to local objects.
+04/30/2026 21:38:46:INFO:Training local model for 1 epochs | None steps | None seconds.
+04/30/2026 21:38:53:INFO:Packing local updates to be sent to the server.
+04/30/2026 21:38:53:INFO:Local DP budget spent at the end of the round: (4.99640485109163, 1e-05)
+2026-04-30 21:38:53,323:declearn.server:INFO: Awaiting clients' training results.
+04/30/2026 21:38:53:INFO:Awaiting clients' training results.
+2026-04-30 21:38:54,330:declearn.server:INFO: Conducting server-side optimization.
+04/30/2026 21:38:54:INFO:Conducting server-side optimization.
+2026-04-30 21:38:54,331:declearn.server:INFO: Initiating evaluation round 1
+04/30/2026 21:38:54:INFO:Initiating evaluation round 1
+04/30/2026 21:38:54:INFO:Participating in evaluation round 1
+2026-04-30 21:38:54,556:declearn.client-client_0.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.1250', 'loss': '2.3020'}
+04/30/2026 21:38:54:MAJOR:Local scalar evaluation metrics: {'accuracy': '0.1250', 'loss': '2.3020'}
+04/30/2026 21:38:54:INFO:Packing local results to be sent to the server.
+04/30/2026 21:38:54:INFO:Participating in evaluation round 1
+2026-04-30 21:38:54,703:declearn.client-client_1.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.1245', 'loss': '2.3021'}
+04/30/2026 21:38:54:MAJOR:Local scalar evaluation metrics: {'accuracy': '0.1245', 'loss': '2.3021'}
+04/30/2026 21:38:54:INFO:Packing local results to be sent to the server.
+2026-04-30 21:38:55,339:declearn.server:INFO: Awaiting clients' evaluation results.
+04/30/2026 21:38:55:INFO:Awaiting clients' evaluation results.
+2026-04-30 21:38:55,340:declearn.server:INFO: Aggregating evaluation results.
+04/30/2026 21:38:55:INFO:Aggregating evaluation results.
+2026-04-30 21:38:55,340:declearn.server:INFO: Averaged loss is: 2.3020867411295574
+04/30/2026 21:38:55:INFO:Averaged loss is: 2.3020867411295574
+2026-04-30 21:38:55,340:declearn.server:INFO: Other averaged scalar metrics are: {'accuracy': '0.1247', 'loss': '2.3021'}
+04/30/2026 21:38:55:INFO:Other averaged scalar metrics are: {'accuracy': '0.1247', 'loss': '2.3021'}
+2026-04-30 21:38:55,348:declearn.server:INFO: Maximum number of training rounds reached.
+04/30/2026 21:38:55:INFO:Maximum number of training rounds reached.
+2026-04-30 21:38:55,348:declearn.server:INFO: Stopping training.
+04/30/2026 21:38:55:INFO:Stopping training.
+2026-04-30 21:38:55,348:declearn.server:INFO: Recovering weights that yielded the lowest loss.
+04/30/2026 21:38:55:INFO:Recovering weights that yielded the lowest loss.
+2026-04-30 21:38:55,348:declearn.server:INFO: Notifying clients that training is over.
+04/30/2026 21:38:55:INFO:Notifying clients that training is over.
+04/30/2026 21:38:55:INFO:Training is now over, after 1 rounds. Global loss: 2.3020867411295574
+04/30/2026 21:38:55:INFO:Checkpointing final weights under /home/fslimani/declearn-bench/declearn-experiments/exp_04_dp/result_26-04-30_21-38/client_0/model_state_best.json.
+/home/fslimani/declearn-bench/declearn-for-exp_04_dp/declearn/utils/_serialize.py:125: UserWarning: PyTorch JSON serialization relies on pickle, which may be unsafe.
+  config = obj.get_config()
+04/30/2026 21:38:55:INFO:Training is now over, after 1 rounds. Global loss: 2.3020867411295574
+04/30/2026 21:38:55:INFO:Checkpointing final weights under /home/fslimani/declearn-bench/declearn-experiments/exp_04_dp/result_26-04-30_21-38/client_1/model_state_best.json.
+2026-04-30 21:38:55,835:declearn.server.network:INFO: connection closed
+04/30/2026 21:38:55:INFO:connection closed
+2026-04-30 21:38:55,835:declearn.server.network:INFO: connection closed
+04/30/2026 21:38:55:INFO:connection closed
+2026-04-30 21:38:56,356:declearn.server:INFO: Checkpointing final weights under /home/fslimani/declearn-bench/declearn-experiments/exp_04_dp/result_26-04-30_21-38/server/model_state_best.json.
+04/30/2026 21:38:56:INFO:Checkpointing final weights under /home/fslimani/declearn-bench/declearn-experiments/exp_04_dp/result_26-04-30_21-38/server/model_state_best.json.
+2026-04-30 21:38:56,366:declearn.server.network:INFO: server closing
+04/30/2026 21:38:56:INFO:server closing
+2026-04-30 21:38:56,366:declearn.server.network:INFO: server closed
+04/30/2026 21:38:56:INFO:server closed

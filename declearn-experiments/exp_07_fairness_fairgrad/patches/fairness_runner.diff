@@ -1,0 +1,73 @@
+diff --git a/declearn/quickrun/_parser.py b/declearn/quickrun/_parser.py
+index 1e9f233..671397f 100644
+--- a/declearn/quickrun/_parser.py
++++ b/declearn/quickrun/_parser.py
+@@ -97,6 +97,13 @@ def parse_data_folder(
+                     f"Found multiple '{val}.*' files for client '{client}'."
+                 )
+             paths[key] = files[0].as_posix()
++        # exp_07-09 patch: optional sensitive-attribute files for fairness.
++        # Their absence is non-fatal; if present, run_client uses
++        # FairnessInMemoryDataset instead of InMemoryDataset.
++        for opt_key in ("train_s_attr", "valid_s_attr"):
++            files = [p for p in client_dir.glob(f"{opt_key}*") if p.is_file()]
++            if len(files) == 1:
++                paths[opt_key] = files[0].as_posix()
+     # Return the nested directory of parsed file paths.
+     return clients
+ 
+diff --git a/declearn/quickrun/_run.py b/declearn/quickrun/_run.py
+index 7b625d9..8bd2b24 100644
+--- a/declearn/quickrun/_run.py
++++ b/declearn/quickrun/_run.py
+@@ -41,6 +41,8 @@ import fire  # type: ignore
+ 
+ from declearn.communication import NetworkClientConfig, NetworkServerConfig
+ from declearn.dataset import InMemoryDataset
++# exp_07-09 patch: lazy import of FairnessInMemoryDataset to avoid the
++# fairness module being a hard dependency of plain quickruns.
+ from declearn.main import FederatedClient, FederatedServer
+ from declearn.main.config import FLOptimConfig, FLRunConfig
+ from declearn.model.api import Model
+@@ -149,15 +151,32 @@ async def run_client(
+             handler.setLevel(LOGGING_LEVEL_MAJOR)
+ 
+     # Wrap train and validation data as Dataset objects.
+-    train = InMemoryDataset(
+-        paths.get("train_data"),  # type: ignore
+-        target=paths.get("train_target"),
+-        expose_classes=True,
+-    )
+-    valid = InMemoryDataset(
+-        paths.get("valid_data"),  # type: ignore
+-        target=paths.get("valid_target"),
+-    )
++    # exp_07-09 patch: when sensitive-attribute files were detected by the
++    # parser, build FairnessInMemoryDataset; the fairness controller
++    # registered server-side will then accept the client.
++    if "train_s_attr" in paths and "valid_s_attr" in paths:
++        from declearn.fairness.core import FairnessInMemoryDataset
++        train = FairnessInMemoryDataset(
++            paths.get("train_data"),  # type: ignore
++            target=paths.get("train_target"),
++            s_attr=paths.get("train_s_attr"),
++            expose_classes=True,
++        )
++        valid = FairnessInMemoryDataset(
++            paths.get("valid_data"),  # type: ignore
++            target=paths.get("valid_target"),
++            s_attr=paths.get("valid_s_attr"),
++        )
++    else:
++        train = InMemoryDataset(
++            paths.get("train_data"),  # type: ignore
++            target=paths.get("train_target"),
++            expose_classes=True,
++        )
++        valid = InMemoryDataset(
++            paths.get("valid_data"),  # type: ignore
++            target=paths.get("valid_target"),
++        )
+     client = FederatedClient(
+         netwk=network,
+         train_data=train,

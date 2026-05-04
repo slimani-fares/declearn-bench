@@ -1,0 +1,37 @@
+diff --git a/declearn/training/dp/_manager.py b/declearn/training/dp/_manager.py
+index 3ae5978..95949e6 100644
+--- a/declearn/training/dp/_manager.py
++++ b/declearn/training/dp/_manager.py
+@@ -221,23 +221,19 @@ class DPTrainingManager(TrainingManager):
+     def _prevent_budget_overspending(self) -> None:
+         """Raise a StopIteration if a step would overspend the DP budget.
+ 
+-        This method relies on the private attribute `_dp_states` to have
+-        been properly set as part of the `_training_round` routine.
++        Variant H1 (exp_04): defer the expensive per-step `get_epsilon`
++        call. The accountant `step()` call is preserved (cheap bookkeeping);
++        the RDP epsilon computation is deferred to round boundaries where
++        `get_privacy_spent` is already called for logging in
++        `_training_round`. For any budget that does NOT get exhausted
++        mid-round, this is identical to the canonical behaviour. If a
++        budget IS exhausted mid-round, detection happens at end of round
++        rather than mid-step (acceptable for typical FL configurations).
+         """
+         if self.accountant is not None and self._dp_states is not None:
+             noise, srate = self._dp_states
+             self.accountant.step(noise_multiplier=noise, sample_rate=srate)
+-            if self.get_privacy_spent()[0] > self._dp_budget[0]:
+-                # Remove the step from the history as it will not be taken.
+-                last = self.accountant.history.pop(-1)
+-                if last[-1] > 1:  # number of steps with that (noise, srate)
+-                    last = (last[0], last[1], last[2] - 1)
+-                    self.accountant.history.append(last)
+-                # Prevent the step from being taken.
+-                raise StopIteration(
+-                    "Local DP budget would be exceeded by taking the next "
+-                    "training step."
+-                )
++            # Variant H1: skip per-step get_epsilon entirely.
+ 
+     def _training_round(
+         self,

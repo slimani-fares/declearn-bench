@@ -1,0 +1,22 @@
+{
+  "baseline": {
+    "label": "baseline",
+    "branch": "baseline",
+    "wall_clock": 92.49,
+    "return_code": 0,
+    "final_epsilon": 4.99640485109163,
+    "final_delta": 1e-05,
+    "final_accuracy_one_client": 0.104,
+    "log": "/home/fslimani/declearn-bench/declearn-experiments/exp_04_dp/runs/smoke_baseline.log"
+  },
+  "variant": {
+    "label": "variant",
+    "branch": "variant",
+    "wall_clock": 31.43,
+    "return_code": 0,
+    "final_epsilon": 4.99640485109163,
+    "final_delta": 1e-05,
+    "final_accuracy_one_client": 0.1245,
+    "log": "/home/fslimani/declearn-bench/declearn-experiments/exp_04_dp/runs/smoke_variant.log"
+  }
+}

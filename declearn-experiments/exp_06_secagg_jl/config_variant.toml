@@ -1,0 +1,48 @@
+# FedAvg torch + SecAgg masking. Uses the patched quickrun in
+# ~/work/declearn-bench/declearn-for-secagg/.
+# min_clients is injected per-N by the profiling runner.
+
+[network]
+    protocol = "websockets"
+    host = "127.0.0.1"
+    port = 8765
+
+[data]
+    data_folder = "examples/mnist_quickrun/data_iid"
+
+[model]
+    model_file = "examples/mnist_quickrun/model_torch.py"
+
+[optim]
+    aggregator = "averaging"
+
+    [optim.client_opt]
+    lrate = 0.001
+    modules = ["adam"]
+
+    [optim.server_opt]
+    lrate = 1.0
+
+[run]
+    # 3 rounds is enough for profiling: round 1 is always anomalous (lazy imports,
+    # cohort mask derivation), rounds 2-3 give the steady-state sample we want.
+    rounds = 3
+
+    [run.register]
+    timeout = 60
+
+    [run.training]
+    batch_size = 48
+    # Cap SGD steps per round so training time doesn't dominate SecAgg time.
+    # The full epoch (~125 batches at N=10) is unnecessary for profiling.
+    n_steps = 10
+
+    [run.evaluate]
+    batch_size = 128
+    # Skip mid-run eval (frequency=999 > rounds means eval only at the end).
+    frequency = 999
+
+[experiment]
+    metrics = [
+        ["multi-classif", {labels = [0,1,2,3,4,5,6,7,8,9]}]
+    ]

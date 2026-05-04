@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-04-30_21-23-55",
+  "config": "/home/fslimani/declearn-bench/declearn-experiments/_setup/config_vanilla_2r.toml",
+  "tag": "baseline_vanilla_2r",
+  "sampling_rate_hz": 100,
+  "wall_clock_seconds": 31.87,
+  "return_code": 0,
+  "status": "success",
+  "python": "/home/fslimani/.venvs/declearn313/bin/python",
+  "python_version": "Python 3.13.13",
+  "declearn_version": "2.8.0",
+  "py_spy_version": "py-spy 0.4.2",
+  "speedscope_path": "declearn-experiments/_setup/baselines/baseline_vanilla_2r/2026-04-30_21-23-55/pyspy_speedscope.json",
+  "log_path": "declearn-experiments/_setup/baselines/baseline_vanilla_2r/2026-04-30_21-23-55/run.log"
+}

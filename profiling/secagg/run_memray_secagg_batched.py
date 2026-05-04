@@ -49,11 +49,15 @@ def profile_one(n_clients: int, results_root: str, keep_bin: bool, variant: str)
     ensure_data(n_clients)
 
     print(f"\n=== Memray-profiling N={n_clients} ({variant}) ===")
+    # memray runs the script with the current Python interpreter itself.
+    # Unlike py-spy, the positional after options is the SCRIPT path, not
+    # `python script.py` — passing "python" makes memray try to read a file
+    # literally named 'python'.
     proc = subprocess.run([
         "memray", "run",
         "--output", bin_path,
         "--follow-fork",
-        "python", RUNNER,
+        RUNNER,
         "--config", CONFIG,
         "--n_clients", str(n_clients),
     ])

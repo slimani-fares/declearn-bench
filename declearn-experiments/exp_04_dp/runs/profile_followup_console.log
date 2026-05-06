@@ -1,0 +1,40 @@
+=== exp_04 follow-up: py-spy instrumentation of all 5 arms ===
+
+(NB: py-spy adds ~5-10% sampling overhead; wall-clock here is
+ inflated vs ab_followup_results.json. Use these JSONs for
+ hot-spot inspection, not for the speedup ranking.)
+
+--- canonical (branch master) ---
+  Duration: 190.66s
+  Status:   success
+  Output:   /home/fslimani/declearn-bench/declearn-experiments/exp_04_dp/runs/profiles_followup/canonical/2026-05-04_17-59-58
+  pyspy-instrumented wall: 190.79s
+--- h1_deferred (branch exp_04_dp_variant_h1) ---
+  Duration: 53.25s
+  Status:   success
+  Output:   /home/fslimani/declearn-bench/declearn-experiments/exp_04_dp/runs/profiles_followup/h1_deferred/2026-05-04_18-03-14
+  pyspy-instrumented wall: 53.37s
+--- h2_periodic (branch exp_04_dp_variant_h2_periodic) ---
+  Duration: 66.68s
+  Status:   success
+  Output:   /home/fslimani/declearn-bench/declearn-experiments/exp_04_dp/runs/profiles_followup/h2_periodic/2026-05-04_18-04-11
+  pyspy-instrumented wall: 66.8s
+--- h3_precompute (branch exp_04_dp_variant_h3_precompute) ---
+  Duration: 59.65s
+  Status:   success
+  Output:   /home/fslimani/declearn-bench/declearn-experiments/exp_04_dp/runs/profiles_followup/h3_precompute/2026-05-04_18-05-23
+  pyspy-instrumented wall: 59.78s
+--- h4_adaptive (branch exp_04_dp_variant_h4_adaptive) ---
+  Duration: 122.71s
+  Status:   success
+  Output:   /home/fslimani/declearn-bench/declearn-experiments/exp_04_dp/runs/profiles_followup/h4_adaptive/2026-05-04_18-06-27
+  pyspy-instrumented wall: 122.83s
+
+summary -> /home/fslimani/declearn-bench/declearn-experiments/exp_04_dp/runs/profiles_followup_summary.json
+
+speedscope JSONs (drop into https://www.speedscope.app to view):
+  canonical: /home/fslimani/declearn-bench/declearn-experiments/exp_04_dp/runs/profiles_followup/canonical/2026-05-04_17-59-58/pyspy_speedscope.json
+  h1_deferred: /home/fslimani/declearn-bench/declearn-experiments/exp_04_dp/runs/profiles_followup/h1_deferred/2026-05-04_18-03-14/pyspy_speedscope.json
+  h2_periodic: /home/fslimani/declearn-bench/declearn-experiments/exp_04_dp/runs/profiles_followup/h2_periodic/2026-05-04_18-04-11/pyspy_speedscope.json
+  h3_precompute: /home/fslimani/declearn-bench/declearn-experiments/exp_04_dp/runs/profiles_followup/h3_precompute/2026-05-04_18-05-23/pyspy_speedscope.json
+  h4_adaptive: /home/fslimani/declearn-bench/declearn-experiments/exp_04_dp/runs/profiles_followup/h4_adaptive/2026-05-04_18-06-27/pyspy_speedscope.json

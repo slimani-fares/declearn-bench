@@ -1,0 +1,72 @@
+[
+  {
+    "label": "canonical",
+    "wall_clock": 90.81,
+    "return_code": 0,
+    "final_epsilon": 4.99640485109163,
+    "final_delta": 1e-05,
+    "client_accuracies": [
+      0.1397,
+      0.1397,
+      0.1438,
+      0.1438
+    ],
+    "mean_accuracy": 0.14175
+  },
+  {
+    "label": "h1",
+    "wall_clock": 31.45,
+    "return_code": 0,
+    "final_epsilon": 4.99640485109163,
+    "final_delta": 1e-05,
+    "client_accuracies": [
+      0.113,
+      0.113,
+      0.1032,
+      0.1032
+    ],
+    "mean_accuracy": 0.1081
+  },
+  {
+    "label": "h2_periodic",
+    "wall_clock": 37.46,
+    "return_code": 0,
+    "final_epsilon": 4.99640485109163,
+    "final_delta": 1e-05,
+    "client_accuracies": [
+      0.1442,
+      0.1442,
+      0.1478,
+      0.1478
+    ],
+    "mean_accuracy": 0.146
+  },
+  {
+    "label": "h3_precompute",
+    "wall_clock": 32.97,
+    "return_code": 0,
+    "final_epsilon": 4.99640485109163,
+    "final_delta": 1e-05,
+    "client_accuracies": [
+      0.2063,
+      0.2063,
+      0.2113,
+      0.2113
+    ],
+    "mean_accuracy": 0.20879999999999999
+  },
+  {
+    "label": "h4_adaptive",
+    "wall_clock": 31.02,
+    "return_code": 0,
+    "final_epsilon": 4.99640485109163,
+    "final_delta": 1e-05,
+    "client_accuracies": [
+      0.1047,
+      0.1047,
+      0.1168,
+      0.1168
+    ],
+    "mean_accuracy": 0.11075
+  }
+]

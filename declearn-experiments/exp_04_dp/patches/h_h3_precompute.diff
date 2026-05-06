@@ -1,0 +1,104 @@
+diff --git a/declearn/training/dp/_manager.py b/declearn/training/dp/_manager.py
+index 3ae5978..7fdeae5 100644
+--- a/declearn/training/dp/_manager.py
++++ b/declearn/training/dp/_manager.py
+@@ -92,6 +92,12 @@ class DPTrainingManager(TrainingManager):
+         self.sclip_norm: Optional[float] = None
+         self._dp_budget = (0.0, 0.0)
+         self._dp_states: Optional[Tuple[float, float]] = None
++        # Variant H3 (exp_04 follow-up): precompute max-allowed steps once
++        # per round via binary search over the RDP accountant. Per-step cost
++        # collapses to a single integer compare. Mid-round detection is
++        # preserved exactly (unlike H1).
++        self._max_steps_this_round: Optional[int] = None
++        self._step_counter_this_round: int = 0
+ 
+     def make_private(
+         self,
+@@ -221,24 +227,62 @@ class DPTrainingManager(TrainingManager):
+     def _prevent_budget_overspending(self) -> None:
+         """Raise a StopIteration if a step would overspend the DP budget.
+ 
+-        This method relies on the private attribute `_dp_states` to have
+-        been properly set as part of the `_training_round` routine.
++        Variant H3 (exp_04 follow-up): the maximum number of steps allowed
++        in this round was precomputed once at round start via binary
++        search over the RDP accountant (see `_compute_max_steps_for_round`).
++        Per-step cost is now a single accountant.step() (cheap) plus an
++        integer compare. Mid-round detection is preserved EXACTLY.
+         """
+         if self.accountant is not None and self._dp_states is not None:
+             noise, srate = self._dp_states
+             self.accountant.step(noise_multiplier=noise, sample_rate=srate)
+-            if self.get_privacy_spent()[0] > self._dp_budget[0]:
+-                # Remove the step from the history as it will not be taken.
++            self._step_counter_this_round += 1
++            if (self._max_steps_this_round is not None
++                    and self._step_counter_this_round > self._max_steps_this_round):
++                # Mirror canonical rollback: remove the just-added step from
++                # history, then raise to interrupt training.
+                 last = self.accountant.history.pop(-1)
+                 if last[-1] > 1:  # number of steps with that (noise, srate)
+                     last = (last[0], last[1], last[2] - 1)
+                     self.accountant.history.append(last)
+-                # Prevent the step from being taken.
+                 raise StopIteration(
+                     "Local DP budget would be exceeded by taking the next "
+                     "training step."
+                 )
+ 
++    def _compute_max_steps_for_round(
++        self, noise: float, srate: float, max_probe: int = 100_000
++    ) -> int:
++        """Binary search for the largest k such that adding k steps with
++        these (noise, srate) keeps total epsilon at-or-below budget.
++
++        Implementation note: opacus's RDPAccountant stores history as
++        (noise, srate, count) tuples; appending one tuple with count=k is
++        equivalent to calling step() k times. Each binary-search probe is
++        therefore one get_epsilon call on a history of size O(rounds), not
++        O(steps). With ~17 probes (log2(100k)) per round, total per-round
++        precompute cost is ~17 cheap epsilon evaluations regardless of the
++        per-round step count.
++        """
++        budget_eps = self._dp_budget[0]
++        budget_delta = self._dp_budget[1]
++        # Snapshot the real history; restore at the end so the accountant
++        # reflects only steps that ACTUALLY occurred.
++        history_snapshot = list(self.accountant.history)
++        try:
++            lo, hi = 0, max_probe
++            while lo < hi:
++                mid = (lo + hi + 1) // 2
++                self.accountant.history = history_snapshot + [(noise, srate, mid)]
++                eps = self.accountant.get_epsilon(delta=budget_delta)
++                if eps <= budget_eps:
++                    lo = mid
++                else:
++                    hi = mid - 1
++            return lo
++        finally:
++            self.accountant.history = history_snapshot
++
+     def _training_round(
+         self,
+         message: messaging.TrainRequest,
+@@ -254,12 +298,18 @@ class DPTrainingManager(TrainingManager):
+                     "the local DP setup."
+                 )
+             self._dp_states = (noise, srate)
++            # Variant H3: precompute max-allowed steps once per round.
++            self._max_steps_this_round = self._compute_max_steps_for_round(
++                noise, srate
++            )
++            self._step_counter_this_round = 0
+         # Delegate all of the actual training routine to the parent class.
+         # DP budget saturation will cause training to be interrupted.
+         reply = super()._training_round(message)
+         # When using DP, clean up things and log about the spent budget.
+         if self.accountant is not None:
+             self._dp_states = None  # remove now out-of-scope state values
++            self._max_steps_this_round = None
+             self.logger.info(
+                 "Local DP budget spent at the end of the round: %s",
+                 self.get_privacy_spent(),

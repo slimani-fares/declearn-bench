@@ -1,0 +1,89 @@
+diff --git a/declearn/training/dp/_manager.py b/declearn/training/dp/_manager.py
+index 3ae5978..ed8b318 100644
+--- a/declearn/training/dp/_manager.py
++++ b/declearn/training/dp/_manager.py
+@@ -92,6 +92,15 @@ class DPTrainingManager(TrainingManager):
+         self.sclip_norm: Optional[float] = None
+         self._dp_budget = (0.0, 0.0)
+         self._dp_states: Optional[Tuple[float, float]] = None
++        # Variant H4 (exp_04 follow-up): adaptive-frequency budget check.
++        # Cache the most recently observed epsilon and pick the per-step
++        # check frequency from cached_eps / budget:
++        #   > 0.9 * budget -> every step
++        #   > 0.5 * budget -> every 10 steps
++        #   else           -> never (round-end log refreshes cached_eps)
++        # Cached_eps is refreshed (a) at round start, (b) on every check.
++        self._cached_epsilon: float = 0.0
++        self._step_counter: int = 0
+ 
+     def make_private(
+         self,
+@@ -221,23 +230,41 @@ class DPTrainingManager(TrainingManager):
+     def _prevent_budget_overspending(self) -> None:
+         """Raise a StopIteration if a step would overspend the DP budget.
+ 
+-        This method relies on the private attribute `_dp_states` to have
+-        been properly set as part of the `_training_round` routine.
++        Variant H4 (exp_04 follow-up): adaptive frequency. Per-step cost
++        is one accountant.step() (cheap) plus an integer compare to decide
++        whether to skip the expensive get_epsilon() call. When the cached
++        epsilon is far from the budget, get_epsilon is never called.
++        Trade-off: between checks, accountant.step() can move the
++        true epsilon past the budget; the next check (or the round-end
++        log) catches it. Detection latency is bounded by the chosen
++        check_period at the relevant cached_eps tier.
+         """
+-        if self.accountant is not None and self._dp_states is not None:
+-            noise, srate = self._dp_states
+-            self.accountant.step(noise_multiplier=noise, sample_rate=srate)
+-            if self.get_privacy_spent()[0] > self._dp_budget[0]:
+-                # Remove the step from the history as it will not be taken.
+-                last = self.accountant.history.pop(-1)
+-                if last[-1] > 1:  # number of steps with that (noise, srate)
+-                    last = (last[0], last[1], last[2] - 1)
+-                    self.accountant.history.append(last)
+-                # Prevent the step from being taken.
+-                raise StopIteration(
+-                    "Local DP budget would be exceeded by taking the next "
+-                    "training step."
+-                )
++        if self.accountant is None or self._dp_states is None:
++            return
++        noise, srate = self._dp_states
++        self.accountant.step(noise_multiplier=noise, sample_rate=srate)
++        self._step_counter += 1
++        # Pick the check period from cached epsilon (no get_epsilon call).
++        budget = self._dp_budget[0]
++        if self._cached_epsilon > 0.9 * budget:
++            check_period = 1
++        elif self._cached_epsilon > 0.5 * budget:
++            check_period = 10
++        else:
++            return  # cached_eps far from budget; skip per-step check entirely
++        if self._step_counter % check_period != 0:
++            return
++        # Refresh cached epsilon and act on it.
++        self._cached_epsilon = self.get_privacy_spent()[0]
++        if self._cached_epsilon > budget:
++            last = self.accountant.history.pop(-1)
++            if last[-1] > 1:
++                last = (last[0], last[1], last[2] - 1)
++                self.accountant.history.append(last)
++            raise StopIteration(
++                "Local DP budget would be exceeded by taking the next "
++                "training step."
++            )
+ 
+     def _training_round(
+         self,
+@@ -254,6 +281,10 @@ class DPTrainingManager(TrainingManager):
+                     "the local DP setup."
+                 )
+             self._dp_states = (noise, srate)
++            # Variant H4: refresh cached epsilon at round start so the
++            # frequency tier reflects the actual state, not a stale value.
++            self._cached_epsilon = self.get_privacy_spent()[0]
++            self._step_counter = 0
+         # Delegate all of the actual training routine to the parent class.
+         # DP budget saturation will cause training to be interrupted.
+         reply = super()._training_round(message)

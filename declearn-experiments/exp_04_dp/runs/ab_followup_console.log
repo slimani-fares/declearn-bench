@@ -1,0 +1,54 @@
+=== exp_04 follow-up A/B: 5 arms × 3 seeds × 2 rounds ===
+
+
+=== seed 42: regenerating data split ===
+--- seed 42 | canonical (branch master) ---
+  wall=159.2s rc=0 eps_per_round=[4.518721769152027, 4.518721769152027, 4.992799714321105, 4.992799714321105] acc=0.1862
+--- seed 42 | h1_deferred (branch exp_04_dp_variant_h1) ---
+  wall=47.688s rc=0 eps_per_round=[4.518721769152027, 4.518721769152027, 4.992799714321105, 4.992799714321105] acc=0.12392500000000001
+--- seed 42 | h2_periodic (branch exp_04_dp_variant_h2_periodic) ---
+  wall=59.014s rc=0 eps_per_round=[4.518721769152027, 4.518721769152027, 4.992799714321105, 4.992799714321105] acc=0.1305
+--- seed 42 | h3_precompute (branch exp_04_dp_variant_h3_precompute) ---
+  wall=54.052s rc=0 eps_per_round=[4.518721769152027, 4.518721769152027, 4.992799714321105, 4.992799714321105] acc=0.120725
+--- seed 42 | h4_adaptive (branch exp_04_dp_variant_h4_adaptive) ---
+  wall=107.128s rc=0 eps_per_round=[4.518721769152027, 4.518721769152027, 4.992799714321105, 4.992799714321105] acc=0.0895
+
+=== seed 43: regenerating data split ===
+--- seed 43 | canonical (branch master) ---
+  wall=161.764s rc=0 eps_per_round=[4.518721769152027, 4.518721769152027, 4.992799714321105, 4.992799714321105] acc=0.097075
+--- seed 43 | h1_deferred (branch exp_04_dp_variant_h1) ---
+  wall=46.962s rc=0 eps_per_round=[4.518721769152027, 4.518721769152027, 4.992799714321105, 4.992799714321105] acc=0.127425
+--- seed 43 | h2_periodic (branch exp_04_dp_variant_h2_periodic) ---
+  wall=58.076s rc=0 eps_per_round=[4.518721769152027, 4.518721769152027, 4.992799714321105, 4.992799714321105] acc=0.11510000000000001
+--- seed 43 | h3_precompute (branch exp_04_dp_variant_h3_precompute) ---
+  wall=51.842s rc=0 eps_per_round=[4.518721769152027, 4.518721769152027, 4.992799714321105, 4.992799714321105] acc=0.101825
+--- seed 43 | h4_adaptive (branch exp_04_dp_variant_h4_adaptive) ---
+  wall=99.998s rc=0 eps_per_round=[4.518721769152027, 4.518721769152027, 4.992799714321105, 4.992799714321105] acc=0.13225
+
+=== seed 44: regenerating data split ===
+--- seed 44 | canonical (branch master) ---
+  wall=148.594s rc=0 eps_per_round=[4.518721769152027, 4.518721769152027, 4.992799714321105, 4.992799714321105] acc=0.1195
+--- seed 44 | h1_deferred (branch exp_04_dp_variant_h1) ---
+  wall=47.481s rc=0 eps_per_round=[4.518721769152027, 4.518721769152027, 4.992799714321105, 4.992799714321105] acc=0.09875
+--- seed 44 | h2_periodic (branch exp_04_dp_variant_h2_periodic) ---
+  wall=58.621s rc=0 eps_per_round=[4.518721769152027, 4.518721769152027, 4.992799714321105, 4.992799714321105] acc=0.1094
+--- seed 44 | h3_precompute (branch exp_04_dp_variant_h3_precompute) ---
+  wall=52.158s rc=0 eps_per_round=[4.518721769152027, 4.518721769152027, 4.992799714321105, 4.992799714321105] acc=0.109925
+--- seed 44 | h4_adaptive (branch exp_04_dp_variant_h4_adaptive) ---
+  wall=101.168s rc=0 eps_per_round=[4.518721769152027, 4.518721769152027, 4.992799714321105, 4.992799714321105] acc=0.13319999999999999
+
+results -> /home/fslimani/declearn-bench/declearn-experiments/exp_04_dp/runs/ab_followup_results.json
+
+=== A/B summary (n_seeds=3, rounds=2, n_clients=2) ===
+
+arm              wall_mean   wall_std    speedup            final_eps   acc_mean
+canonical           156.52       6.98       1.00x             4.992800     0.1343
+h1_deferred          47.38       0.37       3.30x             4.992800     0.1167
+h2_periodic          58.57       0.47       2.67x             4.992800     0.1183
+h3_precompute        52.68       1.20       2.97x             4.992800     0.1108
+h4_adaptive         102.76       3.82       1.52x             4.992800     0.1183
+
+=== cross-arm epsilon equivalence (per seed) ===
+  seed 42: all arms match canonical [4.518721769152027, 4.518721769152027, 4.992799714321105, 4.992799714321105]
+  seed 43: all arms match canonical [4.518721769152027, 4.518721769152027, 4.992799714321105, 4.992799714321105]
+  seed 44: all arms match canonical [4.518721769152027, 4.518721769152027, 4.992799714321105, 4.992799714321105]

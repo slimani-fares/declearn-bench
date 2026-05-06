@@ -1,0 +1,40 @@
+diff --git a/declearn/training/dp/_manager.py b/declearn/training/dp/_manager.py
+index 3ae5978..d5ef372 100644
+--- a/declearn/training/dp/_manager.py
++++ b/declearn/training/dp/_manager.py
+@@ -92,6 +92,11 @@ class DPTrainingManager(TrainingManager):
+         self.sclip_norm: Optional[float] = None
+         self._dp_budget = (0.0, 0.0)
+         self._dp_states: Optional[Tuple[float, float]] = None
++        # Variant H2 (exp_04 follow-up): periodic budget check.
++        # Run the expensive get_epsilon every K steps instead of every step.
++        # K=1 reproduces canonical behaviour; K=infinity reproduces H1.
++        self._budget_check_period = 10
++        self._step_counter = 0
+ 
+     def make_private(
+         self,
+@@ -221,12 +226,21 @@ class DPTrainingManager(TrainingManager):
+     def _prevent_budget_overspending(self) -> None:
+         """Raise a StopIteration if a step would overspend the DP budget.
+ 
+-        This method relies on the private attribute `_dp_states` to have
+-        been properly set as part of the `_training_round` routine.
++        Variant H2 (exp_04 follow-up): periodic budget check.
++        accountant.step() is still called per training step (cheap
++        bookkeeping; preserves accountant history identical to canonical).
++        The expensive get_epsilon() check is run only every K steps.
++        Trade-off: budget overspend is detected within K steps of the
++        actual exhaustion (vs immediately in canonical). For typical
++        FL configurations where σ is calibrated to hit the budget at
++        end-of-training, this never matters.
+         """
+         if self.accountant is not None and self._dp_states is not None:
+             noise, srate = self._dp_states
+             self.accountant.step(noise_multiplier=noise, sample_rate=srate)
++            self._step_counter += 1
++            if self._step_counter % self._budget_check_period != 0:
++                return
+             if self.get_privacy_spent()[0] > self._dp_budget[0]:
+                 # Remove the step from the history as it will not be taken.
+                 last = self.accountant.history.pop(-1)

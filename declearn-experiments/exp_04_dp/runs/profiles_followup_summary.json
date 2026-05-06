@@ -1,0 +1,52 @@
+[
+  {
+    "arm": "canonical",
+    "wall_clock_pyspy": 190.79,
+    "return_code": 0,
+    "stdout_tail": [
+      "Duration: 190.66s",
+      "Status:   success",
+      "Output:   /home/fslimani/declearn-bench/declearn-experiments/exp_04_dp/runs/profiles_followup/canonical/2026-05-04_17-59-58"
+    ]
+  },
+  {
+    "arm": "h1_deferred",
+    "wall_clock_pyspy": 53.37,
+    "return_code": 0,
+    "stdout_tail": [
+      "Duration: 53.25s",
+      "Status:   success",
+      "Output:   /home/fslimani/declearn-bench/declearn-experiments/exp_04_dp/runs/profiles_followup/h1_deferred/2026-05-04_18-03-14"
+    ]
+  },
+  {
+    "arm": "h2_periodic",
+    "wall_clock_pyspy": 66.8,
+    "return_code": 0,
+    "stdout_tail": [
+      "Duration: 66.68s",
+      "Status:   success",
+      "Output:   /home/fslimani/declearn-bench/declearn-experiments/exp_04_dp/runs/profiles_followup/h2_periodic/2026-05-04_18-04-11"
+    ]
+  },
+  {
+    "arm": "h3_precompute",
+    "wall_clock_pyspy": 59.78,
+    "return_code": 0,
+    "stdout_tail": [
+      "Duration: 59.65s",
+      "Status:   success",
+      "Output:   /home/fslimani/declearn-bench/declearn-experiments/exp_04_dp/runs/profiles_followup/h3_precompute/2026-05-04_18-05-23"
+    ]
+  },
+  {
+    "arm": "h4_adaptive",
+    "wall_clock_pyspy": 122.83,
+    "return_code": 0,
+    "stdout_tail": [
+      "Duration: 122.71s",
+      "Status:   success",
+      "Output:   /home/fslimani/declearn-bench/declearn-experiments/exp_04_dp/runs/profiles_followup/h4_adaptive/2026-05-04_18-06-27"
+    ]
+  }
+]

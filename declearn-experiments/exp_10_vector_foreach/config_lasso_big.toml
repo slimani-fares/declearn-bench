@@ -1,0 +1,38 @@
+[network]
+    protocol = "websockets"
+    host = "127.0.0.1"
+    port = 8765
+
+[data]
+    data_folder = "examples/mnist_quickrun/data_iid"
+
+[model]
+    model_file = "examples/mnist_quickrun/model_torch_big.py"
+
+[optim]
+    aggregator = "averaging"
+
+    [optim.client_opt]
+    lrate = 0.001
+    modules = ["adam"]
+    regularizers = [["lasso", {alpha = 0.01}]]
+
+    [optim.server_opt]
+    lrate = 1.0
+
+[run]
+    rounds = 2
+
+    [run.register]
+    timeout = 5
+
+    [run.training]
+    batch_size = 48
+
+    [run.evaluate]
+    batch_size = 128
+
+[experiment]
+    metrics = [
+        ["multi-classif", {labels = [0,1,2,3,4,5,6,7,8,9]}]
+    ]

@@ -1,0 +1,10 @@
+=== exp_10 py-spy: lasso on master + variant ===
+
+--- master (branch master) ---
+[master] wall=32.99s rc=0
+  speedscope: /home/fslimani/declearn-bench/declearn-experiments/exp_10_vector_foreach/runs/profiles/master/2026-05-06_11-18-58/pyspy_speedscope.json
+--- variant (branch exp_10_vector_foreach_variant) ---
+[variant] wall=32.24s rc=0
+  speedscope: /home/fslimani/declearn-bench/declearn-experiments/exp_10_vector_foreach/runs/profiles/variant/2026-05-06_11-19-35/pyspy_speedscope.json
+
+=== resetting venv to canonical declearn ===

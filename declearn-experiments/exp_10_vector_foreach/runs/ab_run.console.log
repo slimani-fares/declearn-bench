@@ -1,0 +1,40 @@
+=== exp_10 A/B: 3 algos × 2 arms × 3 seeds × 2 rounds ===
+
+
+--- seed 42: regenerating split ---
+  vanilla    master   (branch master) wall= 29.90s rc=0 acc=0.888875
+  vanilla    variant  (branch exp_10_vector_foreach_variant) wall= 27.58s rc=0 acc=0.88565
+  lasso      master   (branch master) wall= 29.66s rc=0 acc=0.106375
+  lasso      variant  (branch exp_10_vector_foreach_variant) wall= 29.33s rc=0 acc=0.098625
+  scaffold   master   (branch master) wall= 29.35s rc=0 acc=0.9081
+  scaffold   variant  (branch exp_10_vector_foreach_variant) wall= 28.20s rc=0 acc=0.921
+
+--- seed 43: regenerating split ---
+  vanilla    master   (branch master) wall= 27.81s rc=0 acc=0.893725
+  vanilla    variant  (branch exp_10_vector_foreach_variant) wall= 28.89s rc=0 acc=0.896
+  lasso      master   (branch master) wall= 29.17s rc=0 acc=0.1056
+  lasso      variant  (branch exp_10_vector_foreach_variant) wall= 29.37s rc=0 acc=0.092025
+  scaffold   master   (branch master) wall= 28.57s rc=0 acc=0.9032
+  scaffold   variant  (branch exp_10_vector_foreach_variant) wall= 28.23s rc=0 acc=0.915075
+
+--- seed 44: regenerating split ---
+  vanilla    master   (branch master) wall= 29.33s rc=0 acc=0.8928499999999999
+  vanilla    variant  (branch exp_10_vector_foreach_variant) wall= 27.62s rc=0 acc=0.905425
+  lasso      master   (branch master) wall= 29.65s rc=0 acc=0.0996
+  lasso      variant  (branch exp_10_vector_foreach_variant) wall= 30.48s rc=0 acc=0.0999
+  scaffold   master   (branch master) wall= 28.42s rc=0 acc=0.904875
+  scaffold   variant  (branch exp_10_vector_foreach_variant) wall= 27.77s rc=0 acc=0.856975
+
+results -> /home/fslimani/declearn-bench/declearn-experiments/exp_10_vector_foreach/runs/ab_results.json
+
+=== summary (n_seeds=3, rounds=2) ===
+
+algo       arm       wall_mean   wall_std    speedup_vs_master   acc_mean
+vanilla    master        29.01       1.08                1.00x     0.8918
+vanilla    variant       28.03       0.75                1.03x     0.8957
+lasso      master        29.49       0.28                1.00x     0.1039
+lasso      variant       29.72       0.65                0.99x     0.0969
+scaffold   master        28.78       0.50                1.00x     0.9054
+scaffold   variant       28.06       0.26                1.03x     0.8977
+
+=== resetting venv to canonical declearn ===

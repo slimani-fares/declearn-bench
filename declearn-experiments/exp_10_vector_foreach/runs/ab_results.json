@@ -1,0 +1,254 @@
+[
+  {
+    "algo": "vanilla",
+    "arm": "master",
+    "seed": 42,
+    "wall_clock": 29.896,
+    "return_code": 0,
+    "accuracies": [
+      0.865,
+      0.8605,
+      0.9162,
+      0.9138
+    ],
+    "mean_accuracy": 0.888875
+  },
+  {
+    "algo": "vanilla",
+    "arm": "variant",
+    "seed": 42,
+    "wall_clock": 27.578,
+    "return_code": 0,
+    "accuracies": [
+      0.8727,
+      0.8668,
+      0.9008,
+      0.9023
+    ],
+    "mean_accuracy": 0.88565
+  },
+  {
+    "algo": "lasso",
+    "arm": "master",
+    "seed": 42,
+    "wall_clock": 29.658,
+    "return_code": 0,
+    "accuracies": [
+      0.1,
+      0.1003,
+      0.1145,
+      0.1107
+    ],
+    "mean_accuracy": 0.106375
+  },
+  {
+    "algo": "lasso",
+    "arm": "variant",
+    "seed": 42,
+    "wall_clock": 29.328,
+    "return_code": 0,
+    "accuracies": [
+      0.1012,
+      0.093,
+      0.1,
+      0.1003
+    ],
+    "mean_accuracy": 0.098625
+  },
+  {
+    "algo": "scaffold",
+    "arm": "master",
+    "seed": 42,
+    "wall_clock": 29.354,
+    "return_code": 0,
+    "accuracies": [
+      0.8973,
+      0.8983,
+      0.9173,
+      0.9195
+    ],
+    "mean_accuracy": 0.9081
+  },
+  {
+    "algo": "scaffold",
+    "arm": "variant",
+    "seed": 42,
+    "wall_clock": 28.195,
+    "return_code": 0,
+    "accuracies": [
+      0.9022,
+      0.9057,
+      0.9363,
+      0.9398
+    ],
+    "mean_accuracy": 0.921
+  },
+  {
+    "algo": "vanilla",
+    "arm": "master",
+    "seed": 43,
+    "wall_clock": 27.812,
+    "return_code": 0,
+    "accuracies": [
+      0.8807,
+      0.8682,
+      0.9178,
+      0.9082
+    ],
+    "mean_accuracy": 0.893725
+  },
+  {
+    "algo": "vanilla",
+    "arm": "variant",
+    "seed": 43,
+    "wall_clock": 28.895,
+    "return_code": 0,
+    "accuracies": [
+      0.8935,
+      0.8693,
+      0.916,
+      0.9052
+    ],
+    "mean_accuracy": 0.896
+  },
+  {
+    "algo": "lasso",
+    "arm": "master",
+    "seed": 43,
+    "wall_clock": 29.173,
+    "return_code": 0,
+    "accuracies": [
+      0.0962,
+      0.1072,
+      0.1083,
+      0.1107
+    ],
+    "mean_accuracy": 0.1056
+  },
+  {
+    "algo": "lasso",
+    "arm": "variant",
+    "seed": 43,
+    "wall_clock": 29.367,
+    "return_code": 0,
+    "accuracies": [
+      0.0843,
+      0.0893,
+      0.1002,
+      0.0943
+    ],
+    "mean_accuracy": 0.092025
+  },
+  {
+    "algo": "scaffold",
+    "arm": "master",
+    "seed": 43,
+    "wall_clock": 28.573,
+    "return_code": 0,
+    "accuracies": [
+      0.887,
+      0.9,
+      0.9063,
+      0.9195
+    ],
+    "mean_accuracy": 0.9032
+  },
+  {
+    "algo": "scaffold",
+    "arm": "variant",
+    "seed": 43,
+    "wall_clock": 28.228,
+    "return_code": 0,
+    "accuracies": [
+      0.8958,
+      0.9097,
+      0.9243,
+      0.9305
+    ],
+    "mean_accuracy": 0.915075
+  },
+  {
+    "algo": "vanilla",
+    "arm": "master",
+    "seed": 44,
+    "wall_clock": 29.328,
+    "return_code": 0,
+    "accuracies": [
+      0.8763,
+      0.8755,
+      0.9083,
+      0.9113
+    ],
+    "mean_accuracy": 0.8928499999999999
+  },
+  {
+    "algo": "vanilla",
+    "arm": "variant",
+    "seed": 44,
+    "wall_clock": 27.623,
+    "return_code": 0,
+    "accuracies": [
+      0.8982,
+      0.8907,
+      0.9185,
+      0.9143
+    ],
+    "mean_accuracy": 0.905425
+  },
+  {
+    "algo": "lasso",
+    "arm": "master",
+    "seed": 44,
+    "wall_clock": 29.651,
+    "return_code": 0,
+    "accuracies": [
+      0.0995,
+      0.102,
+      0.1027,
+      0.0942
+    ],
+    "mean_accuracy": 0.0996
+  },
+  {
+    "algo": "lasso",
+    "arm": "variant",
+    "seed": 44,
+    "wall_clock": 30.478,
+    "return_code": 0,
+    "accuracies": [
+      0.095,
+      0.101,
+      0.1048,
+      0.0988
+    ],
+    "mean_accuracy": 0.0999
+  },
+  {
+    "algo": "scaffold",
+    "arm": "master",
+    "seed": 44,
+    "wall_clock": 28.421,
+    "return_code": 0,
+    "accuracies": [
+      0.8895,
+      0.8943,
+      0.9155,
+      0.9202
+    ],
+    "mean_accuracy": 0.904875
+  },
+  {
+    "algo": "scaffold",
+    "arm": "variant",
+    "seed": 44,
+    "wall_clock": 27.765,
+    "return_code": 0,
+    "accuracies": [
+      0.811,
+      0.8065,
+      0.9027,
+      0.9077
+    ],
+    "mean_accuracy": 0.856975
+  }
+]

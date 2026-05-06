@@ -1,0 +1,73 @@
+diff --git a/declearn/model/torch/_vector.py b/declearn/model/torch/_vector.py
+index 8a6afab..bb4af75 100644
+--- a/declearn/model/torch/_vector.py
++++ b/declearn/model/torch/_vector.py
+@@ -95,6 +95,26 @@ class TorchVector(Vector):  # noqa : PLW1641
+     def __init__(self, coefs: Dict[str, torch.Tensor]) -> None:
+         super().__init__(coefs)
+ 
++    # exp_10 follow-up: map from the per-tensor torch op (used by the parent
++    # Vector dispatch) to its `_foreach_*` batched counterpart. Looked up by
++    # function identity, so non-matching funcs fall through to the canonical
++    # per-key python loop in `super()._apply_operation`.
++    _FOREACH_BINARY = {
++        torch.add: torch._foreach_add,
++        torch.sub: torch._foreach_sub,
++        torch.mul: torch._foreach_mul,
++        torch.div: torch._foreach_div,
++        torch.pow: torch._foreach_pow,
++        torch.minimum: torch._foreach_minimum,
++        torch.maximum: torch._foreach_maximum,
++    }
++    _FOREACH_UNARY = {
++        torch.sign: torch._foreach_sign,
++        torch.abs: torch._foreach_abs,
++        torch.neg: torch._foreach_neg,
++        torch.reciprocal: torch._foreach_reciprocal,
++    }
++
+     def _apply_operation(
+         self,
+         other: Any,
+@@ -113,8 +133,41 @@ class TorchVector(Vector):  # noqa : PLW1641
+                 for key, val in other.coefs.items()
+             }
+             other = TorchVector(coefs)
++        # Fast path: batched op for the framework's known binary ops.
++        foreach_op = self._FOREACH_BINARY.get(func)
++        if foreach_op is not None:
++            keys = list(self.coefs.keys())
++            self_tensors = [self.coefs[k] for k in keys]
++            if isinstance(other, TorchVector):
++                if self.coefs.keys() != other.coefs.keys():
++                    raise KeyError(
++                        f"Cannot {func.__name__} Vectors "
++                        "with distinct coefficient names."
++                    )
++                other_arg = [other.coefs[k] for k in keys]
++                result = foreach_op(self_tensors, other_arg)
++                return type(self)(dict(zip(keys, result, strict=True)))
++            if isinstance(other, (int, float)):
++                result = foreach_op(self_tensors, other)
++                return type(self)(dict(zip(keys, result, strict=True)))
+         return super()._apply_operation(other, func)
+ 
++    def apply_func(
++        self,
++        func: Callable[..., Any],
++        *args: Any,
++        **kwargs: Any,
++    ) -> Self:
++        # Fast path: batched op for stateless unary torch funcs (e.g. sign).
++        if not args and not kwargs:
++            foreach_op = self._FOREACH_UNARY.get(func)
++            if foreach_op is not None:
++                keys = list(self.coefs.keys())
++                tensors = [self.coefs[k] for k in keys]
++                result = foreach_op(tensors)
++                return type(self)(dict(zip(keys, result, strict=True)))
++        return super().apply_func(func, *args, **kwargs)
++
+     def dtypes(
+         self,
+     ) -> Dict[str, str]:

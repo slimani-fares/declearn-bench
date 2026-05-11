@@ -1,0 +1,109 @@
+=== memray summary (n5_rep1 @ 2026-05-11_11-24-30) ===
+
+--- memray stats ---
+
+📏 Total allocations:
+	1467603
+
+📦 Total memory allocated:
+	4.533GB
+
+📈 Peak memory usage:
+	417.146MB
+
+📊 Histogram of allocation size:
+	min: 1.000B
+	---------------------------------------------
+	< 5.000B   :  50212 ▇▇▇
+	< 32.000B  : 565723 ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+	< 181.000B : 386693 ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+	< 1.024kB  : 214062 ▇▇▇▇▇▇▇▇▇▇
+	< 5.792kB  : 229057 ▇▇▇▇▇▇▇▇▇▇▇
+	< 32.767kB :  13012 ▇
+	< 185.363kB:   2178 ▇
+	< 1.049MB  :   6183 ▇
+	< 5.932MB  :    472 ▇
+	<=33.554MB :     11 ▇
+	---------------------------------------------
+	max: 33.554MB
+
+📂 Allocator type distribution:
+	 MALLOC: 1323135
+	 POSIX_MEMALIGN: 87563
+	 REALLOC: 33637
+	 CALLOC: 23142
+	 MMAP: 126
+
+🥇 Top 5 largest allocating locations (by size):
+	- _conv_forward:/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/modules/conv.py:548 -> 804.474MB
+	- _apply_operation:/home/fslimani/declearn-bench/_scratch/declearn_upstream/declearn/model/api/_vector.py:393 -> 501.176MB
+	- _engine_run_backward:/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/autograd/graph.py:869 -> 419.090MB
+	- relu:/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/functional.py:1723 -> 394.380MB
+	- _max_pool2d:/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/functional.py:835 -> 292.331MB
+
+🥇 Top 5 largest allocating locations (by number of allocations):
+	- dedent:/home/fslimani/miniconda3/lib/python3.13/textwrap.py:436 -> 113712
+	- _conv_forward:/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/modules/conv.py:548 -> 108031
+	- _engine_run_backward:/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/autograd/graph.py:869 -> 104660
+	- _call_with_frames_removed:<frozen importlib._bootstrap>:488 -> 92601
+	- _apply_operation:/home/fslimani/declearn-bench/_scratch/declearn_upstream/declearn/model/api/_vector.py:393 -> 89937
+
+
+--- memray summary (top-25 by own memory at peak) ---
+
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓
+┃                                     ┃        ┃ Total ┃       ┃   Own ┃       ┃
+┃                                     ┃ <Total ┃ Memo… ┃   Own ┃ Memo… ┃ Allo… ┃
+┃ Location                            ┃ Memor… ┃     % ┃ Memo… ┃     % ┃ Count ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━━┩
+│ _run_tracker at                     │ 392.2… │ 94.0… │ 8.22… │ 0.00% │ 1557… │
+│ /home/fslimani/.venvs/declearn313/… │        │       │       │       │       │
+│ <module> at <string>                │ 392.2… │ 94.0… │ 0.00… │ 0.00% │ 1557… │
+│ run at                              │ 275.5… │ 66.0… │ 0.00… │ 0.00% │ 1225… │
+│ /home/fslimani/miniconda3/lib/pyth… │        │       │       │       │       │
+│ _run_once at                        │ 275.5… │ 66.0… │ 528.… │ 0.00% │ 1225… │
+│ /home/fslimani/miniconda3/lib/pyth… │        │       │       │       │       │
+│ run_forever at                      │ 275.5… │ 66.0… │ 0.00… │ 0.00% │ 1225… │
+│ /home/fslimani/miniconda3/lib/pyth… │        │       │       │       │       │
+│ run_until_complete at               │ 275.5… │ 66.0… │ 0.00… │ 0.00% │ 1225… │
+│ /home/fslimani/miniconda3/lib/pyth… │        │       │       │       │       │
+│ _run at                             │ 275.5… │ 66.0… │ 0.00… │ 0.00% │ 1225… │
+│ /home/fslimani/miniconda3/lib/pyth… │        │       │       │       │       │
+│ run_client at                       │ 209.1… │ 50.1… │ 0.00… │ 0.00% │  3882 │
+│ /home/fslimani/declearn-bench/_scr… │        │       │       │       │       │
+│ __init__ at                         │ 188.2… │ 45.1… │ 753.… │ 0.00% │    92 │
+│ /home/fslimani/declearn-bench/_scr… │        │       │       │       │       │
+│ read_array at                       │ 188.2… │ 45.1… │ 188.… │ 45.1… │    34 │
+│ /home/fslimani/.venvs/declearn313/… │        │       │       │       │       │
+│ load at                             │ 188.2… │ 45.1… │ 0.00… │ 0.00% │    34 │
+│ /home/fslimani/.venvs/declearn313/… │        │       │       │       │       │
+│ load_data_array at                  │ 188.2… │ 45.1… │ 0.00… │ 0.00% │    34 │
+│ /home/fslimani/declearn-bench/_scr… │        │       │       │       │       │
+│ _parse_data_argument at             │ 188.1… │ 45.1… │ 0.00… │ 0.00% │    21 │
+│ /home/fslimani/declearn-bench/_scr… │        │       │       │       │       │
+│ _find_and_load_unlocked at <frozen  │ 175.2… │ 42.0… │ 52.8… │ 0.01% │ 1516… │
+│ importlib._bootstrap>               │        │       │       │       │       │
+│ _find_and_load at <frozen           │ 175.2… │ 42.0… │ 0.00… │ 0.00% │ 1516… │
+│ importlib._bootstrap>               │        │       │       │       │       │
+│ _call_with_frames_removed at        │ 175.2… │ 42.0… │ 10.5… │ 2.54% │ 1516… │
+│ <frozen importlib._bootstrap>       │        │       │       │       │       │
+│ exec_module at <frozen              │ 175.2… │ 42.0… │ 0.00… │ 0.00% │ 1516… │
+│ importlib._bootstrap_external>      │        │       │       │       │       │
+│ _load_unlocked at <frozen           │ 175.2… │ 42.0… │ 103.… │ 0.02% │ 1516… │
+│ importlib._bootstrap>               │        │       │       │       │       │
+│ <module> at                         │ 116.6… │ 27.9… │ 0.00… │ 0.00% │ 33155 │
+│ /home/fslimani/declearn-bench/_scr… │        │       │       │       │       │
+│ <module> at                         │ 97.70… │ 23.4… │ 4.01… │ 0.00% │ 25638 │
+│ /home/fslimani/declearn-bench/_scr… │        │       │       │       │       │
+│ <module> at                         │ 97.69… │ 23.4… │ 0.00… │ 0.00% │ 25632 │
+│ /home/fslimani/declearn-bench/_scr… │        │       │       │       │       │
+│ _handle_fromlist at <frozen         │ 96.54… │ 23.1… │ 0.00… │ 0.00% │ 1128… │
+│ importlib._bootstrap>               │        │       │       │       │       │
+│ _gcd_import at <frozen              │ 62.54… │ 14.9… │ 0.00… │ 0.00% │ 1198… │
+│ importlib._bootstrap>               │        │       │       │       │       │
+│ import_module at                    │ 62.54… │ 14.9… │ 0.00… │ 0.00% │ 1198… │
+│ /home/fslimani/miniconda3/lib/pyth… │        │       │       │       │       │
+│ <module> at                         │ 59.03… │ 14.1… │ 768.… │ 0.00% │ 23898 │
+│ /home/fslimani/declearn-bench/_scr… │        │       │       │       │       │
+└─────────────────────────────────────┴────────┴───────┴───────┴───────┴───────┘

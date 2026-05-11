@@ -1,0 +1,9 @@
+{
+  "tag": "n10_rep1",
+  "timestamp": "2026-05-11_11-25-52",
+  "wall_clock_s": 35.848,
+  "bin_size_mb": 9.16,
+  "target": "import asyncio; from declearn.quickrun._run import quickrun; asyncio.run(quickrun('/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M06_msgpack_vanilla/config_n10.toml'))",
+  "cwd": "/home/fslimani/declearn-bench",
+  "memray_version": "1.19.3"
+}

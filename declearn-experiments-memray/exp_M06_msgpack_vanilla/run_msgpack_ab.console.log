@@ -1,0 +1,54 @@
+=== M06 msgpack A/B: 2 cells x 3 N x 2 repeats ===
+
+--- installing baseline @ 9668576 ---
+[start] cell=baseline N=2 rep=1 commit=9668576
+[done ] cell=baseline N=2 rep=1 dur=41.8s rc=0
+  peak=408.1MB total=3284MB iterencode=0.0MB raw_decode=0.0MB
+[start] cell=baseline N=2 rep=2 commit=9668576
+[done ] cell=baseline N=2 rep=2 dur=41.7s rc=0
+  peak=407.9MB total=3270MB iterencode=0.0MB raw_decode=0.0MB
+[start] cell=baseline N=5 rep=1 commit=9668576
+[done ] cell=baseline N=5 rep=1 dur=43.2s rc=0
+  peak=428.3MB total=5140MB iterencode=295.8MB raw_decode=0.0MB
+[start] cell=baseline N=5 rep=2 commit=9668576
+[done ] cell=baseline N=5 rep=2 dur=43.3s rc=0
+  peak=429.5MB total=5137MB iterencode=295.7MB raw_decode=0.0MB
+[start] cell=baseline N=10 rep=1 commit=9668576
+[done ] cell=baseline N=10 rep=1 dur=45.1s rc=0
+  peak=461.0MB total=8217MB iterencode=591.5MB raw_decode=0.0MB
+[start] cell=baseline N=10 rep=2 commit=9668576
+[done ] cell=baseline N=10 rep=2 dur=47.8s rc=0
+  peak=458.9MB total=8237MB iterencode=591.5MB raw_decode=0.0MB
+
+--- installing msgpack @ d402885b ---
+[start] cell=msgpack N=2 rep=1 commit=d402885b
+[done ] cell=msgpack N=2 rep=1 dur=41.5s rc=0
+  peak=405.9MB total=3077MB iterencode=0.0MB raw_decode=0.0MB
+[start] cell=msgpack N=2 rep=2 commit=d402885b
+[done ] cell=msgpack N=2 rep=2 dur=41.9s rc=0
+  peak=406.6MB total=3035MB iterencode=0.0MB raw_decode=0.0MB
+[start] cell=msgpack N=5 rep=1 commit=d402885b
+[done ] cell=msgpack N=5 rep=1 dur=40.5s rc=0
+  peak=417.1MB total=4533MB iterencode=0.0MB raw_decode=0.0MB
+[start] cell=msgpack N=5 rep=2 commit=d402885b
+[done ] cell=msgpack N=5 rep=2 dur=42.4s rc=0
+  peak=417.3MB total=4545MB iterencode=0.0MB raw_decode=0.0MB
+[start] cell=msgpack N=10 rep=1 commit=d402885b
+[done ] cell=msgpack N=10 rep=1 dur=45.2s rc=0
+  peak=440.6MB total=7038MB iterencode=0.0MB raw_decode=0.0MB
+[start] cell=msgpack N=10 rep=2 commit=d402885b
+[done ] cell=msgpack N=10 rep=2 dur=45.3s rc=0
+  peak=439.4MB total=7058MB iterencode=0.0MB raw_decode=0.0MB
+
+=== resetting venv to canonical declearn ===
+
+results json: /home/fslimani/declearn-bench/declearn-experiments-memray/exp_M06_msgpack_vanilla/ab_results.json
+
+=== summary (mean of 2 repeats) ===
+cell         N    peak_MB   total_MB   iter_MB  rawdec_MB   wall_s
+baseline     2      408.0       3277       0.0        0.0     41.8
+baseline     5      428.9       5138     295.7        0.0     43.3
+baseline    10      459.9       8227     591.5        0.0     46.4
+msgpack      2      406.3       3056       0.0        0.0     41.7
+msgpack      5      417.2       4539       0.0        0.0     41.4
+msgpack     10      440.0       7048       0.0        0.0     45.2

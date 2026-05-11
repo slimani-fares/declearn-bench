@@ -1,0 +1,138 @@
+{
+  "baseline": {
+    "20": [
+      {
+        "wall_s": 68.27,
+        "summary": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M06_msgpack_vanilla/runs/baseline/n20_rep1/2026-05-11_13-43-21/summary.txt",
+        "flame": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M06_msgpack_vanilla/runs/baseline/n20_rep1/2026-05-11_13-43-21/flamegraph.html",
+        "n_allocs": 2482772,
+        "total_mb": 14472.0,
+        "peak_mb": 530.721,
+        "iterencode_mb": 1183.0,
+        "raw_decode_mb": 0.0
+      },
+      {
+        "wall_s": 72.21,
+        "summary": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M06_msgpack_vanilla/runs/baseline/n20_rep2/2026-05-11_13-44-29/summary.txt",
+        "flame": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M06_msgpack_vanilla/runs/baseline/n20_rep2/2026-05-11_13-44-29/flamegraph.html",
+        "n_allocs": 2467722,
+        "total_mb": 14515.0,
+        "peak_mb": 524.275,
+        "iterencode_mb": 1183.0,
+        "raw_decode_mb": 0.0
+      }
+    ],
+    "50": [
+      {
+        "wall_s": 130.34,
+        "summary": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M06_msgpack_vanilla/runs/baseline/n50_rep1/2026-05-11_13-45-41/summary.txt",
+        "flame": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M06_msgpack_vanilla/runs/baseline/n50_rep1/2026-05-11_13-45-41/flamegraph.html",
+        "n_allocs": 4458425,
+        "total_mb": 33276.0,
+        "peak_mb": 720.015,
+        "iterencode_mb": 2957.0,
+        "raw_decode_mb": 0.0
+      },
+      {
+        "wall_s": 130.08,
+        "summary": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M06_msgpack_vanilla/runs/baseline/n50_rep2/2026-05-11_13-47-52/summary.txt",
+        "flame": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M06_msgpack_vanilla/runs/baseline/n50_rep2/2026-05-11_13-47-52/flamegraph.html",
+        "n_allocs": 4458504,
+        "total_mb": 33202.0,
+        "peak_mb": 721.166,
+        "iterencode_mb": 2957.0,
+        "raw_decode_mb": 0.0
+      }
+    ],
+    "100": [
+      {
+        "wall_s": 237.16,
+        "summary": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M06_msgpack_vanilla/runs/baseline/n100_rep1/2026-05-11_13-50-02/summary.txt",
+        "flame": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M06_msgpack_vanilla/runs/baseline/n100_rep1/2026-05-11_13-50-02/flamegraph.html",
+        "n_allocs": 7780454,
+        "total_mb": 64995.99999999999,
+        "peak_mb": 1048.0,
+        "iterencode_mb": 5915.0,
+        "raw_decode_mb": 2952.0
+      },
+      {
+        "wall_s": 240.06,
+        "summary": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M06_msgpack_vanilla/runs/baseline/n100_rep2/2026-05-11_13-53-59/summary.txt",
+        "flame": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M06_msgpack_vanilla/runs/baseline/n100_rep2/2026-05-11_13-53-59/flamegraph.html",
+        "n_allocs": 7780114,
+        "total_mb": 65223.0,
+        "peak_mb": 1047.0,
+        "iterencode_mb": 5915.0,
+        "raw_decode_mb": 2952.0
+      }
+    ]
+  },
+  "msgpack": {
+    "20": [
+      {
+        "wall_s": 63.58,
+        "summary": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M06_msgpack_vanilla/runs/msgpack/n20_rep1/2026-05-11_13-58-05/summary.txt",
+        "flame": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M06_msgpack_vanilla/runs/msgpack/n20_rep1/2026-05-11_13-58-05/flamegraph.html",
+        "n_allocs": 2472411,
+        "total_mb": 12126.0,
+        "peak_mb": 484.567,
+        "iterencode_mb": 0.0,
+        "raw_decode_mb": 0.0
+      },
+      {
+        "wall_s": 67.3,
+        "summary": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M06_msgpack_vanilla/runs/msgpack/n20_rep2/2026-05-11_13-59-08/summary.txt",
+        "flame": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M06_msgpack_vanilla/runs/msgpack/n20_rep2/2026-05-11_13-59-08/flamegraph.html",
+        "n_allocs": 2457333,
+        "total_mb": 12141.0,
+        "peak_mb": 482.831,
+        "iterencode_mb": 0.0,
+        "raw_decode_mb": 0.0
+      }
+    ],
+    "50": [
+      {
+        "wall_s": 117.14,
+        "summary": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M06_msgpack_vanilla/runs/msgpack/n50_rep1/2026-05-11_14-00-16/summary.txt",
+        "flame": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M06_msgpack_vanilla/runs/msgpack/n50_rep1/2026-05-11_14-00-16/flamegraph.html",
+        "n_allocs": 4431310,
+        "total_mb": 27256.0,
+        "peak_mb": 615.493,
+        "iterencode_mb": 0.0,
+        "raw_decode_mb": 0.0
+      },
+      {
+        "wall_s": 118.41,
+        "summary": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M06_msgpack_vanilla/runs/msgpack/n50_rep2/2026-05-11_14-02-13/summary.txt",
+        "flame": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M06_msgpack_vanilla/runs/msgpack/n50_rep2/2026-05-11_14-02-13/flamegraph.html",
+        "n_allocs": 4431932,
+        "total_mb": 27413.0,
+        "peak_mb": 615.56,
+        "iterencode_mb": 0.0,
+        "raw_decode_mb": 0.0
+      }
+    ],
+    "100": [
+      {
+        "wall_s": 208.74,
+        "summary": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M06_msgpack_vanilla/runs/msgpack/n100_rep1/2026-05-11_14-04-11/summary.txt",
+        "flame": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M06_msgpack_vanilla/runs/msgpack/n100_rep1/2026-05-11_14-04-11/flamegraph.html",
+        "n_allocs": 7726364,
+        "total_mb": 52895.0,
+        "peak_mb": 835.875,
+        "iterencode_mb": 0.0,
+        "raw_decode_mb": 0.0
+      },
+      {
+        "wall_s": 210.84,
+        "summary": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M06_msgpack_vanilla/runs/msgpack/n100_rep2/2026-05-11_14-07-40/summary.txt",
+        "flame": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M06_msgpack_vanilla/runs/msgpack/n100_rep2/2026-05-11_14-07-40/flamegraph.html",
+        "n_allocs": 7727841,
+        "total_mb": 53012.0,
+        "peak_mb": 835.925,
+        "iterencode_mb": 0.0,
+        "raw_decode_mb": 0.0
+      }
+    ]
+  }
+}

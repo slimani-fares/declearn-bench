@@ -1,0 +1,54 @@
+=== M06 msgpack A/B bigN: 2 cells x 3 N x 2 repeats ===
+
+--- installing baseline @ 9668576 ---
+[start] cell=baseline N=20 rep=1 commit=9668576
+[done ] cell=baseline N=20 rep=1 dur=68.3s rc=0
+  peak=530.7MB total=14472MB iterencode=1183.0MB raw_decode=0.0MB
+[start] cell=baseline N=20 rep=2 commit=9668576
+[done ] cell=baseline N=20 rep=2 dur=72.2s rc=0
+  peak=524.3MB total=14515MB iterencode=1183.0MB raw_decode=0.0MB
+[start] cell=baseline N=50 rep=1 commit=9668576
+[done ] cell=baseline N=50 rep=1 dur=130.3s rc=0
+  peak=720.0MB total=33276MB iterencode=2957.0MB raw_decode=0.0MB
+[start] cell=baseline N=50 rep=2 commit=9668576
+[done ] cell=baseline N=50 rep=2 dur=130.1s rc=0
+  peak=721.2MB total=33202MB iterencode=2957.0MB raw_decode=0.0MB
+[start] cell=baseline N=100 rep=1 commit=9668576
+[done ] cell=baseline N=100 rep=1 dur=237.2s rc=0
+  peak=1048.0MB total=64996MB iterencode=5915.0MB raw_decode=2952.0MB
+[start] cell=baseline N=100 rep=2 commit=9668576
+[done ] cell=baseline N=100 rep=2 dur=240.1s rc=0
+  peak=1047.0MB total=65223MB iterencode=5915.0MB raw_decode=2952.0MB
+
+--- installing msgpack @ d402885b ---
+[start] cell=msgpack N=20 rep=1 commit=d402885b
+[done ] cell=msgpack N=20 rep=1 dur=63.6s rc=0
+  peak=484.6MB total=12126MB iterencode=0.0MB raw_decode=0.0MB
+[start] cell=msgpack N=20 rep=2 commit=d402885b
+[done ] cell=msgpack N=20 rep=2 dur=67.3s rc=0
+  peak=482.8MB total=12141MB iterencode=0.0MB raw_decode=0.0MB
+[start] cell=msgpack N=50 rep=1 commit=d402885b
+[done ] cell=msgpack N=50 rep=1 dur=117.1s rc=0
+  peak=615.5MB total=27256MB iterencode=0.0MB raw_decode=0.0MB
+[start] cell=msgpack N=50 rep=2 commit=d402885b
+[done ] cell=msgpack N=50 rep=2 dur=118.4s rc=0
+  peak=615.6MB total=27413MB iterencode=0.0MB raw_decode=0.0MB
+[start] cell=msgpack N=100 rep=1 commit=d402885b
+[done ] cell=msgpack N=100 rep=1 dur=208.7s rc=0
+  peak=835.9MB total=52895MB iterencode=0.0MB raw_decode=0.0MB
+[start] cell=msgpack N=100 rep=2 commit=d402885b
+[done ] cell=msgpack N=100 rep=2 dur=210.8s rc=0
+  peak=835.9MB total=53012MB iterencode=0.0MB raw_decode=0.0MB
+
+=== resetting venv to canonical declearn ===
+
+results json: /home/fslimani/declearn-bench/declearn-experiments-memray/exp_M06_msgpack_vanilla/ab_results_bigN.json
+
+=== summary bigN (mean of 2 repeats) ===
+cell         N    peak_MB   total_MB   iter_MB  rawdec_MB   wall_s
+baseline    20      527.5      14494    1183.0        0.0     70.2
+baseline    50      720.6      33239    2957.0        0.0    130.2
+baseline   100     1047.5      65110    5915.0     2952.0    238.6
+msgpack     20      483.7      12134       0.0        0.0     65.4
+msgpack     50      615.5      27334       0.0        0.0    117.8
+msgpack    100      835.9      52954       0.0        0.0    209.8

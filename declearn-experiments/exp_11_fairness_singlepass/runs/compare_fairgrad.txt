@@ -1,0 +1,102 @@
+
+=== pyspy_speedscope.json ===
+unit:         seconds
+total weight: 26 seconds = 26.12 s
+stacks:       2612
+unique frames in shared: 1515
+
+--- Top-25 by self-time ---
+ idx    self_s   self_%   total_s   total_%  frame
+   1     3.610   13.82%     3.610    13.82%  _engine_run_backward  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/autograd/graph.py)
+   2     3.200   12.25%     3.200    12.25%  _apply_operation  (/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/model/api/_vector.py)
+   3     2.620   10.03%     2.620    10.03%  dropout  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/functional.py)
+   4     1.730    6.62%     1.730     6.62%  _conv_forward  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/modules/conv.py)
+   5     1.680    6.43%     1.680     6.43%  _max_pool2d  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/functional.py)
+   6     0.970    3.71%     0.980     3.75%  forward  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/modules/linear.py)
+   7     0.920    3.52%     0.920     3.52%  encode  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/websockets/extensions/permessage_deflate.py)
+   8     0.880    3.37%     0.880     3.37%  relu  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/functional.py)
+   9     0.660    2.53%     3.950    15.12%  _call_with_frames_removed  (<frozen importlib._bootstrap>)
+  10     0.640    2.45%     0.640     2.45%  _apply_operation  (/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/model/api/_vector.py)
+  11     0.500    1.91%     8.750    33.50%  forward  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/modules/container.py)
+  12     0.330    1.26%     0.330     1.26%  _compile_bytecode  (<frozen importlib._bootstrap_external>)
+  13     0.330    1.26%     0.330     1.26%  _build_iterator  (/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/dataset/_inmemory.py)
+  14     0.330    1.26%     0.330     1.26%  apply_updates  (/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/model/torch/_model.py)
+  15     0.320    1.23%     0.320     1.23%  _compute_batch_gradients  (/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/model/torch/_model.py)
+  16     0.180    0.69%     0.180     0.69%  get_sensitive_group_subset  (/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/fairness/core/_inmemory.py)
+  17     0.150    0.57%     0.150     0.57%  add_fns_to_class  (/home/fslimani/miniconda3/lib/python3.13/dataclasses.py)
+  18     0.140    0.54%     0.140     0.54%  dedent  (/home/fslimani/miniconda3/lib/python3.13/textwrap.py)
+  19     0.140    0.54%     0.140     0.54%  realpath  (<frozen posixpath>)
+  20     0.130    0.50%     0.130     0.50%  iterencode  (/home/fslimani/miniconda3/lib/python3.13/json/encoder.py)
+  21     0.130    0.50%     0.130     0.50%  _apply_operation  (/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/model/torch/_vector.py)
+  22     0.130    0.50%     0.130     0.50%  _compute_loss  (/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/model/torch/_model.py)
+  23     0.120    0.46%     0.120     0.46%  decode  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/websockets/extensions/permessage_deflate.py)
+  24     0.110    0.42%     0.110     0.42%  get_data  (<frozen importlib._bootstrap_external>)
+  25     0.090    0.34%     0.090     0.34%  CRLNumber  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/cryptography/x509/extensions.py)
+
+--- Top-25 by total-time ---
+ idx   total_s   total_%  frame
+   1    25.520    97.70%  <module>  (<string>)
+   2    23.590    90.31%  run_forever  (/home/fslimani/miniconda3/lib/python3.13/asyncio/base_events.py)
+   3    23.590    90.31%  run_until_complete  (/home/fslimani/miniconda3/lib/python3.13/asyncio/base_events.py)
+   4    23.590    90.31%  run  (/home/fslimani/miniconda3/lib/python3.13/asyncio/runners.py)
+   5    23.590    90.31%  run  (/home/fslimani/miniconda3/lib/python3.13/asyncio/runners.py)
+   6    23.570    90.24%  _run  (/home/fslimani/miniconda3/lib/python3.13/asyncio/events.py)
+   7    23.570    90.24%  _run_once  (/home/fslimani/miniconda3/lib/python3.13/asyncio/base_events.py)
+   8    20.360    77.95%  run_client  (/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/quickrun/_run.py)
+   9    20.040    76.72%  async_run  (/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/main/_client.py)
+  10    15.100    57.81%  handle_message  (/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/main/_client.py)
+  11    14.840    56.81%  _training_round  (/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/training/_manager.py)
+  12    14.840    56.81%  training_round  (/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/training/_manager.py)
+  13    14.840    56.81%  training_round  (/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/main/_client.py)
+  14    14.680    56.20%  run_train_step  (/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/training/_manager.py)
+  15    14.680    56.20%  train_under_constraints  (/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/training/_manager.py)
+  16     9.720    37.21%  run_train_step  (/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/optimizer/_base.py)
+  17     9.560    36.60%  compute_batch_gradients  (/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/model/torch/_model.py)
+  18     8.930    34.19%  _wrapped_call_impl  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/modules/module.py)
+  19     8.900    34.07%  _call_impl  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/modules/module.py)
+  20     8.870    33.96%  forward  (/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/model/torch/utils/_gpu.py)
+  21     8.750    33.50%  forward  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/modules/container.py)
+  22     4.960    18.99%  run_train_step  (/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/optimizer/_base.py)
+  23     4.870    18.64%  _compute_batch_gradients  (/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/model/torch/_model.py)
+  24     4.290    16.42%  apply_gradients  (/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/optimizer/_base.py)
+  25     3.990    15.28%  compute_batch_predictions  (/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/model/torch/_model.py)
+
+--- Categorical aggregation (by self-time) ---
+category                     self_s   self_%
+compute_torch                15.390   58.92%
+declearn_internal             4.780   18.30%
+other                         2.310    8.84%
+imports_startup               1.590    6.09%
+compression                   1.050    4.02%
+serialization                 0.280    1.07%
+asyncio_eventloop             0.090    0.34%
+communication_websockets      0.040    0.15%
+
+=== A/B (B − A) by self-time, top 25 absolute deltas ===
+baseline total: 26.12s   variant total: 26.75s   delta: +0.63s
+baseline_s   variant_s     delta_s  frame
+     2.620       3.130      +0.510  dropout  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/functional.py)
+     0.330       0.830      +0.500  _build_iterator  (/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/dataset/_inmemory.py)
+     3.870       4.220      +0.350  _apply_operation  (/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/model/api/_vector.py)
+     0.000       0.210      +0.210  _compute_groupwise_metrics_single_pass  (/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/
+     0.880       0.680      -0.200  relu  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/functional.py)
+     0.970       0.790      -0.180  forward  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/modules/linear.py)
+     0.340       0.160      -0.180  apply_updates  (/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/model/torch/_model.py)
+     0.510       0.650      +0.140  forward  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/modules/container.py)
+     1.730       1.590      -0.140  _conv_forward  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/modules/conv.py)
+     0.660       0.560      -0.100  _call_with_frames_removed  (<frozen importlib._bootstrap>)
+     0.180       0.100      -0.080  get_sensitive_group_subset  (/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/fairness/cor
+     0.010       0.090      +0.080  _sum  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/numpy/_core/_methods.py)
+     0.100       0.020      -0.080  get_submodule  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/modules/module.py)
+     0.110       0.030      -0.080  _named_members  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/modules/module.py)
+     0.010       0.090      +0.080  map_array  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/pandas/core/algorithms.py)
+     0.020       0.100      +0.080  raw_decode  (/home/fslimani/miniconda3/lib/python3.13/json/decoder.py)
+     0.140       0.070      -0.070  iterencode  (/home/fslimani/miniconda3/lib/python3.13/json/encoder.py)
+     0.090       0.030      -0.060  CRLNumber  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/cryptography/x509/extensions.py)
+     0.090       0.030      -0.060  run  (/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/optimizer/modules/_momentum.py)
+     0.090       0.030      -0.060  __getattr__  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/_ops.py)
+     3.610       3.670      +0.060  _engine_run_backward  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/autograd/graph.py)
+     0.010       0.060      +0.050  get_parameter  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/modules/module.py)
+     0.050       0.000      -0.050  deepcopy  (/home/fslimani/miniconda3/lib/python3.13/copy.py)
+     0.030       0.080      +0.050  _amax  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/numpy/_core/_methods.py)
+     0.180       0.130      -0.050  dedent  (/home/fslimani/miniconda3/lib/python3.13/textwrap.py)

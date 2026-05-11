@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-05-07_11-37-06",
+  "config": "/home/fslimani/declearn-bench/declearn-experiments/exp_11_fairness_singlepass/config_fairgrad.toml",
+  "tag": "variant",
+  "sampling_rate_hz": 100,
+  "wall_clock_seconds": 43.59,
+  "return_code": 0,
+  "status": "success",
+  "python": "/home/fslimani/.venvs/declearn313/bin/python",
+  "python_version": "Python 3.13.13",
+  "declearn_version": "2.8.0",
+  "py_spy_version": "py-spy 0.4.2",
+  "speedscope_path": "/home/fslimani/declearn-bench/declearn-experiments/exp_11_fairness_singlepass/runs/profiles/variant/2026-05-07_11-37-06/pyspy_speedscope.json",
+  "log_path": "/home/fslimani/declearn-bench/declearn-experiments/exp_11_fairness_singlepass/runs/profiles/variant/2026-05-07_11-37-06/run.log"
+}

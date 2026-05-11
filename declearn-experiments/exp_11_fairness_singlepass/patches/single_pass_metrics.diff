@@ -1,0 +1,115 @@
+diff --git a/declearn/fairness/api/_metrics.py b/declearn/fairness/api/_metrics.py
+index 0ed418f..d08b0ae 100644
+--- a/declearn/fairness/api/_metrics.py
++++ b/declearn/fairness/api/_metrics.py
+@@ -90,6 +90,23 @@ class FairnessMetricsComputer:
+             group: dataset.get_sensitive_group_subset(group)
+             for group in dataset.get_sensitive_group_definitions()
+         }
++        # exp_11 follow-up: keep a reference to the parent dataset for the
++        # single-pass groupwise-metrics path. We also precompute an
++        # integer group-id per sample so that per-batch masking inside
++        # the single-pass loop is a vectorized numpy compare rather than
++        # a Python list-comprehension.
++        self._dataset = dataset
++        self._group_index: Dict[Tuple[Any, ...], int] = {
++            group: i for i, group in enumerate(self.g_data)
++        }
++        if hasattr(dataset, "sensitive"):
++            sensitive_list = list(dataset.sensitive.tolist())
++            self._sample_group_ids = np.array(
++                [self._group_index.get(s, -1) for s in sensitive_list],
++                dtype=np.int64,
++            )
++        else:
++            self._sample_group_ids = None
+ 
+     def compute_groupwise_metrics(
+         self,
+@@ -119,6 +136,15 @@ class FairnessMetricsComputer:
+             Computed group-wise metrics, as a nested dictionary
+             with `{metric.name: {group: value}}` structure.
+         """
++        # exp_11 follow-up: single-pass fast path. Iterate the parent
++        # dataset ONCE in deterministic order, slicing per-group masks
++        # from a precomputed integer group-id array to update per-group
++        # metrics. Avoids both N-1 dataset traversals and per-batch
++        # Python list-comprehension masking.
++        if n_batch is None and self._sample_group_ids is not None:
++            return self._compute_groupwise_metrics_single_pass(
++                metrics, model, batch_size
++            )
+         metricset = MetricSet(metrics)
+         output: Dict[str, Dict[Tuple[Any, ...], float]] = {
+             metric.name: {} for metric in metrics
+@@ -131,6 +157,70 @@ class FairnessMetricsComputer:
+                 output[metric.name][group] = float(values[metric.name])
+         return output
+ 
++    def _compute_groupwise_metrics_single_pass(
++        self,
++        metrics: List[MeanMetric],
++        model: Model,
++        batch_size: int,
++    ) -> Dict[str, Dict[Tuple[Any, ...], float]]:
++        """Single-pass replacement for `compute_groupwise_metrics`.
++
++        Iterates the parent dataset ONCE (in dataset order, no shuffle,
++        no remainder dropping), computing predictions per batch, then
++        partitioning each batch's outputs by sensitive group.
++
++        Per-group `MeanMetric` aggregations are sum-based, hence
++        order-invariant. We accumulate `(num_sum, divisor)` per
++        (group, metric) ourselves rather than cloning the metric
++        instances, which is robust to differing `__init__` signatures.
++        """
++        # Per-(group, metric) (num_sum, divisor) accumulators, keyed by
++        # integer group-id to keep the inner loop tight.
++        accum_num = np.zeros((len(self.g_data), len(metrics)), dtype=np.float64)
++        accum_div = np.zeros((len(self.g_data), len(metrics)), dtype=np.float64)
++        # Iterate the dataset in deterministic order and update per group.
++        cursor = 0
++        for batch in self._dataset.generate_batches(
++            batch_size=batch_size, shuffle=False, drop_remainder=False
++        ):
++            inputs = model.compute_batch_predictions(batch)
++            y_true, y_pred = inputs[0], inputs[1]
++            s_wght = inputs[2] if len(inputs) > 2 else None
++            batch_n = len(y_pred)
++            batch_group_ids = self._sample_group_ids[cursor:cursor + batch_n]
++            cursor += batch_n
++            # Compute scores for each metric ONCE on the full batch, then
++            # accumulate the per-group sums via a vectorized mask check.
++            for m_idx, m in enumerate(metrics):
++                scores = m.metric_func(y_true, y_pred)
++                # `scores` is a per-sample 1-D array of metric scalars.
++                if s_wght is None:
++                    weighted = scores
++                    weights = np.ones(batch_n, dtype=np.float64)
++                else:
++                    sw_arr = np.asarray(s_wght, dtype=np.float64).reshape(-1)
++                    weighted = sw_arr * scores
++                    weights = sw_arr
++                for g_idx in range(len(self.g_data)):
++                    mask = batch_group_ids == g_idx
++                    if not mask.any():
++                        continue
++                    accum_num[g_idx, m_idx] += float(weighted[mask].sum())
++                    accum_div[g_idx, m_idx] += float(weights[mask].sum())
++        # Materialize per-group results: divisor==0 yields 0.0 (matches
++        # MeanMetric.get_result when no samples were observed for a group).
++        output: Dict[str, Dict[Tuple[Any, ...], float]] = {
++            m.name: {} for m in metrics
++        }
++        for group, g_idx in self._group_index.items():
++            for m_idx, m in enumerate(metrics):
++                num_sum = accum_num[g_idx, m_idx]
++                divisor = accum_div[g_idx, m_idx]
++                output[m.name][group] = (
++                    0.0 if divisor == 0 else float(num_sum / divisor)
++                )
++        return output
++
+     # pylint: disable-next=too-many-positional-arguments
+     def compute_metrics_over_sensitive_group(
+         self,

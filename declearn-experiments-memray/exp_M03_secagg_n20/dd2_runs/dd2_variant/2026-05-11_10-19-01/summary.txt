@@ -1,0 +1,109 @@
+=== memray summary (dd2_variant @ 2026-05-11_10-19-01) ===
+
+--- memray stats ---
+
+📏 Total allocations:
+	1646720
+
+📦 Total memory allocated:
+	7.640GB
+
+📈 Peak memory usage:
+	641.865MB
+
+📊 Histogram of allocation size:
+	min: 1.000B
+	---------------------------------------------
+	< 5.000B   :  51179 ▇▇▇
+	< 32.000B  : 581539 ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+	< 181.000B : 450348 ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+	< 1.024kB  : 255492 ▇▇▇▇▇▇▇▇▇▇▇
+	< 5.792kB  : 277408 ▇▇▇▇▇▇▇▇▇▇▇▇
+	< 32.767kB :  14510 ▇
+	< 185.363kB:   5327 ▇
+	< 1.049MB  :  10062 ▇
+	< 5.932MB  :    834 ▇
+	<=33.554MB :     21 ▇
+	---------------------------------------------
+	max: 33.554MB
+
+📂 Allocator type distribution:
+	 MALLOC: 1501439
+	 POSIX_MEMALIGN: 74368
+	 REALLOC: 42360
+	 CALLOC: 28265
+	 MMAP: 288
+
+🥇 Top 5 largest allocating locations (by size):
+	- _conv_forward:/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/modules/conv.py:548 -> 750.457MB
+	- iterencode:/home/fslimani/miniconda3/lib/python3.13/json/encoder.py:263 -> 488.809MB
+	- _apply_operation:/home/fslimani/declearn-bench/declearn-for-exp_12_secagg_aggregate/declearn/model/api/_vector.py:393 -> 397.751MB
+	- relu:/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/functional.py:1723 -> 368.050MB
+	- _engine_run_backward:/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/autograd/graph.py:869 -> 333.639MB
+
+🥇 Top 5 largest allocating locations (by number of allocations):
+	- dedent:/home/fslimani/miniconda3/lib/python3.13/textwrap.py:436 -> 113713
+	- _conv_forward:/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/modules/conv.py:548 -> 98161
+	- _call_with_frames_removed:<frozen importlib._bootstrap>:488 -> 92592
+	- _engine_run_backward:/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/autograd/graph.py:869 -> 81957
+	- __getattr__:/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/_ops.py:1228 -> 73474
+
+
+--- memray summary (top-25 by own memory at peak) ---
+
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┓
+┃                                     ┃        ┃ Total ┃       ┃   Own ┃       ┃
+┃                                     ┃ <Total ┃ Memo… ┃   Own ┃ Memo… ┃ Allo… ┃
+┃ Location                            ┃ Memor… ┃     % ┃ Memo… ┃     % ┃ Count ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━━┩
+│ _run_tracker at                     │ 615.5… │ 95.8… │ 8.22… │ 0.00% │ 1383… │
+│ /home/fslimani/.venvs/declearn313/… │        │       │       │       │       │
+│ <module> at <string>                │ 615.4… │ 95.8… │ 0.00… │ 0.00% │ 1383… │
+│ run at                              │ 495.9… │ 77.2… │ 0.00… │ 0.00% │ 1055… │
+│ /home/fslimani/miniconda3/lib/pyth… │        │       │       │       │       │
+│ _run_once at                        │ 495.9… │ 77.2… │ 0.00… │ 0.00% │ 1055… │
+│ /home/fslimani/miniconda3/lib/pyth… │        │       │       │       │       │
+│ run_forever at                      │ 495.9… │ 77.2… │ 0.00… │ 0.00% │ 1055… │
+│ /home/fslimani/miniconda3/lib/pyth… │        │       │       │       │       │
+│ run_until_complete at               │ 495.9… │ 77.2… │ 0.00… │ 0.00% │ 1055… │
+│ /home/fslimani/miniconda3/lib/pyth… │        │       │       │       │       │
+│ _run at                             │ 495.9… │ 77.2… │ 0.00… │ 0.00% │ 1055… │
+│ /home/fslimani/miniconda3/lib/pyth… │        │       │       │       │       │
+│ run_client at                       │ 384.5… │ 59.9… │ 0.00… │ 0.00% │  8848 │
+│ /home/fslimani/declearn-bench/decl… │        │       │       │       │       │
+│ async_run at                        │ 196.2… │ 30.5… │ 0.00… │ 0.00% │  8422 │
+│ /home/fslimani/declearn-bench/decl… │        │       │       │       │       │
+│ __init__ at                         │ 188.2… │ 29.3… │ 3.15… │ 0.00% │   362 │
+│ /home/fslimani/declearn-bench/decl… │        │       │       │       │       │
+│ read_array at                       │ 188.2… │ 29.3… │ 188.… │ 29.3… │   124 │
+│ /home/fslimani/.venvs/declearn313/… │        │       │       │       │       │
+│ load at                             │ 188.2… │ 29.3… │ 0.00… │ 0.00% │   124 │
+│ /home/fslimani/.venvs/declearn313/… │        │       │       │       │       │
+│ load_data_array at                  │ 188.2… │ 29.3… │ 0.00… │ 0.00% │   124 │
+│ /home/fslimani/declearn-bench/decl… │        │       │       │       │       │
+│ _parse_data_argument at             │ 188.1… │ 29.3… │ 0.00… │ 0.00% │    81 │
+│ /home/fslimani/declearn-bench/decl… │        │       │       │       │       │
+│ _call_with_frames_removed at        │ 175.9… │ 27.4… │ 9.74… │ 1.52% │ 1245… │
+│ <frozen importlib._bootstrap>       │        │       │       │       │       │
+│ _find_and_load_unlocked at <frozen  │ 175.9… │ 27.4… │ 37.8… │ 0.01% │ 1245… │
+│ importlib._bootstrap>               │        │       │       │       │       │
+│ _find_and_load at <frozen           │ 175.9… │ 27.4… │ 0.00… │ 0.00% │ 1245… │
+│ importlib._bootstrap>               │        │       │       │       │       │
+│ exec_module at <frozen              │ 175.9… │ 27.4… │ 0.00… │ 0.00% │ 1245… │
+│ importlib._bootstrap_external>      │        │       │       │       │       │
+│ _load_unlocked at <frozen           │ 175.9… │ 27.4… │ 0.00… │ 0.00% │ 1245… │
+│ importlib._bootstrap>               │        │       │       │       │       │
+│ handle_message at                   │ 173.0… │ 26.9… │ 0.00… │ 0.00% │  5508 │
+│ /home/fslimani/declearn-bench/decl… │        │       │       │       │       │
+│ training_round at                   │ 165.9… │ 25.8… │ 720.… │ 0.00% │  2400 │
+│ /home/fslimani/declearn-bench/decl… │        │       │       │       │       │
+│ <module> at                         │ 119.5… │ 18.6… │ 0.00… │ 0.00% │ 32785 │
+│ /home/fslimani/declearn-bench/decl… │        │       │       │       │       │
+│ encrypt_aggregate at                │ 105.9… │ 16.5… │ 15.7… │ 2.45% │   226 │
+│ /home/fslimani/declearn-bench/decl… │        │       │       │       │       │
+│ from_cleartext_message at           │ 105.9… │ 16.5… │ 0.00… │ 0.00% │   226 │
+│ /home/fslimani/declearn-bench/decl… │        │       │       │       │       │
+│ <module> at                         │ 101.2… │ 15.7… │ 4.07… │ 0.00% │ 25905 │
+│ /home/fslimani/declearn-bench/decl… │        │       │       │       │       │
+└─────────────────────────────────────┴────────┴───────┴───────┴───────┴───────┘

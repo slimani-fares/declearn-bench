@@ -1,0 +1,64 @@
+2026-05-07 11:35:12,200:declearn.server:INFO: Default client sampler selected, all clients will be involved in each round
+2026-05-07 11:35:12,201:declearn.server.network:INFO: Server is now starting...
+2026-05-07 11:35:12,350:declearn.server.network:INFO: server listening on 127.0.0.1:8765
+2026-05-07 11:35:12,350:declearn.server:INFO: Starting clients registration process.
+2026-05-07 11:35:13,354:declearn.server.network:INFO: connection open
+2026-05-07 11:35:13,354:declearn.server.network:INFO: New connection from ('127.0.0.1', 48452)
+2026-05-07 11:35:13,355:declearn.server.network:INFO: connection open
+2026-05-07 11:35:13,355:declearn.server.network:INFO: New connection from ('127.0.0.1', 48456)
+2026-05-07 11:35:13,355:declearn.server.network:INFO: connection open
+2026-05-07 11:35:13,355:declearn.server.network:INFO: New connection from ('127.0.0.1', 48466)
+2026-05-07 11:35:13,357:declearn.server.messages_handler:INFO: Registering client 'client_1' for training.
+2026-05-07 11:35:13,357:declearn.server.messages_handler:INFO: Registering client 'client_2' for training.
+2026-05-07 11:35:13,357:declearn.server.messages_handler:INFO: Registering client 'client_0' for training.
+2026-05-07 11:35:17,357:declearn.server:INFO: Clients' registration is now complete.
+2026-05-07 11:35:17,357:declearn.server:INFO: Sending initialization requests to clients.
+/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/utils/_serialize.py:125: UserWarning: PyTorch JSON serialization relies on pickle, which may be unsafe.
+  config = obj.get_config()
+2026-05-07 11:35:18,376:declearn.server:INFO: Waiting for clients' responses.
+2026-05-07 11:35:20,380:declearn.server.network:INFO: Sending FairBatch sampling probabilities to clients.
+/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/utils/_serialize.py:125: UserWarning: PyTorch JSON serialization relies on pickle, which may be unsafe.
+  config = obj.get_config()
+/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/fairness/api/_server.py:188: RuntimeWarning: Overriding Aggregator choice to a 'SumAggregator', due to the use of Fed-FairBatch.
+  return await self.finalize_fairness_setup(
+2026-05-07 11:35:21,382:declearn.server:INFO: Initialization was successful.
+2026-05-07 11:35:21,393:declearn.server:INFO: Initiating fairness-enforcing round 0
+2026-05-07 11:35:23,020:declearn.server.network:INFO: Sending FairBatch sampling probabilities to clients.
+2026-05-07 11:35:24,025:declearn.server:INFO: Initiating training round 1
+2026-05-07 11:35:30,184:declearn.server:INFO: Awaiting clients' training results.
+2026-05-07 11:35:31,192:declearn.server:INFO: Conducting server-side optimization.
+2026-05-07 11:35:31,193:declearn.server:INFO: Initiating evaluation round 1
+2026-05-07 11:35:31,415:declearn.client-client_0.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.7880', 'loss': '0.5226'}
+2026-05-07 11:35:31,521:declearn.client-client_1.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.7983', 'loss': '0.5129'}
+2026-05-07 11:35:31,628:declearn.client-client_2.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.7955', 'loss': '0.5146'}
+2026-05-07 11:35:32,203:declearn.server:INFO: Awaiting clients' evaluation results.
+2026-05-07 11:35:32,204:declearn.server:INFO: Aggregating evaluation results.
+2026-05-07 11:35:32,204:declearn.server:INFO: Averaged loss is: 0.5167132891019185
+2026-05-07 11:35:32,204:declearn.server:INFO: Other averaged scalar metrics are: {'accuracy': '0.7939', 'loss': '0.5167'}
+2026-05-07 11:35:32,213:declearn.server:INFO: Initiating fairness-enforcing round 1
+2026-05-07 11:35:33,354:declearn.server.network:INFO: Sending FairBatch sampling probabilities to clients.
+2026-05-07 11:35:34,357:declearn.server:INFO: Initiating training round 2
+2026-05-07 11:35:40,975:declearn.server:INFO: Awaiting clients' training results.
+2026-05-07 11:35:41,993:declearn.server:INFO: Conducting server-side optimization.
+2026-05-07 11:35:41,994:declearn.server:INFO: Initiating evaluation round 2
+2026-05-07 11:35:42,215:declearn.client-client_0.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.7498', 'loss': '0.5539'}
+2026-05-07 11:35:42,319:declearn.client-client_1.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.7472', 'loss': '0.5569'}
+2026-05-07 11:35:42,422:declearn.client-client_2.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.7595', 'loss': '0.5477'}
+2026-05-07 11:35:43,005:declearn.server:INFO: Awaiting clients' evaluation results.
+2026-05-07 11:35:43,005:declearn.server:INFO: Aggregating evaluation results.
+2026-05-07 11:35:43,006:declearn.server:INFO: Averaged loss is: 0.5528215463956198
+2026-05-07 11:35:43,006:declearn.server:INFO: Other averaged scalar metrics are: {'accuracy': '0.7522', 'loss': '0.5528'}
+2026-05-07 11:35:43,013:declearn.server:INFO: Maximum number of training rounds reached.
+2026-05-07 11:35:43,013:declearn.server:INFO: Initiating fairness-enforcing round 2
+2026-05-07 11:35:44,135:declearn.server.network:INFO: Sending FairBatch sampling probabilities to clients.
+2026-05-07 11:35:45,139:declearn.server:INFO: Stopping training.
+2026-05-07 11:35:45,139:declearn.server:INFO: Recovering weights that yielded the lowest loss.
+2026-05-07 11:35:45,139:declearn.server:INFO: Notifying clients that training is over.
+/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/utils/_serialize.py:125: UserWarning: PyTorch JSON serialization relies on pickle, which may be unsafe.
+  config = obj.get_config()
+2026-05-07 11:35:45,318:declearn.server.network:INFO: connection closed
+2026-05-07 11:35:45,318:declearn.server.network:INFO: connection closed
+2026-05-07 11:35:45,318:declearn.server.network:INFO: connection closed
+2026-05-07 11:35:46,149:declearn.server:INFO: Checkpointing final weights under /home/fslimani/declearn-bench/declearn-experiments/exp_11_fairness_singlepass/result_26-05-07_11-35/server/model_state_best.json.
+2026-05-07 11:35:46,159:declearn.server.network:INFO: server closing
+2026-05-07 11:35:46,159:declearn.server.network:INFO: server closed

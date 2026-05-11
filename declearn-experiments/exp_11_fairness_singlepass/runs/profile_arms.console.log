@@ -1,0 +1,11 @@
+=== exp_11 py-spy: FairGrad master + variant ===
+
+--- master (branch master) ---
+[master] wall=43.04s rc=1
+STDERR tail: []
+  speedscope: /home/fslimani/declearn-bench/declearn-experiments/exp_11_fairness_singlepass/runs/profiles/master/2026-05-07_11-36-18/pyspy_speedscope.json
+--- variant (branch exp_11_fairness_singlepass_variant) ---
+[variant] wall=43.71s rc=0
+  speedscope: /home/fslimani/declearn-bench/declearn-experiments/exp_11_fairness_singlepass/runs/profiles/variant/2026-05-07_11-37-06/pyspy_speedscope.json
+
+=== resetting venv to canonical declearn ===

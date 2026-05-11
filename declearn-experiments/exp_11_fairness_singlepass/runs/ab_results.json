@@ -1,0 +1,248 @@
+[
+  {
+    "algo": "fairgrad",
+    "arm": "master",
+    "seed": 42,
+    "wall_clock": 38.008,
+    "return_code": 0,
+    "accuracies": [
+      0.863,
+      0.8765,
+      0.8792,
+      0.7478,
+      0.7485,
+      0.7402
+    ],
+    "mean_accuracy": 0.8092
+  },
+  {
+    "algo": "fairgrad",
+    "arm": "variant",
+    "seed": 42,
+    "wall_clock": 37.982,
+    "return_code": 0,
+    "accuracies": [
+      0.7338,
+      0.7585,
+      0.7435,
+      0.707,
+      0.7025,
+      0.698
+    ],
+    "mean_accuracy": 0.7238833333333333
+  },
+  {
+    "algo": "fairbatch",
+    "arm": "master",
+    "seed": 42,
+    "wall_clock": 1.767,
+    "return_code": 1,
+    "accuracies": [],
+    "mean_accuracy": null
+  },
+  {
+    "algo": "fairbatch",
+    "arm": "variant",
+    "seed": 42,
+    "wall_clock": 1.754,
+    "return_code": 1,
+    "accuracies": [],
+    "mean_accuracy": null
+  },
+  {
+    "algo": "fairfed",
+    "arm": "master",
+    "seed": 42,
+    "wall_clock": 39.445,
+    "return_code": 0,
+    "accuracies": [
+      0.8858,
+      0.893,
+      0.8992,
+      0.9377,
+      0.9397,
+      0.937
+    ],
+    "mean_accuracy": 0.9154
+  },
+  {
+    "algo": "fairfed",
+    "arm": "variant",
+    "seed": 42,
+    "wall_clock": 39.491,
+    "return_code": 0,
+    "accuracies": [
+      0.8842,
+      0.892,
+      0.8952,
+      0.93,
+      0.9353,
+      0.934
+    ],
+    "mean_accuracy": 0.9117833333333333
+  },
+  {
+    "algo": "fairgrad",
+    "arm": "master",
+    "seed": 43,
+    "wall_clock": 37.859,
+    "return_code": 0,
+    "accuracies": [
+      0.8622,
+      0.8618,
+      0.8648,
+      0.819,
+      0.834,
+      0.8185
+    ],
+    "mean_accuracy": 0.8433833333333333
+  },
+  {
+    "algo": "fairgrad",
+    "arm": "variant",
+    "seed": 43,
+    "wall_clock": 38.524,
+    "return_code": 0,
+    "accuracies": [
+      0.5815,
+      0.5643,
+      0.5915,
+      0.5178,
+      0.5343,
+      0.5098
+    ],
+    "mean_accuracy": 0.5498666666666666
+  },
+  {
+    "algo": "fairbatch",
+    "arm": "master",
+    "seed": 43,
+    "wall_clock": 1.753,
+    "return_code": 1,
+    "accuracies": [],
+    "mean_accuracy": null
+  },
+  {
+    "algo": "fairbatch",
+    "arm": "variant",
+    "seed": 43,
+    "wall_clock": 1.753,
+    "return_code": 1,
+    "accuracies": [],
+    "mean_accuracy": null
+  },
+  {
+    "algo": "fairfed",
+    "arm": "master",
+    "seed": 43,
+    "wall_clock": 38.82,
+    "return_code": 0,
+    "accuracies": [
+      0.8905,
+      0.8922,
+      0.889,
+      0.9383,
+      0.944,
+      0.943
+    ],
+    "mean_accuracy": 0.9161666666666667
+  },
+  {
+    "algo": "fairfed",
+    "arm": "variant",
+    "seed": 43,
+    "wall_clock": 39.462,
+    "return_code": 0,
+    "accuracies": [
+      0.8772,
+      0.8762,
+      0.8782,
+      0.9337,
+      0.9373,
+      0.9353
+    ],
+    "mean_accuracy": 0.9063166666666667
+  },
+  {
+    "algo": "fairgrad",
+    "arm": "master",
+    "seed": 44,
+    "wall_clock": 38.478,
+    "return_code": 0,
+    "accuracies": [
+      0.6923,
+      0.7013,
+      0.6953,
+      0.602,
+      0.5847,
+      0.5915
+    ],
+    "mean_accuracy": 0.6445166666666667
+  },
+  {
+    "algo": "fairgrad",
+    "arm": "variant",
+    "seed": 44,
+    "wall_clock": 37.577,
+    "return_code": 0,
+    "accuracies": [
+      0.65,
+      0.662,
+      0.6595,
+      0.7165,
+      0.7218,
+      0.7232
+    ],
+    "mean_accuracy": 0.6888333333333333
+  },
+  {
+    "algo": "fairbatch",
+    "arm": "master",
+    "seed": 44,
+    "wall_clock": 1.754,
+    "return_code": 1,
+    "accuracies": [],
+    "mean_accuracy": null
+  },
+  {
+    "algo": "fairbatch",
+    "arm": "variant",
+    "seed": 44,
+    "wall_clock": 1.756,
+    "return_code": 1,
+    "accuracies": [],
+    "mean_accuracy": null
+  },
+  {
+    "algo": "fairfed",
+    "arm": "master",
+    "seed": 44,
+    "wall_clock": 39.329,
+    "return_code": 0,
+    "accuracies": [
+      0.8705,
+      0.866,
+      0.8742,
+      0.92,
+      0.9185,
+      0.921
+    ],
+    "mean_accuracy": 0.8950333333333335
+  },
+  {
+    "algo": "fairfed",
+    "arm": "variant",
+    "seed": 44,
+    "wall_clock": 39.904,
+    "return_code": 0,
+    "accuracies": [
+      0.892,
+      0.8898,
+      0.897,
+      0.931,
+      0.9263,
+      0.9307
+    ],
+    "mean_accuracy": 0.9111333333333334
+  }
+]

@@ -1,0 +1,92 @@
+
+=== pyspy_speedscope.json ===
+unit:         seconds
+total weight: 18 seconds = 17.78 s
+stacks:       1778
+unique frames in shared: 1552
+
+--- Top-20 by self-time ---
+ idx    self_s   self_%   total_s   total_%  frame
+   1     4.700   26.43%     4.700    26.43%  encode  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/websockets/extensions/permessage_deflate.py)
+   2     0.860    4.84%     0.900     5.06%  iterencode  (/home/fslimani/miniconda3/lib/python3.13/json/encoder.py)
+   3     0.760    4.27%     3.920    22.05%  _call_with_frames_removed  (<frozen importlib._bootstrap>)
+   4     0.590    3.32%     0.590     3.32%  decode  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/websockets/extensions/permessage_deflate.py)
+   5     0.440    2.47%     0.520     2.92%  raw_decode  (/home/fslimani/miniconda3/lib/python3.13/json/decoder.py)
+   6     0.430    2.42%     0.610     3.43%  _generate_masks_numpy  (/home/fslimani/declearn-bench/declearn-for-exp_12_secagg_aggregate/declearn/secagg/masking/_encrypt.py)
+   7     0.330    1.86%     0.330     1.86%  encrypt_uint_vector  (/home/fslimani/declearn-bench/declearn-for-exp_12_secagg_aggregate/declearn/secagg/masking/_encrypt.py)
+   8     0.330    1.86%     0.610     3.43%  _generate_masks_numpy  (/home/fslimani/declearn-bench/declearn-for-exp_12_secagg_aggregate/declearn/secagg/masking/_encrypt.py)
+   9     0.320    1.80%     0.320     1.80%  _wrapreduction  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/numpy/_core/fromnumeric.py)
+  10     0.290    1.63%     0.290     1.63%  aggregate_encrypted  (/home/fslimani/declearn-bench/declearn-for-exp_12_secagg_aggregate/declearn/secagg/masking/_aggregate.py)
+  11     0.260    1.46%     0.260     1.46%  _compile_bytecode  (<frozen importlib._bootstrap_external>)
+  12     0.250    1.41%     0.260     1.46%  add_fns_to_class  (/home/fslimani/miniconda3/lib/python3.13/dataclasses.py)
+  13     0.240    1.35%     0.240     1.35%  _iterencode_list  (/home/fslimani/miniconda3/lib/python3.13/json/encoder.py)
+  14     0.200    1.12%     0.850     4.78%  _deepcopy_list  (/home/fslimani/miniconda3/lib/python3.13/copy.py)
+  15     0.190    1.07%     0.200     1.12%  _apply_operation  (/home/fslimani/declearn-bench/declearn-for-exp_12_secagg_aggregate/declearn/model/api/_vector.py)
+  16     0.190    1.07%     0.190     1.07%  _engine_run_backward  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/autograd/graph.py)
+  17     0.170    0.96%     0.170     0.96%  dropout  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/functional.py)
+  18     0.140    0.79%     0.140     0.79%  deepcopy  (/home/fslimani/miniconda3/lib/python3.13/copy.py)
+  19     0.140    0.79%     0.140     0.79%  _load_library  (/home/fslimani/miniconda3/lib/python3.13/ctypes/__init__.py)
+  20     0.140    0.79%     0.180     1.01%  quantize_list  (/home/fslimani/declearn-bench/declearn-for-exp_12_secagg_aggregate/declearn/secagg/utils/_quantize.py)
+
+--- Top-20 by total-time ---
+ idx   total_s   total_%  frame
+   1    17.190    96.68%  <module>  (<string>)
+   2    15.400    86.61%  run_forever  (/home/fslimani/miniconda3/lib/python3.13/asyncio/base_events.py)
+   3    15.400    86.61%  run_until_complete  (/home/fslimani/miniconda3/lib/python3.13/asyncio/base_events.py)
+   4    15.400    86.61%  run  (/home/fslimani/miniconda3/lib/python3.13/asyncio/runners.py)
+   5    15.400    86.61%  run  (/home/fslimani/miniconda3/lib/python3.13/asyncio/runners.py)
+   6    15.390    86.56%  _run  (/home/fslimani/miniconda3/lib/python3.13/asyncio/events.py)
+   7    15.390    86.56%  _run_once  (/home/fslimani/miniconda3/lib/python3.13/asyncio/base_events.py)
+   8     7.570    42.58%  run_client  (/home/fslimani/declearn-bench/declearn-for-exp_12_secagg_aggregate/declearn/quickrun/_run.py)
+   9     7.180    40.38%  async_run  (/home/fslimani/declearn-bench/declearn-for-exp_12_secagg_aggregate/declearn/main/_client.py)
+  10     4.790    26.94%  handle_message  (/home/fslimani/declearn-bench/declearn-for-exp_12_secagg_aggregate/declearn/main/_client.py)
+  11     4.780    26.88%  send  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/websockets/legacy/protocol.py)
+  12     4.770    26.83%  write_frame  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/websockets/legacy/protocol.py)
+  13     4.750    26.72%  write_frame_sync  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/websockets/legacy/protocol.py)
+  14     4.750    26.72%  write  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/websockets/legacy/framing.py)
+  15     4.710    26.49%  serialize  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/websockets/frames.py)
+  16     4.700    26.43%  encode  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/websockets/extensions/permessage_deflate.py)
+  17     3.930    22.10%  _find_and_load_unlocked  (<frozen importlib._bootstrap>)
+  18     3.920    22.05%  _call_with_frames_removed  (<frozen importlib._bootstrap>)
+  19     3.920    22.05%  _load_unlocked  (<frozen importlib._bootstrap>)
+  20     3.910    21.99%  exec_module  (<frozen importlib._bootstrap_external>)
+
+--- Categorical aggregation (by self-time) ---
+category                     self_s   self_%
+compression                   5.320   29.92%
+other                         3.610   20.30%
+declearn_internal             2.730   15.35%
+compute_torch                 1.850   10.40%
+serialization                 1.760    9.90%
+imports_startup               1.560    8.77%
+asyncio_eventloop             0.200    1.12%
+communication_websockets      0.170    0.96%
+
+=== A/B (B − A) by self-time, top 25 absolute deltas ===
+baseline total: 17.78s   variant total: 18.73s   delta: +0.95s
+baseline_s   variant_s     delta_s  frame
+     4.710       5.060      +0.350  encode  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/websockets/extensions/permessage_deflate.py)
+     0.330       0.520      +0.190  encrypt_uint_vector  (/home/fslimani/declearn-bench/declearn-for-exp_12_secagg_aggregate/declearn/secagg/masking/_encryp
+     0.760       0.580      -0.180  _call_with_frames_removed  (<frozen importlib._bootstrap>)
+     0.260       0.120      -0.140  add_fns_to_class  (/home/fslimani/miniconda3/lib/python3.13/dataclasses.py)
+     0.060       0.190      +0.130  _iterencode_dict  (/home/fslimani/miniconda3/lib/python3.13/json/encoder.py)
+     0.410       0.520      +0.110  _wrapreduction  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/numpy/_core/fromnumeric.py)
+     0.780       0.880      +0.100  _generate_masks_numpy  (/home/fslimani/declearn-bench/declearn-for-exp_12_secagg_aggregate/declearn/secagg/masking/_encr
+     0.610       0.520      -0.090  decode  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/websockets/extensions/permessage_deflate.py)
+     0.190       0.280      +0.090  _engine_run_backward  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/autograd/graph.py)
+     0.140       0.050      -0.090  _load_library  (/home/fslimani/miniconda3/lib/python3.13/ctypes/__init__.py)
+     0.100       0.020      -0.080  read_message  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/websockets/legacy/protocol.py)
+     0.290       0.370      +0.080  aggregate_encrypted  (/home/fslimani/declearn-bench/declearn-for-exp_12_secagg_aggregate/declearn/secagg/masking/_aggreg
+     0.670       0.610      -0.060  deepcopy  (/home/fslimani/miniconda3/lib/python3.13/copy.py)
+     0.040       0.100      +0.060  _conv_forward  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/modules/conv.py)
+     0.120       0.170      +0.050  serialize_numpy  (/home/fslimani/declearn-bench/declearn-for-exp_12_secagg_aggregate/declearn/utils/_numpy.py)
+     0.000       0.050      +0.050  async_run  (/home/fslimani/declearn-bench/declearn-for-exp_12_secagg_aggregate/declearn/main/_server.py)
+     0.070       0.020      -0.050  process_handshake_response  (/home/fslimani/declearn-bench/declearn-for-exp_12_secagg_aggregate/declearn/secagg/x3dh/_x3
+     0.070       0.020      -0.050  _encrypt_value  (/home/fslimani/declearn-bench/declearn-for-exp_12_secagg_aggregate/declearn/secagg/api/_encrypt.py)
+     0.040       0.090      +0.050  flatten_numpy_arrays  (/home/fslimani/declearn-bench/declearn-for-exp_12_secagg_aggregate/declearn/model/_utils.py)
+     0.160       0.210      +0.050  dedent  (/home/fslimani/miniconda3/lib/python3.13/textwrap.py)
+     0.140       0.090      -0.050  quantize_list  (/home/fslimani/declearn-bench/declearn-for-exp_12_secagg_aggregate/declearn/secagg/utils/_quantize.py)
+     0.080       0.130      +0.050  _max_pool2d  (/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/functional.py)
+     0.210       0.170      -0.040  _deepcopy_list  (/home/fslimani/miniconda3/lib/python3.13/copy.py)
+     0.860       0.900      +0.040  iterencode  (/home/fslimani/miniconda3/lib/python3.13/json/encoder.py)
+     0.260       0.300      +0.040  _compile_bytecode  (<frozen importlib._bootstrap_external>)

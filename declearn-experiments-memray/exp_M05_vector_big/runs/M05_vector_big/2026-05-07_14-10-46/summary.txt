@@ -1,0 +1,55 @@
+=== memray summary (M05_vector_big @ 2026-05-07_14-10-46) ===
+
+--- memray stats ---
+
+📏 Total allocations:
+	3297406
+
+📦 Total memory allocated:
+	38.969GB
+
+📈 Peak memory usage:
+	448.575MB
+
+📊 Histogram of allocation size:
+	min: 1.000B
+	----------------------------------------------
+	< 6.000B   :  127775 ▇▇
+	< 37.000B  : 1681053 ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+	< 230.000B :  764292 ▇▇▇▇▇▇▇▇▇▇▇▇
+	< 1.414kB  :  590517 ▇▇▇▇▇▇▇▇▇
+	< 8.675kB  :  111354 ▇▇
+	< 53.204kB :    6545 ▇
+	< 326.295kB:    1084 ▇
+	< 2.001MB  :    5098 ▇
+	< 12.272MB :    9683 ▇
+	<=75.264MB :       5 ▇
+	----------------------------------------------
+	max: 75.264MB
+
+📂 Allocator type distribution:
+	 MALLOC: 2594785
+	 POSIX_MEMALIGN: 642943
+	 REALLOC: 34775
+	 CALLOC: 24768
+	 MMAP: 135
+
+🥇 Top 5 largest allocating locations (by size):
+	- _conv_forward:/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/modules/conv.py:548 -> 20.451GB
+	- relu:/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/functional.py:1723 -> 6.832GB
+	- batch_norm:/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/functional.py:2846 -> 6.508GB
+	- _engine_run_backward:/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/autograd/graph.py:869 -> 4.023GB
+	- read_array:/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/numpy/lib/_format_impl.py:847 -> 188.257MB
+
+🥇 Top 5 largest allocating locations (by number of allocations):
+	- _conv_forward:/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/modules/conv.py:548 -> 1378412
+	- _engine_run_backward:/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/autograd/graph.py:869 -> 378246
+	- _apply_operation:/home/fslimani/declearn-bench/declearn-for-exp_10_vector_foreach/declearn/model/torch/_vector.py:151 -> 206115
+	- dedent:/home/fslimani/miniconda3/lib/python3.13/textwrap.py:436 -> 113712
+	- _call_with_frames_removed:<frozen importlib._bootstrap>:488 -> 95368
+
+
+--- memray summary (top-20 by total allocated) ---
+usage: memray [-h] [-v] [-V]
+              {run,flamegraph,table,live,tree,parse,summary,stats,transform,attach,detach} ...
+memray: error: unrecognized arguments: --rows /home/fslimani/declearn-bench/declearn-experiments-memray/exp_M05_vector_big/runs/M05_vector_big/2026-05-07_14-10-46/memray.bin

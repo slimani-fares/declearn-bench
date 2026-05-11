@@ -1,0 +1,146 @@
+[
+  {
+    "n": 5,
+    "arm": "master",
+    "seed": 42,
+    "wall_clock": 44.482,
+    "return_code": 0,
+    "loss": 2.2988536071748795
+  },
+  {
+    "n": 5,
+    "arm": "variant",
+    "seed": 42,
+    "wall_clock": 44.39,
+    "return_code": 0,
+    "loss": 2.2955677541056083
+  },
+  {
+    "n": 5,
+    "arm": "master",
+    "seed": 43,
+    "wall_clock": 45.37,
+    "return_code": 0,
+    "loss": 2.2959986648543476
+  },
+  {
+    "n": 5,
+    "arm": "variant",
+    "seed": 43,
+    "wall_clock": 44.498,
+    "return_code": 0,
+    "loss": 2.2978214225740508
+  },
+  {
+    "n": 5,
+    "arm": "master",
+    "seed": 44,
+    "wall_clock": 44.336,
+    "return_code": 0,
+    "loss": 2.2979584592154896
+  },
+  {
+    "n": 5,
+    "arm": "variant",
+    "seed": 44,
+    "wall_clock": 45.565,
+    "return_code": 0,
+    "loss": 2.295421151476235
+  },
+  {
+    "n": 10,
+    "arm": "master",
+    "seed": 42,
+    "wall_clock": 46.2,
+    "return_code": 0,
+    "loss": 2.297349826194447
+  },
+  {
+    "n": 10,
+    "arm": "variant",
+    "seed": 42,
+    "wall_clock": 46.124,
+    "return_code": 0,
+    "loss": 2.2939876194199647
+  },
+  {
+    "n": 10,
+    "arm": "master",
+    "seed": 43,
+    "wall_clock": 47.167,
+    "return_code": 0,
+    "loss": 2.297495705943657
+  },
+  {
+    "n": 10,
+    "arm": "variant",
+    "seed": 43,
+    "wall_clock": 46.176,
+    "return_code": 0,
+    "loss": 2.2944925168554753
+  },
+  {
+    "n": 10,
+    "arm": "master",
+    "seed": 44,
+    "wall_clock": 46.119,
+    "return_code": 0,
+    "loss": 2.2973835875405393
+  },
+  {
+    "n": 10,
+    "arm": "variant",
+    "seed": 44,
+    "wall_clock": 46.187,
+    "return_code": 0,
+    "loss": 2.298963707628465
+  },
+  {
+    "n": 20,
+    "arm": "master",
+    "seed": 42,
+    "wall_clock": 51.283,
+    "return_code": 0,
+    "loss": 2.299148562132187
+  },
+  {
+    "n": 20,
+    "arm": "variant",
+    "seed": 42,
+    "wall_clock": 50.778,
+    "return_code": 0,
+    "loss": 2.292656773903778
+  },
+  {
+    "n": 20,
+    "arm": "master",
+    "seed": 43,
+    "wall_clock": 50.912,
+    "return_code": 0,
+    "loss": 2.2960142797046306
+  },
+  {
+    "n": 20,
+    "arm": "variant",
+    "seed": 43,
+    "wall_clock": 51.137,
+    "return_code": 0,
+    "loss": 2.2963435376697214
+  },
+  {
+    "n": 20,
+    "arm": "master",
+    "seed": 44,
+    "wall_clock": 50.933,
+    "return_code": 0,
+    "loss": 2.2962165374967873
+  },
+  {
+    "n": 20,
+    "arm": "variant",
+    "seed": 44,
+    "wall_clock": 51.222,
+    "return_code": 0,
+    "loss": 2.296365224221193
+  }
+]

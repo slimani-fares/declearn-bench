@@ -1,0 +1,78 @@
+2026-05-07 13:28:53,572:declearn.server:INFO: Default client sampler selected, all clients will be involved in each round
+2026-05-07 13:28:53,573:declearn.server.network:INFO: Server is now starting...
+2026-05-07 13:28:53,683:declearn.server.network:INFO: server listening on 127.0.0.1:8765
+2026-05-07 13:28:53,683:declearn.server:INFO: Starting clients registration process.
+2026-05-07 13:28:54,690:declearn.server.network:INFO: connection open
+2026-05-07 13:28:54,690:declearn.server.network:INFO: New connection from ('127.0.0.1', 52224)
+2026-05-07 13:28:54,691:declearn.server.network:INFO: connection open
+2026-05-07 13:28:54,691:declearn.server.network:INFO: New connection from ('127.0.0.1', 52228)
+2026-05-07 13:28:54,691:declearn.server.network:INFO: connection open
+2026-05-07 13:28:54,691:declearn.server.network:INFO: New connection from ('127.0.0.1', 52234)
+2026-05-07 13:28:54,691:declearn.server.network:INFO: connection open
+2026-05-07 13:28:54,691:declearn.server.network:INFO: New connection from ('127.0.0.1', 52244)
+2026-05-07 13:28:54,692:declearn.server.network:INFO: connection open
+2026-05-07 13:28:54,692:declearn.server.network:INFO: New connection from ('127.0.0.1', 52252)
+2026-05-07 13:28:54,692:declearn.server.network:INFO: connection open
+2026-05-07 13:28:54,692:declearn.server.network:INFO: New connection from ('127.0.0.1', 52262)
+2026-05-07 13:28:54,692:declearn.server.network:INFO: connection open
+2026-05-07 13:28:54,692:declearn.server.network:INFO: New connection from ('127.0.0.1', 52270)
+2026-05-07 13:28:54,693:declearn.server.network:INFO: connection open
+2026-05-07 13:28:54,693:declearn.server.network:INFO: New connection from ('127.0.0.1', 52280)
+2026-05-07 13:28:54,693:declearn.server.network:INFO: connection open
+2026-05-07 13:28:54,693:declearn.server.network:INFO: New connection from ('127.0.0.1', 52296)
+2026-05-07 13:28:54,693:declearn.server.network:INFO: connection open
+2026-05-07 13:28:54,693:declearn.server.network:INFO: New connection from ('127.0.0.1', 52302)
+2026-05-07 13:28:54,698:declearn.server.messages_handler:INFO: Registering client 'client_3' for training.
+2026-05-07 13:28:54,698:declearn.server.messages_handler:INFO: Registering client 'client_6' for training.
+2026-05-07 13:28:54,698:declearn.server.messages_handler:INFO: Registering client 'client_4' for training.
+2026-05-07 13:28:54,699:declearn.server.messages_handler:INFO: Registering client 'client_7' for training.
+2026-05-07 13:28:54,699:declearn.server.messages_handler:INFO: Registering client 'client_5' for training.
+2026-05-07 13:28:54,699:declearn.server.messages_handler:INFO: Registering client 'client_9' for training.
+2026-05-07 13:28:54,699:declearn.server.messages_handler:INFO: Registering client 'client_8' for training.
+2026-05-07 13:28:54,699:declearn.server.messages_handler:INFO: Registering client 'client_1' for training.
+2026-05-07 13:28:54,699:declearn.server.messages_handler:INFO: Registering client 'client_2' for training.
+2026-05-07 13:28:54,700:declearn.server.messages_handler:INFO: Registering client 'client_0' for training.
+2026-05-07 13:29:23,722:declearn.server:INFO: Clients' registration is now complete.
+2026-05-07 13:29:23,723:declearn.server:INFO: Sending initialization requests to clients.
+/home/fslimani/declearn-bench/declearn-for-exp_12_secagg_aggregate/declearn/utils/_serialize.py:125: UserWarning: PyTorch JSON serialization relies on pickle, which may be unsafe.
+  config = obj.get_config()
+2026-05-07 13:29:24,775:declearn.server:INFO: Waiting for clients' responses.
+2026-05-07 13:29:24,776:declearn.server:INFO: Initialization was successful.
+2026-05-07 13:29:24,786:declearn.server:INFO: Initiating training round 1
+2026-05-07 13:29:24,786:declearn.server:INFO: Setting up SecAgg afresh.
+2026-05-07 13:29:32,050:declearn.server:INFO: Awaiting clients' training results.
+2026-05-07 13:29:33,340:declearn.server:INFO: Conducting server-side optimization.
+2026-05-07 13:29:33,353:declearn.server:INFO: Maximum number of training rounds reached.
+2026-05-07 13:29:33,354:declearn.server:INFO: Initiating evaluation round 1
+2026-05-07 13:29:34,318:declearn.client-client_3.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.2983', 'loss': '2.2976'}
+2026-05-07 13:29:34,401:declearn.client-client_6.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.3175', 'loss': '2.2971'}
+2026-05-07 13:29:34,471:declearn.client-client_4.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.2850', 'loss': '2.2979'}
+2026-05-07 13:29:34,540:declearn.client-client_7.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.3067', 'loss': '2.2977'}
+2026-05-07 13:29:34,611:declearn.client-client_5.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.3192', 'loss': '2.2975'}
+2026-05-07 13:29:34,680:declearn.client-client_9.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.3317', 'loss': '2.2975'}
+2026-05-07 13:29:34,752:declearn.client-client_8.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.2883', 'loss': '2.2974'}
+2026-05-07 13:29:34,823:declearn.client-client_1.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.3192', 'loss': '2.2973'}
+2026-05-07 13:29:34,893:declearn.client-client_2.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.3217', 'loss': '2.2974'}
+2026-05-07 13:29:34,963:declearn.client-client_0.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.2817', 'loss': '2.2977'}
+2026-05-07 13:29:35,005:declearn.server:INFO: Awaiting clients' evaluation results.
+2026-05-07 13:29:36,009:declearn.server:INFO: Aggregating evaluation results.
+2026-05-07 13:29:36,010:declearn.server:INFO: Averaged loss is: 2.297495705943657
+2026-05-07 13:29:36,010:declearn.server:INFO: Other averaged scalar metrics are: {'accuracy': '0.3069', 'loss': '2.2975'}
+2026-05-07 13:29:36,016:declearn.server:INFO: Stopping training.
+2026-05-07 13:29:36,016:declearn.server:INFO: Recovering weights that yielded the lowest loss.
+2026-05-07 13:29:36,016:declearn.server:INFO: Notifying clients that training is over.
+/home/fslimani/declearn-bench/declearn-for-exp_12_secagg_aggregate/declearn/utils/_serialize.py:125: UserWarning: PyTorch JSON serialization relies on pickle, which may be unsafe.
+  config = obj.get_config()
+2026-05-07 13:29:36,592:declearn.server.network:INFO: connection closed
+2026-05-07 13:29:36,593:declearn.server.network:INFO: connection closed
+2026-05-07 13:29:36,593:declearn.server.network:INFO: connection closed
+2026-05-07 13:29:36,593:declearn.server.network:INFO: connection closed
+2026-05-07 13:29:36,593:declearn.server.network:INFO: connection closed
+2026-05-07 13:29:36,593:declearn.server.network:INFO: connection closed
+2026-05-07 13:29:36,593:declearn.server.network:INFO: connection closed
+2026-05-07 13:29:36,594:declearn.server.network:INFO: connection closed
+2026-05-07 13:29:36,594:declearn.server.network:INFO: connection closed
+2026-05-07 13:29:36,594:declearn.server.network:INFO: connection closed
+2026-05-07 13:29:37,049:declearn.server:INFO: Checkpointing final weights under /home/fslimani/declearn-bench/declearn-experiments/exp_12_secagg_aggregate/result_26-05-07_13-28/server/model_state_best.json.
+2026-05-07 13:29:37,060:declearn.server.network:INFO: server closing
+2026-05-07 13:29:37,061:declearn.server.network:INFO: server closed

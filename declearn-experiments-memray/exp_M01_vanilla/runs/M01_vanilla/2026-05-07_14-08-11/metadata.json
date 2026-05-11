@@ -1,0 +1,9 @@
+{
+  "tag": "M01_vanilla",
+  "timestamp": "2026-05-07_14-08-11",
+  "wall_clock_s": 17.522,
+  "bin_size_mb": 4.95,
+  "target": "import asyncio; from declearn.quickrun._run import quickrun; asyncio.run(quickrun('/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M01_vanilla/config.toml'))",
+  "cwd": "/home/fslimani/declearn-bench",
+  "memray_version": "1.19.3"
+}

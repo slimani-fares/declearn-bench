@@ -1,0 +1,50 @@
+diff --git a/declearn/secagg/masking/_aggregate.py b/declearn/secagg/masking/_aggregate.py
+index 986d3e3..99f712b 100644
+--- a/declearn/secagg/masking/_aggregate.py
++++ b/declearn/secagg/masking/_aggregate.py
+@@ -19,9 +19,16 @@
+ 
+ from typing import Any, Dict, List, Optional, Self, Type, TypeVar
+ 
++import numpy as np
++
+ from declearn.secagg.api import EncryptedSpecs, SecureAggregate
+ from declearn.utils import Aggregate
+ 
++# Largest field for which the natural numpy uint64 overflow IS the modular
++# arithmetic we want. For max_int == 2**64 the wrap is implicit; for
++# max_int < 2**64 we apply an explicit `% max_int` over uint64 sums.
++_UINT64_BOUND = 1 << 64
++
+ __all__ = [
+     "MaskedAggregate",
+ ]
+@@ -87,6 +94,28 @@ class MaskedAggregate(SecureAggregate[AggregateT]):
+         val_a: List[int],
+         val_b: List[int],
+     ) -> List[int]:
++        # exp_12 follow-up: vectorized fast path. The canonical path was a
++        # Python list-comprehension over zip(val_a, val_b), paying per-element
++        # interpreter dispatch × O(L) elements × O(N-1) merges per round.
++        # When max_int <= 2**64 (the default), we cast both vectors to uint64
++        # and rely on the natural wrap (max_int == 2**64) or an explicit
++        # numpy modulo (max_int < 2**64). For max_int > 2**64 the values
++        # would not fit in uint64, so fall through to the canonical loop.
++        if self.max_int <= _UINT64_BOUND:
++            arr_a = np.asarray(val_a, dtype=np.uint64)
++            arr_b = np.asarray(val_b, dtype=np.uint64)
++            if self.max_int == _UINT64_BOUND:
++                # Natural uint64 wrap is exactly `(a + b) % 2**64`.
++                return (arr_a + arr_b).tolist()
++            # Sum of two values < max_int <= 2**63 fits in uint64 without
++            # wrap; for max_int in (2**63, 2**64) the explicit modulo of a
++            # value that may have wrapped is still correct only if max_int
++            # divides 2**64 evenly — declearn only ever uses powers of two
++            # here, so the cleaner safe range is max_int <= 2**63.
++            mod = np.uint64(self.max_int)
++            if self.max_int <= (1 << 63):
++                return ((arr_a + arr_b) % mod).tolist()
++            # Defensive: 2**63 < max_int < 2**64 — fall through.
+         return [
+             (a + b) % self.max_int for a, b in zip(val_a, val_b, strict=False)
+         ]

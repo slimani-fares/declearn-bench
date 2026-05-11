@@ -1,0 +1,22 @@
+=== exp_11 A/B (fairbatch only) ===
+
+
+--- seed 42: regenerating split ---
+  fairbatch  master   wall=  37.42s rc=0 acc=0.5325
+  fairbatch  variant  wall=  38.04s rc=0 acc=0.8209166666666667
+
+--- seed 43: regenerating split ---
+  fairbatch  master   wall=  37.39s rc=0 acc=0.7226166666666667
+  fairbatch  variant  wall=  37.78s rc=0 acc=0.7047166666666667
+
+--- seed 44: regenerating split ---
+  fairbatch  master   wall=  37.53s rc=0 acc=0.5804833333333334
+  fairbatch  variant  wall=  37.69s rc=0 acc=0.77305
+
+results -> /home/fslimani/declearn-bench/declearn-experiments/exp_11_fairness_singlepass/runs/ab_results_fairbatch.json
+
+algo       arm       wall_mean   wall_std  speedup   acc_mean
+fairbatch  master        37.44       0.08    1.00x     0.6119
+fairbatch  variant       37.84       0.18    0.99x     0.7662
+
+=== resetting venv to canonical declearn ===

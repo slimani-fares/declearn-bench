@@ -1,0 +1,42 @@
+[network]
+    protocol = "websockets"
+    host = "127.0.0.1"
+    port = 8765
+
+[data]
+    data_folder = "examples/mnist_quickrun/data_iid_chw"
+
+[model]
+    model_file = "examples/mnist_quickrun/model_torch_dp.py"
+
+[optim]
+    aggregator = "averaging"
+
+    [optim.client_opt]
+    lrate = 0.001
+    modules = ["adam"]
+
+    [optim.server_opt]
+    lrate = 1.0
+
+[run]
+    rounds = 1
+
+    [run.register]
+    timeout = 5
+
+    [run.training]
+    batch_size = 48
+    n_steps = 10
+
+    [run.evaluate]
+    batch_size = 128
+    frequency = 999
+
+    [run.privacy]
+    budget = [5.0, 1e-5]
+    sclip_norm = 1.0
+    accountant = "rdp"
+
+[experiment]
+    metrics = [["multi-classif", {labels = [0,1,2,3,4,5,6,7,8,9]}]]

@@ -1,0 +1,10 @@
+=== exp_12 py-spy: secagg-masking N=20 ===
+
+--- master (branch master) ---
+[master] wall=54.48s rc=0
+  speedscope: /home/fslimani/declearn-bench/declearn-experiments/exp_12_secagg_aggregate/runs/profiles_n20/master/2026-05-07_13-38-31/pyspy_speedscope.json
+--- variant (branch exp_12_secagg_aggregate_variant) ---
+[variant] wall=55.58s rc=0
+  speedscope: /home/fslimani/declearn-bench/declearn-experiments/exp_12_secagg_aggregate/runs/profiles_n20/variant/2026-05-07_13-39-30/pyspy_speedscope.json
+
+=== resetting venv to canonical declearn ===

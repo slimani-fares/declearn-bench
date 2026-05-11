@@ -1,0 +1,55 @@
+=== memray summary (M03_secagg_n20 @ 2026-05-07_14-09-02) ===
+
+--- memray stats ---
+
+📏 Total allocations:
+	1652585
+
+📦 Total memory allocated:
+	8.155GB
+
+📈 Peak memory usage:
+	703.777MB
+
+📊 Histogram of allocation size:
+	min: 1.000B
+	---------------------------------------------
+	< 5.000B   :  51484 ▇▇▇
+	< 32.000B  : 582101 ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+	< 181.000B : 450414 ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+	< 1.024kB  : 256799 ▇▇▇▇▇▇▇▇▇▇▇▇
+	< 5.792kB  : 278695 ▇▇▇▇▇▇▇▇▇▇▇▇
+	< 32.767kB :  15359 ▇
+	< 185.363kB:   6143 ▇
+	< 1.049MB  :  10538 ▇
+	< 5.932MB  :   1031 ▇
+	<=33.554MB :     21 ▇
+	---------------------------------------------
+	max: 33.554MB
+
+📂 Allocator type distribution:
+	 MALLOC: 1503462
+	 POSIX_MEMALIGN: 74368
+	 REALLOC: 44597
+	 CALLOC: 29865
+	 MMAP: 293
+
+🥇 Top 5 largest allocating locations (by size):
+	- _conv_forward:/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/modules/conv.py:548 -> 750.457MB
+	- iterencode:/home/fslimani/miniconda3/lib/python3.13/json/encoder.py:263 -> 733.119MB
+	- raw_decode:/home/fslimani/miniconda3/lib/python3.13/json/decoder.py:361 -> 452.562MB
+	- _apply_operation:/home/fslimani/declearn-bench/declearn-for-secagg-batched/declearn/model/api/_vector.py:393 -> 397.751MB
+	- relu:/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/functional.py:1723 -> 368.050MB
+
+🥇 Top 5 largest allocating locations (by number of allocations):
+	- dedent:/home/fslimani/miniconda3/lib/python3.13/textwrap.py:436 -> 113713
+	- _conv_forward:/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/nn/modules/conv.py:548 -> 98161
+	- _call_with_frames_removed:<frozen importlib._bootstrap>:488 -> 95366
+	- _engine_run_backward:/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/autograd/graph.py:869 -> 95074
+	- __getattr__:/home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/torch/_ops.py:1228 -> 73474
+
+
+--- memray summary (top-20 by total allocated) ---
+usage: memray [-h] [-v] [-V]
+              {run,flamegraph,table,live,tree,parse,summary,stats,transform,attach,detach} ...
+memray: error: unrecognized arguments: --rows /home/fslimani/declearn-bench/declearn-experiments-memray/exp_M03_secagg_n20/runs/M03_secagg_n20/2026-05-07_14-09-02/memray.bin

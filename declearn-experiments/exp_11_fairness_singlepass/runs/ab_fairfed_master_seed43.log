@@ -1,0 +1,66 @@
+2026-05-07 11:25:53,320:declearn.server:INFO: Default client sampler selected, all clients will be involved in each round
+2026-05-07 11:25:53,321:declearn.server.network:INFO: Server is now starting...
+2026-05-07 11:25:53,462:declearn.server.network:INFO: server listening on 127.0.0.1:8765
+2026-05-07 11:25:53,463:declearn.server:INFO: Starting clients registration process.
+2026-05-07 11:25:54,467:declearn.server.network:INFO: connection open
+2026-05-07 11:25:54,467:declearn.server.network:INFO: New connection from ('127.0.0.1', 35042)
+2026-05-07 11:25:54,467:declearn.server.network:INFO: connection open
+2026-05-07 11:25:54,467:declearn.server.network:INFO: New connection from ('127.0.0.1', 35046)
+2026-05-07 11:25:54,468:declearn.server.network:INFO: connection open
+2026-05-07 11:25:54,468:declearn.server.network:INFO: New connection from ('127.0.0.1', 35052)
+2026-05-07 11:25:54,470:declearn.server.messages_handler:INFO: Registering client 'client_1' for training.
+2026-05-07 11:25:54,470:declearn.server.messages_handler:INFO: Registering client 'client_2' for training.
+2026-05-07 11:25:54,470:declearn.server.messages_handler:INFO: Registering client 'client_0' for training.
+2026-05-07 11:25:58,470:declearn.server:INFO: Clients' registration is now complete.
+2026-05-07 11:25:58,470:declearn.server:INFO: Sending initialization requests to clients.
+/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/utils/_serialize.py:125: UserWarning: PyTorch JSON serialization relies on pickle, which may be unsafe.
+  config = obj.get_config()
+2026-05-07 11:25:59,489:declearn.server:INFO: Waiting for clients' responses.
+/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/fairness/fairfed/_fairfed.py:95: RuntimeWarning: Using fairness type 'accuracy_parity' with FairFed in 'strict' mode. This is supported, but beyond the original paper.
+  self._key_groups = self.identify_key_groups(groups)
+/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/fairness/fairfed/_fairfed.py:95: RuntimeWarning: Using fairness type 'accuracy_parity' with FairFed in 'strict' mode. This is supported, but beyond the original paper.
+  self._key_groups = self.identify_key_groups(groups)
+/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/fairness/fairfed/_fairfed.py:95: RuntimeWarning: Using fairness type 'accuracy_parity' with FairFed in 'strict' mode. This is supported, but beyond the original paper.
+  self._key_groups = self.identify_key_groups(groups)
+/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/utils/_serialize.py:125: UserWarning: PyTorch JSON serialization relies on pickle, which may be unsafe.
+  config = obj.get_config()
+/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/fairness/api/_server.py:188: RuntimeWarning: Overriding Aggregator choice due to the use of FairFed.
+  return await self.finalize_fairness_setup(
+2026-05-07 11:26:01,494:declearn.server:INFO: Initialization was successful.
+2026-05-07 11:26:01,504:declearn.server:INFO: Initiating fairness-enforcing round 0
+2026-05-07 11:26:04,936:declearn.server:INFO: Initiating training round 1
+2026-05-07 11:26:10,921:declearn.server:INFO: Awaiting clients' training results.
+2026-05-07 11:26:11,929:declearn.server:INFO: Conducting server-side optimization.
+2026-05-07 11:26:11,931:declearn.server:INFO: Initiating evaluation round 1
+2026-05-07 11:26:12,193:declearn.client-client_0.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.8905', 'loss': '0.4300'}
+2026-05-07 11:26:12,337:declearn.client-client_1.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.8922', 'loss': '0.4263'}
+2026-05-07 11:26:12,484:declearn.client-client_2.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.8890', 'loss': '0.4309'}
+2026-05-07 11:26:12,942:declearn.server:INFO: Awaiting clients' evaluation results.
+2026-05-07 11:26:12,942:declearn.server:INFO: Aggregating evaluation results.
+2026-05-07 11:26:12,942:declearn.server:INFO: Averaged loss is: 0.4290429691473643
+2026-05-07 11:26:12,943:declearn.server:INFO: Other averaged scalar metrics are: {'accuracy': '0.8906', 'loss': '0.4290'}
+2026-05-07 11:26:12,951:declearn.server:INFO: Initiating fairness-enforcing round 1
+2026-05-07 11:26:16,269:declearn.server:INFO: Initiating training round 2
+2026-05-07 11:26:22,208:declearn.server:INFO: Awaiting clients' training results.
+2026-05-07 11:26:23,227:declearn.server:INFO: Conducting server-side optimization.
+2026-05-07 11:26:23,228:declearn.server:INFO: Initiating evaluation round 2
+2026-05-07 11:26:23,489:declearn.client-client_0.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.9383', 'loss': '0.3760'}
+2026-05-07 11:26:23,631:declearn.client-client_1.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.9440', 'loss': '0.3730'}
+2026-05-07 11:26:23,772:declearn.client-client_2.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.9430', 'loss': '0.3737'}
+2026-05-07 11:26:24,239:declearn.server:INFO: Awaiting clients' evaluation results.
+2026-05-07 11:26:24,240:declearn.server:INFO: Aggregating evaluation results.
+2026-05-07 11:26:24,240:declearn.server:INFO: Averaged loss is: 0.3742563405036926
+2026-05-07 11:26:24,240:declearn.server:INFO: Other averaged scalar metrics are: {'accuracy': '0.9417', 'loss': '0.3743'}
+2026-05-07 11:26:24,248:declearn.server:INFO: Maximum number of training rounds reached.
+2026-05-07 11:26:24,248:declearn.server:INFO: Initiating fairness-enforcing round 2
+2026-05-07 11:26:27,373:declearn.server:INFO: Stopping training.
+2026-05-07 11:26:27,373:declearn.server:INFO: Recovering weights that yielded the lowest loss.
+2026-05-07 11:26:27,373:declearn.server:INFO: Notifying clients that training is over.
+/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/utils/_serialize.py:125: UserWarning: PyTorch JSON serialization relies on pickle, which may be unsafe.
+  config = obj.get_config()
+2026-05-07 11:26:27,558:declearn.server.network:INFO: connection closed
+2026-05-07 11:26:27,559:declearn.server.network:INFO: connection closed
+2026-05-07 11:26:27,559:declearn.server.network:INFO: connection closed
+2026-05-07 11:26:28,384:declearn.server:INFO: Checkpointing final weights under /home/fslimani/declearn-bench/declearn-experiments/exp_11_fairness_singlepass/result_26-05-07_11-25/server/model_state_best.json.
+2026-05-07 11:26:28,394:declearn.server.network:INFO: server closing
+2026-05-07 11:26:28,394:declearn.server.network:INFO: server closed

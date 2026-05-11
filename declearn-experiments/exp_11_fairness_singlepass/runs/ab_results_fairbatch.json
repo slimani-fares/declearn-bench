@@ -1,0 +1,98 @@
+[
+  {
+    "algo": "fairbatch",
+    "arm": "master",
+    "seed": 42,
+    "wall_clock": 37.416,
+    "return_code": 0,
+    "accuracies": [
+      0.5323,
+      0.5555,
+      0.5485,
+      0.5305,
+      0.5122,
+      0.516
+    ],
+    "mean_accuracy": 0.5325
+  },
+  {
+    "algo": "fairbatch",
+    "arm": "variant",
+    "seed": 42,
+    "wall_clock": 38.042,
+    "return_code": 0,
+    "accuracies": [
+      0.8433,
+      0.8625,
+      0.8545,
+      0.795,
+      0.7885,
+      0.7817
+    ],
+    "mean_accuracy": 0.8209166666666667
+  },
+  {
+    "algo": "fairbatch",
+    "arm": "master",
+    "seed": 43,
+    "wall_clock": 37.387,
+    "return_code": 0,
+    "accuracies": [
+      0.719,
+      0.709,
+      0.7262,
+      0.7258,
+      0.7365,
+      0.7192
+    ],
+    "mean_accuracy": 0.7226166666666667
+  },
+  {
+    "algo": "fairbatch",
+    "arm": "variant",
+    "seed": 43,
+    "wall_clock": 37.777,
+    "return_code": 0,
+    "accuracies": [
+      0.776,
+      0.7755,
+      0.7905,
+      0.6235,
+      0.6438,
+      0.619
+    ],
+    "mean_accuracy": 0.7047166666666667
+  },
+  {
+    "algo": "fairbatch",
+    "arm": "master",
+    "seed": 44,
+    "wall_clock": 37.529,
+    "return_code": 0,
+    "accuracies": [
+      0.6148,
+      0.6238,
+      0.6192,
+      0.5513,
+      0.5308,
+      0.543
+    ],
+    "mean_accuracy": 0.5804833333333334
+  },
+  {
+    "algo": "fairbatch",
+    "arm": "variant",
+    "seed": 44,
+    "wall_clock": 37.691,
+    "return_code": 0,
+    "accuracies": [
+      0.788,
+      0.7983,
+      0.7955,
+      0.7498,
+      0.7472,
+      0.7595
+    ],
+    "mean_accuracy": 0.77305
+  }
+]

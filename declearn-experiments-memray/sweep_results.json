@@ -1,0 +1,55 @@
+[
+  {
+    "tag": "M01_vanilla",
+    "ok": true,
+    "summary": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M01_vanilla/runs/M01_vanilla/2026-05-07_14-08-11/summary.txt",
+    "metadata": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M01_vanilla/runs/M01_vanilla/2026-05-07_14-08-11/metadata.json",
+    "flame": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M01_vanilla/runs/M01_vanilla/2026-05-07_14-08-11/flamegraph.html",
+    "stats": {
+      "total_allocations": 1194201,
+      "total_memory_mb": 2559.0,
+      "peak_memory_mb": 408.992
+    }
+  },
+  {
+    "tag": "M02_dp",
+    "ok": false,
+    "err": ""
+  },
+  {
+    "tag": "M03_secagg_n20",
+    "ok": true,
+    "summary": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M03_secagg_n20/runs/M03_secagg_n20/2026-05-07_14-09-02/summary.txt",
+    "metadata": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M03_secagg_n20/runs/M03_secagg_n20/2026-05-07_14-09-02/metadata.json",
+    "flame": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M03_secagg_n20/runs/M03_secagg_n20/2026-05-07_14-09-02/flamegraph.html",
+    "stats": {
+      "total_allocations": 1652585,
+      "total_memory_mb": 8154.999999999999,
+      "peak_memory_mb": 703.777
+    }
+  },
+  {
+    "tag": "M04_fairgrad",
+    "ok": true,
+    "summary": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M04_fairgrad/runs/M04_fairgrad/2026-05-07_14-10-11/summary.txt",
+    "metadata": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M04_fairgrad/runs/M04_fairgrad/2026-05-07_14-10-11/metadata.json",
+    "flame": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M04_fairgrad/runs/M04_fairgrad/2026-05-07_14-10-11/flamegraph.html",
+    "stats": {
+      "total_allocations": 1660718,
+      "total_memory_mb": 11264.0,
+      "peak_memory_mb": 576.693
+    }
+  },
+  {
+    "tag": "M05_vector_big",
+    "ok": true,
+    "summary": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M05_vector_big/runs/M05_vector_big/2026-05-07_14-10-46/summary.txt",
+    "metadata": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M05_vector_big/runs/M05_vector_big/2026-05-07_14-10-46/metadata.json",
+    "flame": "/home/fslimani/declearn-bench/declearn-experiments-memray/exp_M05_vector_big/runs/M05_vector_big/2026-05-07_14-10-46/flamegraph.html",
+    "stats": {
+      "total_allocations": 3297406,
+      "total_memory_mb": 38969.0,
+      "peak_memory_mb": 448.575
+    }
+  }
+]

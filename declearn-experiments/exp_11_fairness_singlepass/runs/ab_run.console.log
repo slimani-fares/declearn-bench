@@ -1,0 +1,40 @@
+=== exp_11 A/B: 3 algos × 2 arms × 3 seeds × 2 rounds ===
+
+
+--- seed 42: regenerating split ---
+  fairgrad   master   (branch master) wall=  38.01s rc=0 acc=0.8092
+  fairgrad   variant  (branch exp_11_fairness_singlepass_variant) wall=  37.98s rc=0 acc=0.7238833333333333
+  fairbatch  master   (branch master) wall=   1.77s rc=1 acc=None
+  fairbatch  variant  (branch exp_11_fairness_singlepass_variant) wall=   1.75s rc=1 acc=None
+  fairfed    master   (branch master) wall=  39.45s rc=0 acc=0.9154
+  fairfed    variant  (branch exp_11_fairness_singlepass_variant) wall=  39.49s rc=0 acc=0.9117833333333333
+
+--- seed 43: regenerating split ---
+  fairgrad   master   (branch master) wall=  37.86s rc=0 acc=0.8433833333333333
+  fairgrad   variant  (branch exp_11_fairness_singlepass_variant) wall=  38.52s rc=0 acc=0.5498666666666666
+  fairbatch  master   (branch master) wall=   1.75s rc=1 acc=None
+  fairbatch  variant  (branch exp_11_fairness_singlepass_variant) wall=   1.75s rc=1 acc=None
+  fairfed    master   (branch master) wall=  38.82s rc=0 acc=0.9161666666666667
+  fairfed    variant  (branch exp_11_fairness_singlepass_variant) wall=  39.46s rc=0 acc=0.9063166666666667
+
+--- seed 44: regenerating split ---
+  fairgrad   master   (branch master) wall=  38.48s rc=0 acc=0.6445166666666667
+  fairgrad   variant  (branch exp_11_fairness_singlepass_variant) wall=  37.58s rc=0 acc=0.6888333333333333
+  fairbatch  master   (branch master) wall=   1.75s rc=1 acc=None
+  fairbatch  variant  (branch exp_11_fairness_singlepass_variant) wall=   1.76s rc=1 acc=None
+  fairfed    master   (branch master) wall=  39.33s rc=0 acc=0.8950333333333335
+  fairfed    variant  (branch exp_11_fairness_singlepass_variant) wall=  39.90s rc=0 acc=0.9111333333333334
+
+results -> /home/fslimani/declearn-bench/declearn-experiments/exp_11_fairness_singlepass/runs/ab_results.json
+
+=== summary (n_seeds=3, rounds=2) ===
+
+algo       arm       wall_mean   wall_std    speedup_vs_master   acc_mean
+fairgrad   master        38.12       0.32                1.00x     0.7657
+fairgrad   variant       38.03       0.48                1.00x     0.6542
+fairbatch  master         1.76       0.01                1.00x     0.0000
+fairbatch  variant        1.75       0.00                1.00x     0.0000
+fairfed    master        39.20       0.33                1.00x     0.9089
+fairfed    variant       39.62       0.25                0.99x     0.9097
+
+=== resetting venv to canonical declearn ===

@@ -1,0 +1,71 @@
+py-spy> Sampling process 100 times a second. Press Control-C to exit.
+
+2026-05-07 11:36:22,443:declearn.server:INFO: Default client sampler selected, all clients will be involved in each round
+2026-05-07 11:36:22,443:declearn.server.network:INFO: Server is now starting...
+2026-05-07 11:36:22,580:declearn.server.network:INFO: server listening on 127.0.0.1:8765
+2026-05-07 11:36:22,580:declearn.server:INFO: Starting clients registration process.
+2026-05-07 11:36:23,583:declearn.server.network:INFO: connection open
+2026-05-07 11:36:23,584:declearn.server.network:INFO: New connection from ('127.0.0.1', 39930)
+2026-05-07 11:36:23,586:declearn.server.network:INFO: connection open
+2026-05-07 11:36:23,586:declearn.server.network:INFO: New connection from ('127.0.0.1', 39944)
+2026-05-07 11:36:23,586:declearn.server.network:INFO: connection open
+2026-05-07 11:36:23,586:declearn.server.network:INFO: New connection from ('127.0.0.1', 39960)
+2026-05-07 11:36:23,588:declearn.server.messages_handler:INFO: Registering client 'client_1' for training.
+2026-05-07 11:36:23,588:declearn.server.messages_handler:INFO: Registering client 'client_2' for training.
+2026-05-07 11:36:23,588:declearn.server.messages_handler:INFO: Registering client 'client_0' for training.
+2026-05-07 11:36:27,585:declearn.server:INFO: Clients' registration is now complete.
+2026-05-07 11:36:27,586:declearn.server:INFO: Sending initialization requests to clients.
+/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/utils/_serialize.py:125: UserWarning: PyTorch JSON serialization relies on pickle, which may be unsafe.
+  config = obj.get_config()
+2026-05-07 11:36:28,606:declearn.server:INFO: Waiting for clients' responses.
+2026-05-07 11:36:30,611:declearn.server.network:INFO: Sending FairGrad weights to clients.
+/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/utils/_serialize.py:125: UserWarning: PyTorch JSON serialization relies on pickle, which may be unsafe.
+  config = obj.get_config()
+/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/fairness/api/_server.py:188: RuntimeWarning: Overriding Aggregator choice to a 'SumAggregator', due to the use of Fed-FairGrad.
+  return await self.finalize_fairness_setup(
+2026-05-07 11:36:31,612:declearn.server:INFO: Initialization was successful.
+2026-05-07 11:36:31,624:declearn.server:INFO: Initiating fairness-enforcing round 0
+2026-05-07 11:36:33,476:declearn.server.network:INFO: Sending FairGrad weights to clients.
+2026-05-07 11:36:34,479:declearn.server:INFO: Initiating training round 1
+2026-05-07 11:36:42,034:declearn.server:INFO: Awaiting clients' training results.
+2026-05-07 11:36:43,041:declearn.server:INFO: Conducting server-side optimization.
+2026-05-07 11:36:43,045:declearn.server:INFO: Initiating evaluation round 1
+2026-05-07 11:36:43,371:declearn.client-client_0.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.6078', 'loss': '0.7026'}
+2026-05-07 11:36:43,571:declearn.client-client_1.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.6315', 'loss': '0.6790'}
+2026-05-07 11:36:43,779:declearn.client-client_2.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.6288', 'loss': '0.6830'}
+2026-05-07 11:36:44,058:declearn.server:INFO: Awaiting clients' evaluation results.
+2026-05-07 11:36:44,059:declearn.server:INFO: Aggregating evaluation results.
+2026-05-07 11:36:44,059:declearn.server:INFO: Averaged loss is: 0.6881736834843953
+2026-05-07 11:36:44,059:declearn.server:INFO: Other averaged scalar metrics are: {'accuracy': '0.6227', 'loss': '0.6882'}
+2026-05-07 11:36:44,067:declearn.server:INFO: Initiating fairness-enforcing round 1
+2026-05-07 11:36:45,686:declearn.server.network:INFO: Sending FairGrad weights to clients.
+2026-05-07 11:36:46,689:declearn.server:INFO: Initiating training round 2
+2026-05-07 11:36:54,696:declearn.server:INFO: Awaiting clients' training results.
+2026-05-07 11:36:55,723:declearn.server:INFO: Conducting server-side optimization.
+2026-05-07 11:36:55,725:declearn.server:INFO: Initiating evaluation round 2
+2026-05-07 11:36:56,062:declearn.client-client_0.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.5843', 'loss': '0.7255'}
+2026-05-07 11:36:56,219:declearn.client-client_1.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.5660', 'loss': '0.7419'}
+2026-05-07 11:36:56,401:declearn.client-client_2.train_manager:MAJOR: Local scalar evaluation metrics: {'accuracy': '0.5677', 'loss': '0.7406'}
+2026-05-07 11:36:56,742:declearn.server:INFO: Awaiting clients' evaluation results.
+2026-05-07 11:36:56,742:declearn.server:INFO: Aggregating evaluation results.
+2026-05-07 11:36:56,742:declearn.server:INFO: Averaged loss is: 0.7360395782788595
+2026-05-07 11:36:56,743:declearn.server:INFO: Other averaged scalar metrics are: {'accuracy': '0.5727', 'loss': '0.7360'}
+2026-05-07 11:36:56,750:declearn.server:INFO: Maximum number of training rounds reached.
+2026-05-07 11:36:56,750:declearn.server:INFO: Initiating fairness-enforcing round 2
+2026-05-07 11:36:58,903:declearn.server.network:INFO: Sending FairGrad weights to clients.
+2026-05-07 11:36:59,906:declearn.server:INFO: Stopping training.
+2026-05-07 11:36:59,907:declearn.server:INFO: Recovering weights that yielded the lowest loss.
+2026-05-07 11:36:59,907:declearn.server:INFO: Notifying clients that training is over.
+/home/fslimani/declearn-bench/declearn-for-exp_11_fairness_singlepass/declearn/utils/_serialize.py:125: UserWarning: PyTorch JSON serialization relies on pickle, which may be unsafe.
+  config = obj.get_config()
+2026-05-07 11:37:00,165:declearn.server.network:INFO: connection closed
+2026-05-07 11:37:00,165:declearn.server.network:INFO: connection closed
+2026-05-07 11:37:00,165:declearn.server.network:INFO: connection closed
+2026-05-07 11:37:00,923:declearn.server:INFO: Checkpointing final weights under /home/fslimani/declearn-bench/declearn-experiments/exp_11_fairness_singlepass/result_26-05-07_11-36/server/model_state_best.json.
+2026-05-07 11:37:00,934:declearn.server.network:INFO: server closing
+2026-05-07 11:37:00,934:declearn.server.network:INFO: server closed
+
+py-spy> Stopped sampling because process exited
+py-spy> Wrote speedscope file to '/home/fslimani/declearn-bench/declearn-experiments/exp_11_fairness_singlepass/runs/profiles/master/2026-05-07_11-36-18/pyspy_speedscope.json'. Samples: 2612 Errors: 0
+py-spy> Visit https://www.speedscope.app/ to view
+Error: No child process (os error 10)

@@ -1,0 +1,56 @@
+diff --git a/declearn/secagg/masking/_aggregate.py b/declearn/secagg/masking/_aggregate.py
+index 986d3e3..571d981 100644
+--- a/declearn/secagg/masking/_aggregate.py
++++ b/declearn/secagg/masking/_aggregate.py
+@@ -17,11 +17,22 @@
+ 
+ """Secure Aggregation Controller using Joye-Libert homomorphic summation."""
+ 
++import array
++import base64
++import copy
+ from typing import Any, Dict, List, Optional, Self, Type, TypeVar
+ 
+ from declearn.secagg.api import EncryptedSpecs, SecureAggregate
+ from declearn.utils import Aggregate
+ 
++# DD2 follow-up: for masked aggregates with max_int <= 2**64 (the default),
++# pack the `encrypted: List[int]` into uint64 bytes for JSON serialization
++# rather than emitting each int as its own JSON token. With L=10k values per
++# vector and N clients per round, the canonical path drives `iterencode` /
++# `raw_decode` allocation churn to GB scale; the binary-packed form is one
++# str allocation per vector.
++_UINT64_BOUND = 1 << 64
++
+ __all__ = [
+     "MaskedAggregate",
+ ]
+@@ -103,4 +114,28 @@ class MaskedAggregate(SecureAggregate[AggregateT]):
+         """
+         data = super().to_dict()
+         data["max_int"] = self.max_int
++        # DD2 fast path: pack `encrypted` to base64-encoded uint64 bytes
++        # when the field allows. Allocation profile drops from O(L) str
++        # tokens per vector to O(1).
++        if self.max_int <= _UINT64_BOUND and data.get("encrypted"):
++            packed = array.array("Q", data["encrypted"]).tobytes()
++            data["encrypted_b64"] = base64.b64encode(packed).decode("ascii")
++            del data["encrypted"]
+         return data
++
++    @classmethod
++    def from_dict(
++        cls,
++        data: Dict[str, Any],
++    ) -> Self:
++        """Instantiate from a dict representation. Handles both wire formats:
++        the canonical `encrypted: List[int]` field and the DD2 packed
++        `encrypted_b64: str` field."""
++        if "encrypted_b64" in data and "encrypted" not in data:
++            data = copy.copy(data)
++            buf = base64.b64decode(data["encrypted_b64"])
++            a = array.array("Q")
++            a.frombytes(buf)
++            data["encrypted"] = list(a)
++            del data["encrypted_b64"]
++        return super().from_dict(data)

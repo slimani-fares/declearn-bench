@@ -1,0 +1,38 @@
+{
+  "50": {
+    "master": {
+      "n_allocs": 3112501,
+      "total_mb": 18780.0,
+      "peak_mb": 1162.0,
+      "summary": "/home/fslimani/declearn-bench/declearn-experiments-memray/dd2_secagg_scaling/runs/n50_master/2026-05-11_10-51-29/summary.txt",
+      "flame": "/home/fslimani/declearn-bench/declearn-experiments-memray/dd2_secagg_scaling/runs/n50_master/2026-05-11_10-51-29/flamegraph.html",
+      "wall_s": 126.46
+    },
+    "variant": {
+      "n_allocs": 3107152,
+      "total_mb": 17482.0,
+      "peak_mb": 1006.9999999999999,
+      "summary": "/home/fslimani/declearn-bench/declearn-experiments-memray/dd2_secagg_scaling/runs/n50_variant/2026-05-11_10-53-40/summary.txt",
+      "flame": "/home/fslimani/declearn-bench/declearn-experiments-memray/dd2_secagg_scaling/runs/n50_variant/2026-05-11_10-53-40/flamegraph.html",
+      "wall_s": 122.58
+    }
+  },
+  "100": {
+    "master": {
+      "n_allocs": 7432550,
+      "total_mb": 40561.0,
+      "peak_mb": 2575.0,
+      "summary": "/home/fslimani/declearn-bench/declearn-experiments-memray/dd2_secagg_scaling/runs/n100_master/2026-05-11_10-55-47/summary.txt",
+      "flame": "/home/fslimani/declearn-bench/declearn-experiments-memray/dd2_secagg_scaling/runs/n100_master/2026-05-11_10-55-47/flamegraph.html",
+      "wall_s": 252.93
+    },
+    "variant": {
+      "n_allocs": 7420522,
+      "total_mb": 37966.0,
+      "peak_mb": 1620.0,
+      "summary": "/home/fslimani/declearn-bench/declearn-experiments-memray/dd2_secagg_scaling/runs/n100_variant/2026-05-11_11-00-04/summary.txt",
+      "flame": "/home/fslimani/declearn-bench/declearn-experiments-memray/dd2_secagg_scaling/runs/n100_variant/2026-05-11_11-00-04/flamegraph.html",
+      "wall_s": 246.67
+    }
+  }
+}

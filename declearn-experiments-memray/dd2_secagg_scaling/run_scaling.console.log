@@ -1,0 +1,24 @@
+=== DD2 scaling: N=[50, 100] × 2 arms ===
+[start] N=50 arm=master branch=master
+[done ] N=50 arm=master dur=126.5s rc=0
+  peak=1162.0MB  total=18780MB  summary=/home/fslimani/declearn-bench/declearn-experiments-memray/dd2_secagg_scaling/runs/n50_master/2026-05-11_10-51-29/summary.txt
+[start] N=50 arm=variant branch=dd2_json_binary_variant
+[done ] N=50 arm=variant dur=122.6s rc=0
+  peak=1007.0MB  total=17482MB  summary=/home/fslimani/declearn-bench/declearn-experiments-memray/dd2_secagg_scaling/runs/n50_variant/2026-05-11_10-53-40/summary.txt
+[start] N=100 arm=master branch=master
+[done ] N=100 arm=master dur=252.9s rc=0
+  peak=2575.0MB  total=40561MB  summary=/home/fslimani/declearn-bench/declearn-experiments-memray/dd2_secagg_scaling/runs/n100_master/2026-05-11_10-55-47/summary.txt
+[start] N=100 arm=variant branch=dd2_json_binary_variant
+[done ] N=100 arm=variant dur=246.7s rc=0
+  peak=1620.0MB  total=37966MB  summary=/home/fslimani/declearn-bench/declearn-experiments-memray/dd2_secagg_scaling/runs/n100_variant/2026-05-11_11-00-04/summary.txt
+
+=== resetting venv to canonical declearn ===
+
+=== summary ===
+   N arm         peak_MB     total_MB       n_allocs   wall_s
+  50 master       1162.0        18780      3,112,501    126.5
+  50 variant      1007.0        17482      3,107,152    122.6
+ 100 master       2575.0        40561      7,432,550    252.9
+ 100 variant      1620.0        37966      7,420,522    246.7
+
+results json: /home/fslimani/declearn-bench/declearn-experiments-memray/dd2_secagg_scaling/scaling_results.json

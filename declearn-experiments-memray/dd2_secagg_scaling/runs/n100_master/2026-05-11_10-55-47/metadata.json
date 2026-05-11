@@ -1,0 +1,9 @@
+{
+  "tag": "n100_master",
+  "timestamp": "2026-05-11_10-55-47",
+  "wall_clock_s": 234.025,
+  "bin_size_mb": 18.66,
+  "target": "import asyncio; from declearn.quickrun._run import quickrun; asyncio.run(quickrun('/home/fslimani/declearn-bench/declearn-experiments-memray/dd2_secagg_scaling/configs/config_secagg_n100.toml', secagg_variant='masking'))",
+  "cwd": "/home/fslimani/declearn-bench",
+  "memray_version": "1.19.3"
+}

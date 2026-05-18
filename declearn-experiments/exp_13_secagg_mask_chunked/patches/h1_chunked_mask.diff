@@ -1,0 +1,35 @@
+diff --git a/declearn/secagg/masking/_encrypt.py b/declearn/secagg/masking/_encrypt.py
+index 5e6f54e..8c7e886 100644
+--- a/declearn/secagg/masking/_encrypt.py
++++ b/declearn/secagg/masking/_encrypt.py
+@@ -120,6 +120,8 @@ class MaskingEncrypter(Encrypter):
+                 values[i] = values[i] - int.from_bytes(dat, "big")
+         return np.array([val % self.max_int for val in values])
+ 
++    _MASK_CHUNK = 65536
++
+     def _generate_masks_numpy(
+         self,
+         n_values: int,
+@@ -127,10 +129,19 @@ class MaskingEncrypter(Encrypter):
+         """Generate a number of masking values."""
+         mask = np.zeros(shape=(n_values,), dtype=self._dtype)
+         max_val = self.max_int
++        chunk = self._MASK_CHUNK
+         for rng in self._pos_rng:
+-            mask += rng.integers(max_val, dtype=self._dtype, size=n_values)
++            for start in range(0, n_values, chunk):
++                end = min(start + chunk, n_values)
++                mask[start:end] += rng.integers(
++                    max_val, dtype=self._dtype, size=end - start
++                )
+         for rng in self._neg_rng:
+-            mask -= rng.integers(max_val, dtype=self._dtype, size=n_values)
++            for start in range(0, n_values, chunk):
++                end = min(start + chunk, n_values)
++                mask[start:end] -= rng.integers(
++                    max_val, dtype=self._dtype, size=end - start
++                )
+         return mask
+ 
+     def encrypt_uint(

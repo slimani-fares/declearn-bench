@@ -1,0 +1,40 @@
+=== exp_13 A/B: N=[5, 20, 50, 100] x 2 arms ===
+[start] N=5 arm=master (fork=declearn-for-exp_12_secagg_aggregate, branch=master)
+[done ] N=5 arm=master dur=87.5s rc=0
+  peak=476.2MB total=3531MB n_allocs=1,237,489
+[start] N=5 arm=variant (fork=declearn-for-exp_13_secagg_mask_chunked, branch=exp_13_variant_h1_chunked)
+[done ] N=5 arm=variant dur=87.9s rc=0
+  peak=476.3MB total=3534MB n_allocs=1,237,756
+[start] N=20 arm=master (fork=declearn-for-exp_12_secagg_aggregate, branch=master)
+[done ] N=20 arm=master dur=127.0s rc=0
+  peak=700.4MB total=8219MB n_allocs=1,652,910
+[start] N=20 arm=variant (fork=declearn-for-exp_13_secagg_mask_chunked, branch=exp_13_variant_h1_chunked)
+[done ] N=20 arm=variant dur=128.2s rc=0
+  peak=704.8MB total=8217MB n_allocs=1,653,785
+[start] N=50 arm=master (fork=declearn-for-exp_12_secagg_aggregate, branch=master)
+[done ] N=50 arm=master dur=127.0s rc=0
+  peak=1163.0MB total=18778MB n_allocs=3,112,826
+[start] N=50 arm=variant (fork=declearn-for-exp_13_secagg_mask_chunked, branch=exp_13_variant_h1_chunked)
+[done ] N=50 arm=variant dur=127.0s rc=0
+  peak=1106.0MB total=18775MB n_allocs=3,117,342
+[start] N=100 arm=master (fork=declearn-for-exp_12_secagg_aggregate, branch=master)
+[done ] N=100 arm=master dur=251.0s rc=0
+  peak=2473.0MB total=40548MB n_allocs=7,430,885
+[start] N=100 arm=variant (fork=declearn-for-exp_13_secagg_mask_chunked, branch=exp_13_variant_h1_chunked)
+[done ] N=100 arm=variant dur=259.7s rc=0
+  peak=1930.0MB total=40497MB n_allocs=7,452,018
+
+=== resetting venv to canonical declearn ===
+
+=== summary ===
+   N arm         peak_MB     total_MB       n_allocs   wall_s
+   5 master        476.2         3531      1,237,489     87.5
+   5 variant       476.3         3534      1,237,756     87.9
+  20 master        700.4         8219      1,652,910    127.0
+  20 variant       704.8         8217      1,653,785    128.2
+  50 master       1163.0        18778      3,112,826    127.0
+  50 variant      1106.0        18775      3,117,342    127.0
+ 100 master       2473.0        40548      7,430,885    251.0
+ 100 variant      1930.0        40497      7,452,018    259.7
+
+results: /home/fslimani/declearn-bench/declearn-experiments/exp_13_secagg_mask_chunked/ab_results.json

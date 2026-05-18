@@ -1,0 +1,13 @@
+............................................................             [100%]
+=============================== warnings summary ===============================
+test/secagg/controllers/test_masking_controllers.py::TestMaskingEncrypter::test_encrypt_vector[jax]
+  /home/fslimani/.venvs/declearn313/lib/python3.13/site-packages/haiku/_src/jaxpr_info.py:45: DeprecationWarning: jax.core.DropVar is deprecated. Use jax.extend.core.DropVar.
+    DropVar: TypeAlias = jax.core.DropVar
+
+test/secagg/setup/test_masking_setup.py::TestMaskingSecaggSetup::test_secagg_setup[2]
+test/secagg/setup/test_masking_setup.py::TestMaskingSecaggSetup::test_secagg_setup[5]
+  /home/fslimani/declearn-bench/declearn-for-exp_13_secagg_mask_chunked/declearn/communication/api/_server.py:160: DeprecationWarning: Argument 'logger' is deprecated and useless now, it will be removed in 2.10. To customize the instance logger, you may use instead logging utils from `declearn.utils` or the 'logging' Python module.
+    self.handler = MessagesHandler(logger=self.logger, heartbeat=heartbeat)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+60 passed, 3 warnings in 8.37s

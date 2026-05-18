@@ -1,0 +1,82 @@
+{
+  "5": {
+    "master": {
+      "n_allocs": 1237489,
+      "total_mb": 3531.0,
+      "peak_mb": 476.157,
+      "summary": "/home/fslimani/declearn-bench/declearn-experiments/exp_13_secagg_mask_chunked/runs/n5_master/2026-05-13_16-05-44/summary.txt",
+      "flame": "/home/fslimani/declearn-bench/declearn-experiments/exp_13_secagg_mask_chunked/runs/n5_master/2026-05-13_16-05-44/flamegraph.html",
+      "wall_s": 87.5,
+      "arm_dir": "/home/fslimani/declearn-bench/declearn-experiments/exp_13_secagg_mask_chunked/runs/n5_master/2026-05-13_16-05-44"
+    },
+    "variant": {
+      "n_allocs": 1237756,
+      "total_mb": 3534.0,
+      "peak_mb": 476.296,
+      "summary": "/home/fslimani/declearn-bench/declearn-experiments/exp_13_secagg_mask_chunked/runs/n5_variant/2026-05-13_16-07-16/summary.txt",
+      "flame": "/home/fslimani/declearn-bench/declearn-experiments/exp_13_secagg_mask_chunked/runs/n5_variant/2026-05-13_16-07-16/flamegraph.html",
+      "wall_s": 87.91,
+      "arm_dir": "/home/fslimani/declearn-bench/declearn-experiments/exp_13_secagg_mask_chunked/runs/n5_variant/2026-05-13_16-07-16"
+    }
+  },
+  "20": {
+    "master": {
+      "n_allocs": 1652910,
+      "total_mb": 8219.0,
+      "peak_mb": 700.396,
+      "summary": "/home/fslimani/declearn-bench/declearn-experiments/exp_13_secagg_mask_chunked/runs/n20_master/2026-05-13_16-08-49/summary.txt",
+      "flame": "/home/fslimani/declearn-bench/declearn-experiments/exp_13_secagg_mask_chunked/runs/n20_master/2026-05-13_16-08-49/flamegraph.html",
+      "wall_s": 127.03,
+      "arm_dir": "/home/fslimani/declearn-bench/declearn-experiments/exp_13_secagg_mask_chunked/runs/n20_master/2026-05-13_16-08-49"
+    },
+    "variant": {
+      "n_allocs": 1653785,
+      "total_mb": 8217.0,
+      "peak_mb": 704.829,
+      "summary": "/home/fslimani/declearn-bench/declearn-experiments/exp_13_secagg_mask_chunked/runs/n20_variant/2026-05-13_16-11-00/summary.txt",
+      "flame": "/home/fslimani/declearn-bench/declearn-experiments/exp_13_secagg_mask_chunked/runs/n20_variant/2026-05-13_16-11-00/flamegraph.html",
+      "wall_s": 128.21,
+      "arm_dir": "/home/fslimani/declearn-bench/declearn-experiments/exp_13_secagg_mask_chunked/runs/n20_variant/2026-05-13_16-11-00"
+    }
+  },
+  "50": {
+    "master": {
+      "n_allocs": 3112826,
+      "total_mb": 18778.0,
+      "peak_mb": 1163.0,
+      "summary": "/home/fslimani/declearn-bench/declearn-experiments/exp_13_secagg_mask_chunked/runs/n50_master/2026-05-13_16-13-13/summary.txt",
+      "flame": "/home/fslimani/declearn-bench/declearn-experiments/exp_13_secagg_mask_chunked/runs/n50_master/2026-05-13_16-13-13/flamegraph.html",
+      "wall_s": 127.02,
+      "arm_dir": "/home/fslimani/declearn-bench/declearn-experiments/exp_13_secagg_mask_chunked/runs/n50_master/2026-05-13_16-13-13"
+    },
+    "variant": {
+      "n_allocs": 3117342,
+      "total_mb": 18775.0,
+      "peak_mb": 1106.0,
+      "summary": "/home/fslimani/declearn-bench/declearn-experiments/exp_13_secagg_mask_chunked/runs/n50_variant/2026-05-13_16-15-24/summary.txt",
+      "flame": "/home/fslimani/declearn-bench/declearn-experiments/exp_13_secagg_mask_chunked/runs/n50_variant/2026-05-13_16-15-24/flamegraph.html",
+      "wall_s": 127.03,
+      "arm_dir": "/home/fslimani/declearn-bench/declearn-experiments/exp_13_secagg_mask_chunked/runs/n50_variant/2026-05-13_16-15-24"
+    }
+  },
+  "100": {
+    "master": {
+      "n_allocs": 7430885,
+      "total_mb": 40548.0,
+      "peak_mb": 2473.0,
+      "summary": "/home/fslimani/declearn-bench/declearn-experiments/exp_13_secagg_mask_chunked/runs/n100_master/2026-05-13_16-17-35/summary.txt",
+      "flame": "/home/fslimani/declearn-bench/declearn-experiments/exp_13_secagg_mask_chunked/runs/n100_master/2026-05-13_16-17-35/flamegraph.html",
+      "wall_s": 250.96,
+      "arm_dir": "/home/fslimani/declearn-bench/declearn-experiments/exp_13_secagg_mask_chunked/runs/n100_master/2026-05-13_16-17-35"
+    },
+    "variant": {
+      "n_allocs": 7452018,
+      "total_mb": 40497.0,
+      "peak_mb": 1930.0,
+      "summary": "/home/fslimani/declearn-bench/declearn-experiments/exp_13_secagg_mask_chunked/runs/n100_variant/2026-05-13_16-21-51/summary.txt",
+      "flame": "/home/fslimani/declearn-bench/declearn-experiments/exp_13_secagg_mask_chunked/runs/n100_variant/2026-05-13_16-21-51/flamegraph.html",
+      "wall_s": 259.71,
+      "arm_dir": "/home/fslimani/declearn-bench/declearn-experiments/exp_13_secagg_mask_chunked/runs/n100_variant/2026-05-13_16-21-51"
+    }
+  }
+}

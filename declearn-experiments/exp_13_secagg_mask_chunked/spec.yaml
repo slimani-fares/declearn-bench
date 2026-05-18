@@ -1,0 +1,61 @@
+experience_id: exp_13_secagg_mask_chunked
+baseline_commit: canonical declearn 2.8.0 (~/declearn-bench/declearn/)
+variant_fork: ~/declearn-bench/declearn-for-exp_13_secagg_mask_chunked/ branch exp_13_variant_h1_chunked (commit 2e81845)
+observation_basis: DD2 memray summary at N=100 master, showing _generate_masks_numpy
+  at masking/_encrypt.py:131 and :133 together cumulatively allocating ~8 GB
+  even after the DD2 (JSON->binary) and exp_12 (encrypt_uint_vector batching)
+  patches were applied.
+
+hypotheses:
+  - id: h1
+    statement: >
+      Chunking _generate_masks_numpy into CHUNK-sized (=65536) sub-draws
+      caps per-call peak temporary allocations at O(CHUNK * dtype_size)
+      instead of O(L * dtype_size), with no change to total bytes allocated
+      and a small wall-clock penalty from extra numpy call overhead.
+      Effect grows with N (per-peer multiplier on per-call cost).
+    deal_breaking: true
+    requires_human_crypto_review: true
+    proposed_change_summary: >
+      Replace single `rng.integers(max_val, dtype, size=n_values)` per peer
+      with a Python loop of `rng.integers(..., size=chunk)` writes into
+      pre-allocated `mask[start:end]`. CHUNK constant defined at class
+      level (_MASK_CHUNK = 65536). Diff is 12 net lines in
+      declearn/secagg/masking/_encrypt.py.
+    smoke_tests:
+      - type: byte_equivalence
+        target: mask stream of canonical vs chunked for shared seeds at n=1M and n=10
+        tolerance: exact (np.array_equal)
+        result: PASS (full-range uint64 PCG64 advances per-element, chunking does not
+                       alter the state advancement order)
+      - type: pytest_unit
+        target: declearn test/secagg/controllers/test_masking_controllers.py +
+                test/secagg/setup/test_masking_setup.py
+        tolerance: all pass
+        result: PASS (60 tests passed in 8.37s)
+      - type: pytest_functional
+        target: declearn test/functional/test_toy_clf_secagg.py
+        tolerance: all pass (covers FedAvg + SCAFFOLD round-trip with SecAgg masking)
+        result: PASS (2 tests passed in 20.44s)
+    a_b_design:
+      configs: [config_secagg_n5.toml, config_secagg_n20.toml,
+                config_secagg_n50.toml, config_secagg_n100.toml]
+      client_counts: [5, 20, 50, 100]
+      seeds: [single seed via memray determinism — methodology matches DD2/M03]
+      rounds: 1
+      n_steps: 5
+      tools: [memray (Python-only mode, no --native)]
+      expected_wall_time_min_per_run: ~1 min (N<=50), ~3 min (N=100)
+    deal_breaker_rules:
+      smoke_test_floor: any of the three smoke layers fails -> aborted
+      perf_direction: wall-clock slowdown > 10% at any N -> "perf went backwards" deal-breaker
+      accuracy_floor: n/a (memory-focused experiment; smoke C covers
+                            end-to-end aggregate correctness)
+      memory_target: peak reduction at lines 131/:133 of _encrypt.py
+                     must be observable in summary.txt for at least N=50 and N=100
+    status: confirmed
+    ab_summary:
+      n5:   {peak_master_mb: 476.2,  peak_variant_mb: 476.3,  delta_pct: +0.02,   wall_master_s: 87.5,  wall_variant_s: 87.9}
+      n20:  {peak_master_mb: 700.4,  peak_variant_mb: 704.8,  delta_pct: +0.63,   wall_master_s: 127.0, wall_variant_s: 128.2}
+      n50:  {peak_master_mb: 1163.0, peak_variant_mb: 1106.0, delta_pct: -4.90,   wall_master_s: 127.0, wall_variant_s: 127.0}
+      n100: {peak_master_mb: 2473.0, peak_variant_mb: 1930.0, delta_pct: -21.96,  wall_master_s: 251.0, wall_variant_s: 259.7}

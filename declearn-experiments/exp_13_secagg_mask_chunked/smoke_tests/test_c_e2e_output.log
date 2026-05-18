@@ -1,0 +1,20 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0
+rootdir: /home/fslimani/declearn-bench/declearn-for-exp_13_secagg_mask_chunked
+configfile: pyproject.toml
+plugins: asyncio-1.3.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 2 items
+
+test/functional/test_toy_clf_secagg.py ..                                [100%]
+
+=============================== warnings summary ===============================
+test/functional/test_toy_clf_secagg.py::test_toy_classif_secagg[fedavg]
+test/functional/test_toy_clf_secagg.py::test_toy_classif_secagg[fedavg]
+test/functional/test_toy_clf_secagg.py::test_toy_classif_secagg[scaffold]
+test/functional/test_toy_clf_secagg.py::test_toy_classif_secagg[scaffold]
+  /home/fslimani/declearn-bench/declearn-for-exp_13_secagg_mask_chunked/declearn/communication/api/_server.py:160: DeprecationWarning: Argument 'logger' is deprecated and useless now, it will be removed in 2.10. To customize the instance logger, you may use instead logging utils from `declearn.utils` or the 'logging' Python module.
+    self.handler = MessagesHandler(logger=self.logger, heartbeat=heartbeat)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================== 2 passed, 4 warnings in 20.44s ========================

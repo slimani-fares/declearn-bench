@@ -1,0 +1,9 @@
+{
+  "tag": "n100_variant",
+  "timestamp": "2026-05-13_16-21-51",
+  "wall_clock_s": 241.328,
+  "bin_size_mb": 18.61,
+  "target": "import asyncio; from declearn.quickrun._run import quickrun; asyncio.run(quickrun('/home/fslimani/declearn-bench/declearn-experiments/exp_13_secagg_mask_chunked/configs/config_secagg_n100.toml', secagg_variant='masking'))",
+  "cwd": "/home/fslimani/declearn-bench",
+  "memray_version": "1.19.3"
+}
